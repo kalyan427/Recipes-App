@@ -9,12 +9,18 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    @IBOutlet weak var addTitle: UIButton!
+    @IBOutlet weak var titleTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        self.title = "Recipes"
     }
-
-
+    
+    @IBAction func addTitleButton(_ sender: UIButton) {
+        let recipesStepsVC = (self.storyboard?.instantiateViewController(identifier: "recipesStepsVC"))! as RecipesStepsViewController
+        self.navigationController?.pushViewController(recipesStepsVC, animated: true)
+    }
 }
+
 

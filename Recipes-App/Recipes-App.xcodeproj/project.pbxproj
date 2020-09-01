@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3039114D24F6170900BD6453 /* TextInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3039114C24F6170900BD6453 /* TextInputTableViewCell.swift */; };
+		307D6E6224FC9D1600DFF01E /* RecipesStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307D6E6124FC9D1600DFF01E /* RecipesStepsViewController.swift */; };
 		30F4469724F53C49008580C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F4469624F53C49008580C8 /* AppDelegate.swift */; };
 		30F4469924F53C49008580C8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F4469824F53C49008580C8 /* SceneDelegate.swift */; };
 		30F4469B24F53C49008580C8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F4469A24F53C49008580C8 /* ViewController.swift */; };
@@ -28,6 +30,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3039114C24F6170900BD6453 /* TextInputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputTableViewCell.swift; sourceTree = "<group>"; };
+		307D6E6124FC9D1600DFF01E /* RecipesStepsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesStepsViewController.swift; sourceTree = "<group>"; };
 		30F4469324F53C49008580C8 /* Recipes-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Recipes-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		30F4469624F53C49008580C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30F4469824F53C49008580C8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +88,8 @@
 				30F4469624F53C49008580C8 /* AppDelegate.swift */,
 				30F4469824F53C49008580C8 /* SceneDelegate.swift */,
 				30F4469A24F53C49008580C8 /* ViewController.swift */,
+				307D6E6124FC9D1600DFF01E /* RecipesStepsViewController.swift */,
+				3039114C24F6170900BD6453 /* TextInputTableViewCell.swift */,
 				30F4469C24F53C49008580C8 /* Main.storyboard */,
 				30F446A224F53C4C008580C8 /* Assets.xcassets */,
 				30F446A424F53C4C008580C8 /* LaunchScreen.storyboard */,
@@ -203,6 +209,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				307D6E6224FC9D1600DFF01E /* RecipesStepsViewController.swift in Sources */,
+				3039114D24F6170900BD6453 /* TextInputTableViewCell.swift in Sources */,
 				30F4469B24F53C49008580C8 /* ViewController.swift in Sources */,
 				30F4469724F53C49008580C8 /* AppDelegate.swift in Sources */,
 				30F4469924F53C49008580C8 /* SceneDelegate.swift in Sources */,
