@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		302CA3812511CF58001A79E7 /* ViewReceipeStepsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302CA3802511CF58001A79E7 /* ViewReceipeStepsTableViewController.swift */; };
+		302CA3832511CFB1001A79E7 /* AllStepsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302CA3822511CFB1001A79E7 /* AllStepsTableViewCell.swift */; };
 		3039114D24F6170900BD6453 /* TextInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3039114C24F6170900BD6453 /* TextInputTableViewCell.swift */; };
+		304E79E3250332740080D740 /* RecipeTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304E79E2250332740080D740 /* RecipeTitleTableViewCell.swift */; };
 		307D6E6224FC9D1600DFF01E /* RecipesStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307D6E6124FC9D1600DFF01E /* RecipesStepsViewController.swift */; };
 		30F4469724F53C49008580C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F4469624F53C49008580C8 /* AppDelegate.swift */; };
 		30F4469924F53C49008580C8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F4469824F53C49008580C8 /* SceneDelegate.swift */; };
@@ -30,7 +33,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		302CA3802511CF58001A79E7 /* ViewReceipeStepsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewReceipeStepsTableViewController.swift; sourceTree = "<group>"; };
+		302CA3822511CFB1001A79E7 /* AllStepsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllStepsTableViewCell.swift; sourceTree = "<group>"; };
 		3039114C24F6170900BD6453 /* TextInputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputTableViewCell.swift; sourceTree = "<group>"; };
+		304E79E2250332740080D740 /* RecipeTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTitleTableViewCell.swift; sourceTree = "<group>"; };
 		307D6E6124FC9D1600DFF01E /* RecipesStepsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesStepsViewController.swift; sourceTree = "<group>"; };
 		30F4469324F53C49008580C8 /* Recipes-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Recipes-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		30F4469624F53C49008580C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -88,8 +94,11 @@
 				30F4469624F53C49008580C8 /* AppDelegate.swift */,
 				30F4469824F53C49008580C8 /* SceneDelegate.swift */,
 				30F4469A24F53C49008580C8 /* ViewController.swift */,
+				304E79E2250332740080D740 /* RecipeTitleTableViewCell.swift */,
 				307D6E6124FC9D1600DFF01E /* RecipesStepsViewController.swift */,
 				3039114C24F6170900BD6453 /* TextInputTableViewCell.swift */,
+				302CA3802511CF58001A79E7 /* ViewReceipeStepsTableViewController.swift */,
+				302CA3822511CFB1001A79E7 /* AllStepsTableViewCell.swift */,
 				30F4469C24F53C49008580C8 /* Main.storyboard */,
 				30F446A224F53C4C008580C8 /* Assets.xcassets */,
 				30F446A424F53C4C008580C8 /* LaunchScreen.storyboard */,
@@ -210,9 +219,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				307D6E6224FC9D1600DFF01E /* RecipesStepsViewController.swift in Sources */,
+				304E79E3250332740080D740 /* RecipeTitleTableViewCell.swift in Sources */,
+				302CA3812511CF58001A79E7 /* ViewReceipeStepsTableViewController.swift in Sources */,
 				3039114D24F6170900BD6453 /* TextInputTableViewCell.swift in Sources */,
 				30F4469B24F53C49008580C8 /* ViewController.swift in Sources */,
 				30F4469724F53C49008580C8 /* AppDelegate.swift in Sources */,
+				302CA3832511CFB1001A79E7 /* AllStepsTableViewCell.swift in Sources */,
 				30F4469924F53C49008580C8 /* SceneDelegate.swift in Sources */,
 				30F446A124F53C49008580C8 /* Recipes_App.xcdatamodeld in Sources */,
 			);

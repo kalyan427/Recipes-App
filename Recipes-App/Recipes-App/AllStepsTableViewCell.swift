@@ -1,16 +1,15 @@
 //
-//  TextInputTableViewCell.swift
+//  AllStepsTableViewCell.swift
 //  Recipes-App
 //
-//  Created by venkata kalyan pasupuleti on 8/25/20.
+//  Created by venkata kalyan pasupuleti on 9/15/20.
 //  Copyright © 2020 quiz. All rights reserved.
 //
 
 import UIKit
 
-class TextInputTableViewCell: UITableViewCell {
-    @IBOutlet weak var recipeStepsLabel: UILabel!
-    @IBOutlet weak var stepsNumber: UILabel!
+class AllStepsTableViewCell: UITableViewCell {
+    @IBOutlet weak var AllStepsLbl: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,7 +21,5 @@ class TextInputTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
-    
 
 }
