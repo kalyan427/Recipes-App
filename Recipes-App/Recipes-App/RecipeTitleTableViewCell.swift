@@ -10,6 +10,9 @@ import UIKit
 
 class RecipeTitleTableViewCell: UITableViewCell {
     @IBOutlet weak var recipeTitle: UILabel!
+    @IBOutlet weak var btnMore: UIButton!
+    @IBOutlet weak var receipeImageView: UIImageView!
+    
     @IBOutlet weak var deleteOutlet: UIButton!
     @IBOutlet weak var addSteps: UIButton!
     @IBOutlet weak var viewSteps: UIButton!

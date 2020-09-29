@@ -47,8 +47,27 @@ class ViewController: UIViewController,UITextFieldDelegate {
           //  titleTextField.text = nil
         }
     }
+    
+    @objc func moreButtonClicked(sender: UIButton) {
+        let clickedCell = sender.tag
+        let alert = UIAlertController(title: "Select Option", message: nil, preferredStyle: .actionSheet)
+        
+        alert.addAction(UIAlertAction(title: "Add Steps", style: .default, handler: { (UIAlertAction) in
+            self.addSteps(tag: clickedCell)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "View Steps", style: .default, handler: { (UIAlertAction) in
+            self.deletebuttonClicked(tag: clickedCell)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { (UIAlertAction) in
+            
+        }))
+        
+        
+        
+            }
 }
-
 
 extension ViewController: UITableViewDataSource,UITableViewDelegate {
     
@@ -58,16 +77,20 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! RecipeTitleTableViewCell
-        cell.addSteps.addTarget(self, action: #selector(addSteps(sender:)), for: .touchUpInside) // know once again.
-        cell.addSteps.tag = indexPath.row
-        cell.viewSteps.addTarget(self, action: #selector(viewReceipeSteps(sender:)), for: .touchUpInside)
-        cell.viewSteps.tag = indexPath.row
-        cell.deleteOutlet.addTarget(self, action: #selector(deletebuttonClicked(sender:)), for: .touchUpInside)  // know it once.
-        cell.deleteOutlet.tag = indexPath.row
+        cell.btnMore.addTarget(self, action: #selector(moreButtonClicked(sender:)), for: .touchUpInside)
+        cell.btnMore.tag = indexPath.row
+        //cell.addSteps.addTarget(self, action: #selector(addSteps(sender:)), for: .touchUpInside) // know once again.
+//        cell.addSteps.tag = indexPath.row
+//        cell.viewSteps.addTarget(self, action: #selector(viewReceipeSteps(sender:)), for: .touchUpInside)
+//        cell.viewSteps.tag = indexPath.row
+//        cell.deleteOutlet.addTarget(self, action: #selector(deletebuttonClicked(sender:)), for: .touchUpInside)  // know it once.
+//        cell.deleteOutlet.tag = indexPath.row
         cell.recipeTitle.text = receipers[indexPath.row]["item"] as? String
         print(receipers[indexPath.row]["item"])
         return cell
     }
+    
+    
     
     @objc func viewReceipeSteps(sender: UIButton) {
         let VC = self.storyboard?.instantiateViewController(identifier: "viewReceipeStepsVC") as! ViewReceipeStepsTableViewController
@@ -75,11 +98,10 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate {
         self.navigationController?.pushViewController(VC, animated: true)
     }
     
-    @objc func deletebuttonClicked(sender: UIButton) {
-        let clickedCell = sender.tag
+    @objc func deletebuttonClicked(tag: Int) {
         let alert = UIAlertController(title: "Alert", message: "You are deleting title of Recipe", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { action in
-        self.deleteItemInArray(arrayValue: clickedCell)
+        self.deleteItemInArray(arrayValue: tag)
         }))
         self.present(alert, animated: true, completion: nil)
     }
@@ -89,7 +111,7 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate {
         tableView.reloadData()
     }
     
-    @objc func addSteps(sender: UIButton) {
+    @objc func addSteps(tag: Int) {
         let VC = self.storyboard?.instantiateViewController(identifier: "recipesStepsVC") as! RecipesStepsViewController
         // VC.recipesTL(title: recipes[sender.tag] as! String)
         self.navigationController?.pushViewController(VC, animated: true)
