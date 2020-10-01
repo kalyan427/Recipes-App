@@ -7,18 +7,20 @@
 //
 
 import UIKit
+import TagListView
 
-class RecipesStepsViewController: UIViewController,UITextFieldDelegate {
+class RecipesStepsViewController: UIViewController,UITextFieldDelegate, TagListViewDelegate {
     @IBOutlet weak var stepsTF: UITextField!
     var recipeTitle: String?
     var steps = [Any]()
     @IBOutlet weak var stepsTblView: UITableView!
+    @IBOutlet weak var tagListView: TagListView!
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = self.recipeTitle
         self.stepsTF.delegate = self
+        tagListView.delegate = self
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -35,6 +37,29 @@ class RecipesStepsViewController: UIViewController,UITextFieldDelegate {
         stepsTblView.reloadData()
         stepsTF.text = nil
     }
+    
+    @IBAction func addIngredients(_ sender: UIButton) {
+        tagListView.textFont = UIFont.systemFont(ofSize: 14)
+        tagListView.tagBackgroundColor = UIColor.init(red: 12/255, green: 114/255, blue: 211/255, alpha: 1)
+        tagListView.cornerRadius = 12
+        tagListView.paddingX = 10
+        tagListView.paddingY = 13
+        tagListView.enableRemoveButton = true
+        if let emptyCheck = stepsTF.text {
+            if (emptyCheck.count == 0) {
+            }
+            else {
+                tagListView.addTag(stepsTF.text!)
+                stepsTF.text = nil
+            }
+        }
+    }
+    
+    func tagPressed(_ title: String, tagView: TagView, sender: TagListView) {
+        print("Tag pressed: \(title), \(sender)")
+        tagListView.removeTag(title)
+    }
+    
 }
 
 extension RecipesStepsViewController: UITableViewDelegate,UITableViewDataSource {

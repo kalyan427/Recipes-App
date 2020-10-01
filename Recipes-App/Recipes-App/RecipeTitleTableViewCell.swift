@@ -19,7 +19,8 @@ class RecipeTitleTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        receipeImageView.layer.masksToBounds = true
+        receipeImageView.layer.cornerRadius = receipeImageView.frame.height/2
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
