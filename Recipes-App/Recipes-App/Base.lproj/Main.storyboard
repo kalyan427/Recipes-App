@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pZc-qp-fOr">
-                                <rect key="frame" x="35" y="166" width="344" height="45"/>
+                                <rect key="frame" x="35" y="120" width="344" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="GBp-bV-bPH"/>
                                 </constraints>
@@ -24,7 +24,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C8B-bh-eGf">
-                                <rect key="frame" x="35" y="226" width="344" height="45"/>
+                                <rect key="frame" x="35" y="180" width="344" height="45"/>
                                 <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="rIw-rN-6Wd"/>
@@ -37,7 +37,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MVg-59-DHA">
-                                <rect key="frame" x="0.0" y="303" width="414" height="559"/>
+                                <rect key="frame" x="0.0" y="257" width="414" height="605"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="72" id="pxH-va-f76" customClass="RecipeTitleTableViewCell" customModule="Recipes_App" customModuleProvider="target">
@@ -103,7 +103,7 @@
                             <constraint firstItem="MVg-59-DHA" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="71n-n4-6vf"/>
                             <constraint firstItem="C8B-bh-eGf" firstAttribute="leading" secondItem="pZc-qp-fOr" secondAttribute="leading" id="8XM-5T-yib"/>
                             <constraint firstItem="MVg-59-DHA" firstAttribute="top" secondItem="C8B-bh-eGf" secondAttribute="bottom" constant="32" id="F5C-Kx-QRK"/>
-                            <constraint firstItem="pZc-qp-fOr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="78" id="JmR-v6-gKH"/>
+                            <constraint firstItem="pZc-qp-fOr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="32" id="JmR-v6-gKH"/>
                             <constraint firstItem="pZc-qp-fOr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="35" id="fmc-BE-2zb"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pZc-qp-fOr" secondAttribute="trailing" constant="35" id="g9w-uH-n4Z"/>
                             <constraint firstItem="C8B-bh-eGf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nUc-Ez-gbT"/>
