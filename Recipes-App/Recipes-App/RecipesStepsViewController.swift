@@ -11,6 +11,7 @@ import TagListView
 
 class RecipesStepsViewController: UIViewController,UITextFieldDelegate, TagListViewDelegate {
     @IBOutlet weak var stepsTF: UITextField!
+    @IBOutlet weak var addStepsTF: UITextField!
     var recipeTitle: String?
     var steps = [Any]()
     @IBOutlet weak var stepsTblView: UITableView!
@@ -33,9 +34,9 @@ class RecipesStepsViewController: UIViewController,UITextFieldDelegate, TagListV
     }
     
     @IBAction func addStepsButton(_ sender: UIButton) {
-        steps.append(stepsTF.text!)
+        steps.append(addStepsTF.text!)
         stepsTblView.reloadData()
-        stepsTF.text = nil
+        addStepsTF.text = nil
     }
     
     @IBAction func addIngredients(_ sender: UIButton) {
@@ -59,7 +60,6 @@ class RecipesStepsViewController: UIViewController,UITextFieldDelegate, TagListV
         print("Tag pressed: \(title), \(sender)")
         tagListView.removeTag(title)
     }
-    
 }
 
 extension RecipesStepsViewController: UITableViewDelegate,UITableViewDataSource {
@@ -82,17 +82,21 @@ extension RecipesStepsViewController: UITableViewDelegate,UITableViewDataSource 
         return true
     }
     
+//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 70
+//    }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
             let alert = UIAlertController(title: "Alert", message: "You are deleting title of Recipe", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { action in
                 self.steps.remove(at: indexPath.row)
-                          tableView.beginUpdates()
-                          tableView.deleteRows(at: [indexPath], with: .none)
-                          tableView.endUpdates()
+                tableView.beginUpdates()
+                tableView.deleteRows(at: [indexPath], with: .none)
+                tableView.endUpdates()
             }))
             self.present(alert, animated: true, completion: nil)
-         
+            
         }
     }
 }

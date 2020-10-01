@@ -163,8 +163,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VG4-yn-EPz">
-                                <rect key="frame" x="0.0" y="333" width="414" height="529"/>
+                                <rect key="frame" x="0.0" y="396" width="414" height="466"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="466" id="uIN-bG-dOV"/>
+                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="recipeCell" rowHeight="104" id="Hu2-T0-fY3" customClass="TextInputTableViewCell" customModule="Recipes_App" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="104"/>
@@ -173,7 +176,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="104"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Steps" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pll-d6-Erp">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Steps" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pll-d6-Erp">
                                                     <rect key="frame" x="114" y="0.0" width="300" height="104"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="300" id="EsV-WI-bYh"/>
@@ -183,7 +186,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VmL-iG-EcH">
-                                                    <rect key="frame" x="20" y="0.0" width="54" height="104"/>
+                                                    <rect key="frame" x="20" y="0.0" width="74" height="104"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -195,7 +198,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="Pll-d6-Erp" secondAttribute="bottom" id="T0D-SJ-Egq"/>
                                                 <constraint firstItem="Pll-d6-Erp" firstAttribute="top" secondItem="8UJ-xU-ebO" secondAttribute="top" id="Tbn-1Z-WWV"/>
                                                 <constraint firstItem="VmL-iG-EcH" firstAttribute="top" secondItem="Pll-d6-Erp" secondAttribute="top" id="h8Q-e7-fFN"/>
-                                                <constraint firstItem="Pll-d6-Erp" firstAttribute="leading" secondItem="VmL-iG-EcH" secondAttribute="trailing" constant="40" id="nbp-Wg-vlh"/>
+                                                <constraint firstItem="Pll-d6-Erp" firstAttribute="leading" secondItem="VmL-iG-EcH" secondAttribute="trailing" constant="20" id="nbp-Wg-vlh"/>
                                                 <constraint firstItem="VmL-iG-EcH" firstAttribute="bottom" secondItem="Pll-d6-Erp" secondAttribute="bottom" id="zEK-l9-IFO"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -234,38 +237,51 @@
                                     <constraint firstAttribute="height" constant="164" id="Dog-rQ-EQR"/>
                                 </constraints>
                             </view>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y3a-mk-Gq7">
+                                <rect key="frame" x="20" y="329" width="301" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="dCh-wE-Qpk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CWn-OR-jr4">
+                                <rect key="frame" x="336" y="329" width="48" height="45"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Add"/>
+                                <connections>
+                                    <action selector="addStepsButton:" destination="6eZ-Ja-aSy" eventType="touchUpInside" id="4we-Ow-0v7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="CWn-OR-jr4" firstAttribute="leading" secondItem="Y3a-mk-Gq7" secondAttribute="trailing" constant="15" id="2tD-OZ-XRu"/>
+                            <constraint firstItem="VG4-yn-EPz" firstAttribute="bottom" secondItem="b5H-fH-zmC" secondAttribute="bottom" id="50y-1d-ZLI"/>
                             <constraint firstItem="5FQ-aC-EQP" firstAttribute="top" secondItem="b5H-fH-zmC" secondAttribute="top" constant="32" id="5WZ-Xy-G4W"/>
+                            <constraint firstItem="VG4-yn-EPz" firstAttribute="trailing" secondItem="b5H-fH-zmC" secondAttribute="trailing" id="9lH-If-hUi"/>
                             <constraint firstItem="FEP-Wh-BbI" firstAttribute="top" secondItem="5FQ-aC-EQP" secondAttribute="bottom" constant="24" id="ERD-n8-PeU"/>
                             <constraint firstItem="1ZP-Yi-2EU" firstAttribute="leading" secondItem="5FQ-aC-EQP" secondAttribute="trailing" constant="30" id="IrZ-sL-xK5"/>
-                            <constraint firstItem="VG4-yn-EPz" firstAttribute="top" secondItem="FEP-Wh-BbI" secondAttribute="bottom" constant="24" id="Jr0-oQ-RID"/>
+                            <constraint firstItem="CWn-OR-jr4" firstAttribute="trailing" secondItem="1ZP-Yi-2EU" secondAttribute="trailing" id="Nfz-gR-sBn"/>
+                            <constraint firstItem="Y3a-mk-Gq7" firstAttribute="leading" secondItem="5FQ-aC-EQP" secondAttribute="leading" id="PfL-Ci-StQ"/>
+                            <constraint firstItem="Y3a-mk-Gq7" firstAttribute="trailing" secondItem="5FQ-aC-EQP" secondAttribute="trailing" id="QFJ-qz-oek"/>
+                            <constraint firstItem="CWn-OR-jr4" firstAttribute="top" secondItem="Y3a-mk-Gq7" secondAttribute="top" id="QWA-Af-fOH"/>
                             <constraint firstItem="1ZP-Yi-2EU" firstAttribute="top" secondItem="5FQ-aC-EQP" secondAttribute="top" id="Re0-K7-QVs"/>
+                            <constraint firstItem="VG4-yn-EPz" firstAttribute="top" secondItem="Y3a-mk-Gq7" secondAttribute="bottom" constant="22" id="Tkj-bc-0eN"/>
                             <constraint firstItem="b5H-fH-zmC" firstAttribute="trailing" secondItem="1ZP-Yi-2EU" secondAttribute="trailing" constant="30" id="UK0-bb-t5u"/>
-                            <constraint firstItem="VG4-yn-EPz" firstAttribute="bottom" secondItem="b5H-fH-zmC" secondAttribute="bottom" id="ZbK-My-sID"/>
+                            <constraint firstItem="Y3a-mk-Gq7" firstAttribute="top" secondItem="FEP-Wh-BbI" secondAttribute="bottom" constant="20" id="YPZ-jO-a0Z"/>
+                            <constraint firstItem="CWn-OR-jr4" firstAttribute="bottom" secondItem="Y3a-mk-Gq7" secondAttribute="bottom" id="ZB6-Jk-9Oa"/>
                             <constraint firstItem="FEP-Wh-BbI" firstAttribute="leading" secondItem="5FQ-aC-EQP" secondAttribute="leading" id="mn0-nL-lrc"/>
                             <constraint firstItem="1ZP-Yi-2EU" firstAttribute="bottom" secondItem="5FQ-aC-EQP" secondAttribute="bottom" id="nRs-zA-wsy"/>
                             <constraint firstItem="5FQ-aC-EQP" firstAttribute="leading" secondItem="b5H-fH-zmC" secondAttribute="leading" constant="20" id="qKC-Re-vyU"/>
                             <constraint firstItem="FEP-Wh-BbI" firstAttribute="trailing" secondItem="1ZP-Yi-2EU" secondAttribute="trailing" id="t67-6S-cQg"/>
-                            <constraint firstItem="VG4-yn-EPz" firstAttribute="leading" secondItem="b5H-fH-zmC" secondAttribute="leading" id="uIh-v5-mxx"/>
-                            <constraint firstItem="VG4-yn-EPz" firstAttribute="trailing" secondItem="b5H-fH-zmC" secondAttribute="trailing" id="zA2-y0-nNc"/>
+                            <constraint firstItem="VG4-yn-EPz" firstAttribute="leading" secondItem="b5H-fH-zmC" secondAttribute="leading" id="uxj-ai-VBA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="b5H-fH-zmC"/>
                     </view>
-                    <navigationItem key="navigationItem" id="237-eY-ubn">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" style="plain" id="DxI-Fr-3lN">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="h6A-cf-IgT">
-                                <rect key="frame" x="302" y="7" width="92" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Add Steps"/>
-                                <connections>
-                                    <action selector="addStepsButton:" destination="6eZ-Ja-aSy" eventType="touchUpInside" id="7NL-xW-iV2"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="237-eY-ubn"/>
                     <connections>
+                        <outlet property="addStepsTF" destination="Y3a-mk-Gq7" id="xtH-As-h6i"/>
                         <outlet property="stepsTF" destination="5FQ-aC-EQP" id="v49-dX-GDq"/>
                         <outlet property="stepsTblView" destination="VG4-yn-EPz" id="QbE-YD-dzx"/>
                         <outlet property="tagListView" destination="FEP-Wh-BbI" id="l5o-qy-CIL"/>
@@ -296,7 +312,6 @@
     </scenes>
     <resources>
         <image name="menu" width="256" height="256"/>
-        <image name="plus" catalog="system" width="128" height="113"/>
         <image name="receipe" width="350" height="318"/>
     </resources>
 </document>
