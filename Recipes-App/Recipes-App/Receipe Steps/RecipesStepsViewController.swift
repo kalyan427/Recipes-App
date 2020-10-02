@@ -12,7 +12,7 @@ import TagListView
 class RecipesStepsViewController: UIViewController,UITextFieldDelegate, TagListViewDelegate {
     @IBOutlet weak var stepsTF: UITextField!
     @IBOutlet weak var addStepsTF: UITextField!
-    var recipeTitle: String?
+    var recipeTitle: String?    
     var steps = [Any]()
     @IBOutlet weak var stepsTblView: UITableView!
     @IBOutlet weak var tagListView: TagListView!
@@ -20,6 +20,7 @@ class RecipesStepsViewController: UIViewController,UITextFieldDelegate, TagListV
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = self.recipeTitle
+        print("kalyan \(self.title)")
         self.stepsTF.delegate = self
         tagListView.delegate = self
     }

@@ -12,15 +12,12 @@ class ViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var addTitle: UIButton!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
-    
-    //var recipes = ["Chicken Biryani","Mutton Biryani","Crab Biryani"]
   
     var item1 = ["item": "Chicken", "Steps": ["CookRice","Add Water","Heat 45 Mins"]] as [String : Any]
     var item2 = ["item": "Mutton", "Steps": ["Hot water","lamb pieces","Heat for 30 mins"]] as [String : Any]
     var item3 = ["item": "Shrimp", "Steps": ["cold Water","Shrimp","Heat for 1 hour"]] as [String : Any]
     var item4 = ["item": "Mushroom", "Steps": ["cold Water","mushroom","Heat for 2 hour"]] as [String : Any]
     var receipers = [[String:Any]]()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,11 +37,8 @@ class ViewController: UIViewController,UITextFieldDelegate {
     @IBAction func addTitleButton(_ sender: UIButton) {
         if let textTitle = titleTextField.text {
             let newRecipe =  ["item": textTitle, "Steps": []] as [String : Any]
-           // receipers.insert(newRecipe, at: 0)
             receipers.append(newRecipe)
-            //receipers.reverse()
             tableView.reloadData()
-          //  titleTextField.text = nil
         }
     }
     
@@ -76,7 +70,6 @@ class ViewController: UIViewController,UITextFieldDelegate {
     
     @objc func addSteps(tag: Int) {
         let VC = self.storyboard?.instantiateViewController(identifier: "recipesStepsVC") as! RecipesStepsViewController
-        // VC.recipesTL(title: recipes[sender.tag] as! String)
         self.navigationController?.pushViewController(VC, animated: true)
     }
     
@@ -105,14 +98,8 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! RecipeTitleTableViewCell
         cell.btnMore.addTarget(self, action: #selector(moreButtonClicked(sender:)), for: .touchUpInside)
         cell.btnMore.tag = indexPath.row
-        //cell.addSteps.addTarget(self, action: #selector(addSteps(sender:)), for: .touchUpInside) // know once again.
-        //        cell.addSteps.tag = indexPath.row
-        //        cell.viewSteps.addTarget(self, action: #selector(viewReceipeSteps(sender:)), for: .touchUpInside)
-        //        cell.viewSteps.tag = indexPath.row
-        //        cell.deleteOutlet.addTarget(self, action: #selector(deletebuttonClicked(sender:)), for: .touchUpInside)  // know it once.
-        //        cell.deleteOutlet.tag = indexPath.row
         cell.recipeTitle.text = receipers[indexPath.row]["item"] as? String
-        print(receipers[indexPath.row]["item"])
+        print(cell.recipeTitle.text)
         return cell
     }
     
@@ -122,9 +109,8 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let VC = self.storyboard?.instantiateViewController(identifier: "recipesStepsVC") as! RecipesStepsViewController
-        //  VC.recipeTitle = recipes[indexPath.row] as? String
+        VC.recipesTL(title: receipers[indexPath.row]["item"] as! String )
         self.navigationController?.pushViewController(VC, animated: true)
-        // deleteItemInArray(arrayValue: indexPath.row)
     }
 }
 

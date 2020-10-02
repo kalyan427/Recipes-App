@@ -80,6 +80,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		306BBA782526D34300F64589 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				304E79E2250332740080D740 /* RecipeTitleTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		30F4468A24F53C49008580C8 = {
 			isa = PBXGroup;
 			children = (
@@ -129,7 +137,7 @@
 		68240B032526D06D00A90531 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				304E79E2250332740080D740 /* RecipeTitleTableViewCell.swift */,
+				306BBA782526D34300F64589 /* Cell */,
 				30F4469A24F53C49008580C8 /* ViewController.swift */,
 			);
 			path = Home;
