@@ -105,12 +105,9 @@
 			children = (
 				30F4469624F53C49008580C8 /* AppDelegate.swift */,
 				30F4469824F53C49008580C8 /* SceneDelegate.swift */,
-				30F4469A24F53C49008580C8 /* ViewController.swift */,
-				304E79E2250332740080D740 /* RecipeTitleTableViewCell.swift */,
-				307D6E6124FC9D1600DFF01E /* RecipesStepsViewController.swift */,
-				3039114C24F6170900BD6453 /* TextInputTableViewCell.swift */,
-				302CA3802511CF58001A79E7 /* ViewReceipeStepsTableViewController.swift */,
-				302CA3822511CFB1001A79E7 /* AllStepsTableViewCell.swift */,
+				68240B032526D06D00A90531 /* Home */,
+				68240B042526D08D00A90531 /* Receipe Steps */,
+				68240B052526D09500A90531 /* View Receipe Wteps */,
 				30F4469C24F53C49008580C8 /* Main.storyboard */,
 				30F446A224F53C4C008580C8 /* Assets.xcassets */,
 				30F446A424F53C4C008580C8 /* LaunchScreen.storyboard */,
@@ -127,6 +124,33 @@
 				30F446B224F53C4C008580C8 /* Info.plist */,
 			);
 			path = "Recipes-AppTests";
+			sourceTree = "<group>";
+		};
+		68240B032526D06D00A90531 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				304E79E2250332740080D740 /* RecipeTitleTableViewCell.swift */,
+				30F4469A24F53C49008580C8 /* ViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		68240B042526D08D00A90531 /* Receipe Steps */ = {
+			isa = PBXGroup;
+			children = (
+				3039114C24F6170900BD6453 /* TextInputTableViewCell.swift */,
+				307D6E6124FC9D1600DFF01E /* RecipesStepsViewController.swift */,
+			);
+			path = "Receipe Steps";
+			sourceTree = "<group>";
+		};
+		68240B052526D09500A90531 /* View Receipe Wteps */ = {
+			isa = PBXGroup;
+			children = (
+				302CA3822511CFB1001A79E7 /* AllStepsTableViewCell.swift */,
+				302CA3802511CF58001A79E7 /* ViewReceipeStepsTableViewController.swift */,
+			);
+			path = "View Receipe Wteps";
 			sourceTree = "<group>";
 		};
 		A065405F1D11626FAD79314C /* Frameworks */ = {
