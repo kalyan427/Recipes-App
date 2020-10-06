@@ -13,18 +13,19 @@ class ViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
   
-    var item1 = ["item": "Chicken", "Steps": ["CookRice","Add Water","Heat 45 Mins"]] as [String : Any]
-    var item2 = ["item": "Mutton", "Steps": ["Hot water","lamb pieces","Heat for 30 mins"]] as [String : Any]
-    var item3 = ["item": "Shrimp", "Steps": ["cold Water","Shrimp","Heat for 1 hour"]] as [String : Any]
-    var item4 = ["item": "Mushroom", "Steps": ["cold Water","mushroom","Heat for 2 hour"]] as [String : Any]
+    var item0 = ["item": "Chicken","Ingredients":["chicken", "Tamrind", "Garlic", "Onions", "Tamto", "Mirchi", "Water"], "Steps": ["CookRice","Add Water","Heat 45 Mins"]] as [String : Any]
+    var item1 = ["item": "Mutton","Ingredients":["Mutton", "Tamrind", "Garlic", "Onions", "Tamto", "Mirchi", "Water"], "Steps": ["Hot water","lamb pieces","Heat for 30 mins"]] as [String : Any]
+    var item2 = ["item": "Shrimp", "Ingredients":["Shrimp", "Tamrind", "Garlic", "Onions", "Tamto", "Mirchi", "Water"],"Steps": ["cold Water","Shrimp","Heat for 1 hour"]] as [String : Any]
+    var item3 = ["item": "Mushroom", "Ingredients":["Mushroom", "Tamrind", "Garlic", "Onions", "Tamto", "Mirchi", "Water"], "Steps": ["cold Water","mushroom","Heat for 2 hour"]] as [String : Any]
     var receipers = [[String:Any]]()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.receipers.append(item0)
         self.receipers.append(item1)
         self.receipers.append(item2)
         self.receipers.append(item3)
-        self.receipers.append(item4)
         self.title = "Recipes"
         self.titleTextField.delegate = self
     }
@@ -51,10 +52,11 @@ class ViewController: UIViewController,UITextFieldDelegate {
         }))
         
         alert.addAction(UIAlertAction(title: "View Steps", style: .default, handler: { (UIAlertAction) in
-            self.deletebuttonClicked(tag: clickedCell)
+            //self.deletebuttonClicked(tag: clickedCell)
+            
         }))
         
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { (UIAlertAction) in
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .destructive, handler: { (UIAlertAction) in
             
         }))
         
@@ -70,6 +72,8 @@ class ViewController: UIViewController,UITextFieldDelegate {
     
     @objc func addSteps(tag: Int) {
         let VC = self.storyboard?.instantiateViewController(identifier: "recipesStepsVC") as! RecipesStepsViewController
+        VC.getIngredients(ingredients: receipers[tag]["Ingredients"] as! Array<Any>)
+        VC.getIngredients(ingredients: receipers[tag]["Steps"] as! Array<Any>)
         self.navigationController?.pushViewController(VC, animated: true)
     }
     
@@ -86,6 +90,10 @@ class ViewController: UIViewController,UITextFieldDelegate {
         VC.getSteps(array: receipers[sender.tag]["Steps"] as! [String])
         self.navigationController?.pushViewController(VC, animated: true)
     }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        titleTextField.text = ""
+    }
 }
 
 extension ViewController: UITableViewDataSource,UITableViewDelegate {
@@ -99,7 +107,6 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate {
         cell.btnMore.addTarget(self, action: #selector(moreButtonClicked(sender:)), for: .touchUpInside)
         cell.btnMore.tag = indexPath.row
         cell.recipeTitle.text = receipers[indexPath.row]["item"] as? String
-        print(cell.recipeTitle.text)
         return cell
     }
     

@@ -20,7 +20,6 @@ class RecipesStepsViewController: UIViewController,UITextFieldDelegate, TagListV
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = self.recipeTitle
-        print("kalyan \(self.title)")
         self.stepsTF.delegate = self
         tagListView.delegate = self
     }
@@ -57,9 +56,18 @@ class RecipesStepsViewController: UIViewController,UITextFieldDelegate, TagListV
         }
     }
     
+    func getIngredients (ingredients: Array<Any>) {
+        var ingredientTags = ingredients
+    }
+    
     func tagPressed(_ title: String, tagView: TagView, sender: TagListView) {
         print("Tag pressed: \(title), \(sender)")
         tagListView.removeTag(title)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        stepsTF.text = ""
+     //   addStepsTF.text = ""   Ask Harish
     }
 }
 
