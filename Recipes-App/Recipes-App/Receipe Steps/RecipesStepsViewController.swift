@@ -16,6 +16,7 @@ class RecipesStepsViewController: UIViewController,UITextFieldDelegate, TagListV
     var steps = [Any]()
     @IBOutlet weak var stepsTblView: UITableView!
     @IBOutlet weak var tagListView: TagListView!
+    var listAllIngredients = [Any]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +58,8 @@ class RecipesStepsViewController: UIViewController,UITextFieldDelegate, TagListV
     }
     
     func getIngredients (ingredients: Array<Any>) {
-        var ingredientTags = ingredients
+       // var ingredientTags = ingredients
+        listAllIngredients = ingredients
     }
     
     func tagPressed(_ title: String, tagView: TagView, sender: TagListView) {
@@ -73,12 +75,14 @@ class RecipesStepsViewController: UIViewController,UITextFieldDelegate, TagListV
 
 extension RecipesStepsViewController: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return steps.count
+        //return steps.count
+        return listAllIngredients.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell") as! TextInputTableViewCell
-        cell.recipeStepsLabel.text = steps[indexPath.row] as! String
+        //cell.recipeStepsLabel.text = steps[indexPath.row] as! String
+        cell.recipeStepsLabel.text = listAllIngredients[indexPath.row] as! String
         cell.stepsNumber.text = String(indexPath.row + 1)
         return cell
     }
