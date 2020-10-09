@@ -14,7 +14,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var tableView: UITableView!
   
     var item0 = ["item": "Chicken","Ingredients":["chicken", "Tamrind", "Garlic", "Onions", "Tamto", "Mirchi", "Water"], "Steps": ["CookRice","Add Water","Heat 45 Mins"]] as [String : Any]
-    var item1 = ["item": "Mutton","Ingredients":["Mutton", "Tamrind", "Garlic", "Onions", "Tamto", "Mirchi", "Water"], "Steps": ["Hot water","lamb pieces","Heat for 30 mins"]] as [String : Any]
+    var item1 = ["item": "Mutton","Ingredients":["Mutton", "Tamrind", "Garlic", "Onions", "Tamto", "Mirchi", "Water","Mutton", "Tamrind", "Garlic", "Onions", "Tamto", "Mirchi", "Water","Mutton", "Tamrind", "Garlic", "Onions", "Tamto", "Mirchi", "Water","Mutton", "Tamrind", "Garlic", "Onions", "Tamto", "Mirchi", "Water"], "Steps": ["Hot water","lamb pieces","Heat for 30 mins"]] as [String : Any]
     var item2 = ["item": "Shrimp", "Ingredients":["Shrimp", "Tamrind", "Garlic", "Onions", "Tamto", "Mirchi", "Water"],"Steps": ["cold Water","Shrimp","Heat for 1 hour"]] as [String : Any]
     var item3 = ["item": "Mushroom", "Ingredients":["Mushroom", "Tamrind", "Garlic", "Onions", "Tamto", "Mirchi", "Water"], "Steps": ["cold Water","mushroom","Heat for 2 hour"]] as [String : Any]
     var receipers = [[String:Any]]()
@@ -53,7 +53,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
         
         alert.addAction(UIAlertAction(title: "View Steps", style: .default, handler: { (UIAlertAction) in
             //self.deletebuttonClicked(tag: clickedCell)
-            
+            self.viewReceipeSteps(tag: clickedCell)
         }))
         
         alert.addAction(UIAlertAction(title: "Dismiss", style: .destructive, handler: { (UIAlertAction) in
@@ -72,8 +72,9 @@ class ViewController: UIViewController,UITextFieldDelegate {
     
     @objc func addSteps(tag: Int) {
         let VC = self.storyboard?.instantiateViewController(identifier: "recipesStepsVC") as! RecipesStepsViewController
-       // VC.getIngredients(ingredients: receipers[tag]["Ingredients"] as! Array<Any>)
-        VC.getIngredients(ingredients: receipers[tag]["Steps"] as! Array<Any>)
+        VC.getRecipesTL(title: receipers[tag]["item"] as! String)
+        VC.getIngredients(ingredients: receipers[tag]["Ingredients"] as! Array<Any>)
+        VC.getSteps(allSteps: receipers[tag]["Steps"] as! Array<Any>)
         self.navigationController?.pushViewController(VC, animated: true)
     }
     
@@ -85,9 +86,9 @@ class ViewController: UIViewController,UITextFieldDelegate {
         self.present(alert, animated: true, completion: nil)
     }
     
-    @objc func viewReceipeSteps(sender: UIButton) {
-        let VC = self.storyboard?.instantiateViewController(identifier: "viewReceipeStepsVC") as! ViewReceipeStepsTableViewController
-        VC.getSteps(array: receipers[sender.tag]["Steps"] as! [String])
+    @objc func viewReceipeSteps(tag: Int) {
+        let VC = self.storyboard?.instantiateViewController(identifier: "viewStepsVC") as! viewReceipeStepsViewController
+        VC.getSteps(array: receipers[tag]["Steps"] as! [String])
         self.navigationController?.pushViewController(VC, animated: true)
     }
     
@@ -116,7 +117,7 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let VC = self.storyboard?.instantiateViewController(identifier: "recipesStepsVC") as! RecipesStepsViewController
-        VC.recipesTL(title: receipers[indexPath.row]["item"] as! String )
+        VC.getRecipesTL(title: receipers[indexPath.row]["item"] as! String )
         self.navigationController?.pushViewController(VC, animated: true)
     }
 }

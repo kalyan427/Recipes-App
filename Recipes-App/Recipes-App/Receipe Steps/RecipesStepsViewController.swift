@@ -17,12 +17,26 @@ class RecipesStepsViewController: UIViewController,UITextFieldDelegate, TagListV
     @IBOutlet weak var stepsTblView: UITableView!
     @IBOutlet weak var tagListView: TagListView!
     var listAllIngredients = [Any]()
+
+    var receipeData = [String:Any]()
+    @IBOutlet weak var tagListViewHeight: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = self.recipeTitle
         self.stepsTF.delegate = self
         tagListView.delegate = self
+        
+        for item in listAllIngredients {
+            var tempItem = item
+            tagListView.addTag(tempItem as! String)
+            tagListView.textFont = UIFont.systemFont(ofSize: 14)
+            tagListView.tagBackgroundColor = UIColor.init(red: 12/255, green: 114/255, blue: 211/255, alpha: 1)
+            tagListView.cornerRadius = 12
+            tagListView.paddingX = 10
+            tagListView.paddingY = 13
+        }
+        tagListViewHeight.constant = self.tagListView.intrinsicContentSize.height
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -30,7 +44,7 @@ class RecipesStepsViewController: UIViewController,UITextFieldDelegate, TagListV
         return true
     }
     
-    func recipesTL(title: String) {
+    func getRecipesTL(title: String) {
         self.recipeTitle = title
     }
     
@@ -52,14 +66,18 @@ class RecipesStepsViewController: UIViewController,UITextFieldDelegate, TagListV
             }
             else {
                 tagListView.addTag(stepsTF.text!)
+                tagListViewHeight.constant = self.tagListView.intrinsicContentSize.height
                 stepsTF.text = nil
             }
         }
     }
     
     func getIngredients (ingredients: Array<Any>) {
-       // var ingredientTags = ingredients
         listAllIngredients = ingredients
+    }
+    
+    func  getSteps (allSteps: Array<Any>) {
+        steps = allSteps
     }
     
     func tagPressed(_ title: String, tagView: TagView, sender: TagListView) {
@@ -75,14 +93,15 @@ class RecipesStepsViewController: UIViewController,UITextFieldDelegate, TagListV
 
 extension RecipesStepsViewController: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return steps.count
-        return listAllIngredients.count
+        return steps.count
+        //return listAllSteps.count
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell") as! TextInputTableViewCell
-        //cell.recipeStepsLabel.text = steps[indexPath.row] as! String
-        cell.recipeStepsLabel.text = listAllIngredients[indexPath.row] as! String
+        cell.recipeStepsLabel.text = steps[indexPath.row] as! String
+       // cell.recipeStepsLabel.text = listAllSteps[indexPath.row] as? String
         cell.stepsNumber.text = String(indexPath.row + 1)
         return cell
     }
