@@ -9,7 +9,8 @@
 import UIKit
 
 class AllStepsTableViewCell: UITableViewCell {
-    @IBOutlet weak var AllStepsLbl: UILabel!
+    @IBOutlet weak var viewStepsLabel: UILabel!
+    @IBOutlet weak var stepCount: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

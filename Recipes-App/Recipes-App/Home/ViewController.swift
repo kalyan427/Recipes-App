@@ -88,7 +88,8 @@ class ViewController: UIViewController,UITextFieldDelegate {
     
     @objc func viewReceipeSteps(tag: Int) {
         let VC = self.storyboard?.instantiateViewController(identifier: "viewStepsVC") as! viewReceipeStepsViewController
-        VC.getSteps(array: receipers[tag]["Steps"] as! [String])
+        VC.viewIngredients(ingredientsList: receipers[tag]["Ingredients"] as! Array<Any>)
+        VC.getSteps(array: receipers[tag]["Steps"] as! Array<Any>)
         self.navigationController?.pushViewController(VC, animated: true)
     }
     

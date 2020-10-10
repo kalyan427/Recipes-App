@@ -307,11 +307,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Moi-me-WNZ" customClass="allStepsTblView">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Moi-me-WNZ">
                                 <rect key="frame" x="0.0" y="422" width="414" height="440"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="104" id="2n6-Zt-1cU">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="viewStepsCell" rowHeight="104" id="2n6-Zt-1cU" customClass="AllStepsTableViewCell" customModule="Recipes_App" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="104"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2n6-Zt-1cU" id="bDb-jC-cJC">
@@ -343,26 +343,30 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="recipeStepsLabel" destination="wr6-Dn-oaD" id="Wog-4m-bsI"/>
-                                            <outlet property="stepsNumber" destination="F7A-NQ-uyd" id="nhe-Kv-ltO"/>
+                                            <outlet property="stepCount" destination="F7A-NQ-uyd" id="4lD-N3-HaL"/>
+                                            <outlet property="viewStepsLabel" destination="wr6-Dn-oaD" id="pWx-uA-uhU"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="cyD-d8-4ON" id="5Tb-fW-KHy"/>
+                                    <outlet property="delegate" destination="cyD-d8-4ON" id="yA4-w4-alz"/>
+                                </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AkI-Uo-Wqn">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AkI-Uo-Wqn" customClass="TagListView" customModule="TagListView">
                                 <rect key="frame" x="20" y="119" width="374" height="240"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="240" id="3Mr-DK-fUg"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Ingredients" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K6W-9k-4jN">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredients" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K6W-9k-4jN">
                                 <rect key="frame" x="20" y="74" width="113" height="25"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Receipe Steps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5qd-03-yoj">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Receipe Steps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5qd-03-yoj">
                                 <rect key="frame" x="20" y="376" width="145" height="26"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="21"/>
                                 <nil key="textColor"/>
@@ -385,10 +389,15 @@
                         <viewLayoutGuide key="safeArea" id="UJC-EC-t8H"/>
                     </view>
                     <navigationItem key="navigationItem" id="lBA-QA-hBM"/>
+                    <connections>
+                        <outlet property="viewStepsTagListView" destination="AkI-Uo-Wqn" id="gT0-OP-T1E"/>
+                        <outlet property="viewStepsTblView" destination="Moi-me-WNZ" id="rbc-cs-rK1"/>
+                        <outlet property="viewTagListViewHeight" destination="3Mr-DK-fUg" id="g6d-3R-MAM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OAc-Xa-p6h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2799" y="139"/>
+            <point key="canvasLocation" x="2790" y="139"/>
         </scene>
     </scenes>
     <resources>

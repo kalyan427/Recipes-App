@@ -26,7 +26,7 @@ class RecipesStepsViewController: UIViewController,UITextFieldDelegate, TagListV
         self.title = self.recipeTitle
         self.stepsTF.delegate = self
         tagListView.delegate = self
-        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveTapped))
         for item in listAllIngredients {
             var tempItem = item
             tagListView.addTag(tempItem as! String)
@@ -42,6 +42,10 @@ class RecipesStepsViewController: UIViewController,UITextFieldDelegate, TagListV
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.stepsTF.endEditing(true)
         return true
+    }
+    
+    @objc func saveTapped() {
+        
     }
     
     func getRecipesTL(title: String) {
@@ -94,8 +98,6 @@ class RecipesStepsViewController: UIViewController,UITextFieldDelegate, TagListV
 extension RecipesStepsViewController: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return steps.count
-        //return listAllSteps.count
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
