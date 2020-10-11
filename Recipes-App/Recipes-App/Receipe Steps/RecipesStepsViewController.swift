@@ -35,6 +35,7 @@ class RecipesStepsViewController: UIViewController,UITextFieldDelegate, TagListV
             tagListView.cornerRadius = 12
             tagListView.paddingX = 10
             tagListView.paddingY = 13
+            tagListView.enableRemoveButton = true
         }
         tagListViewHeight.constant = self.tagListView.intrinsicContentSize.height
     }
@@ -104,12 +105,12 @@ extension RecipesStepsViewController: UITableViewDelegate,UITableViewDataSource 
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell") as! TextInputTableViewCell
         cell.recipeStepsLabel.text = steps[indexPath.row] as! String
        // cell.recipeStepsLabel.text = listAllSteps[indexPath.row] as? String
-        cell.stepsNumber.text = String(indexPath.row + 1)
+        cell.stepsNumber.text = String(indexPath.row + 1) + "."
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 77
+        return 45
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -125,12 +126,9 @@ extension RecipesStepsViewController: UITableViewDelegate,UITableViewDataSource 
             let alert = UIAlertController(title: "Alert", message: "You are deleting title of Recipe", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { action in
                 self.steps.remove(at: indexPath.row)
-                tableView.beginUpdates()
-                tableView.deleteRows(at: [indexPath], with: .none)
-                tableView.endUpdates()
+                tableView.reloadData()
             }))
             self.present(alert, animated: true, completion: nil)
-            
         }
     }
 }
