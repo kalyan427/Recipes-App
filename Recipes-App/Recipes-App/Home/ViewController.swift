@@ -42,7 +42,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
             DataManager().saveReceipe(Title: textTitle)
             self.filteredReceipe = DataManager().getAllReceipes()
             tableView.reloadData()
-            self.titleTextField = nil
+            self.titleTextField.text = nil
         }
     }
     
@@ -69,7 +69,8 @@ class ViewController: UIViewController,UITextFieldDelegate {
     }
     
     func deleteItemInArray(arrayValue: Int) {
-        receipers.remove(at: arrayValue)
+        //receipers.remove(at: arrayValue)
+        filteredReceipe.remove(at: arrayValue)
         tableView.reloadData()
     }
     
@@ -91,6 +92,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
     
     @objc func viewReceipeSteps(tag: Int) {
         let VC = self.storyboard?.instantiateViewController(identifier: "viewStepsVC") as! viewReceipeStepsViewController
+        VC.getReceipeTitle(title: receipers[tag]["item"] as! String)
         VC.viewIngredients(ingredientsList: receipers[tag]["Ingredients"] as! Array<Any>)
         VC.getSteps(array: receipers[tag]["Steps"] as! Array<Any>)
         self.navigationController?.pushViewController(VC, animated: true)
@@ -124,6 +126,15 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate {
         let VC = self.storyboard?.instantiateViewController(identifier: "recipesStepsVC") as! RecipesStepsViewController
         VC.getRecipesTL(title: receipers[indexPath.row]["item"] as! String )
         self.navigationController?.pushViewController(VC, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let alert = UIAlertController(title: "Warning", message: "You are deleting Title of Receipe", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Delete", style: UIAlertAction.Style.destructive, handler: { (action) in
+                
+            }))
+        }
     }
 }
 

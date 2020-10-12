@@ -104,7 +104,6 @@ extension RecipesStepsViewController: UITableViewDelegate,UITableViewDataSource 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell") as! TextInputTableViewCell
         cell.recipeStepsLabel.text = steps[indexPath.row] as! String
-       // cell.recipeStepsLabel.text = listAllSteps[indexPath.row] as? String
         cell.stepsNumber.text = String(indexPath.row + 1) + "."
         return cell
     }
@@ -116,10 +115,6 @@ extension RecipesStepsViewController: UITableViewDelegate,UITableViewDataSource 
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-    
-//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 70
-//    }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {

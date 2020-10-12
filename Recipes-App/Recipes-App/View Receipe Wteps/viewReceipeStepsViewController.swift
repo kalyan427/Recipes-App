@@ -15,6 +15,7 @@ class viewReceipeStepsViewController: UIViewController,UITableViewDelegate,UITab
     @IBOutlet weak var viewStepsTagListView: TagListView!
     var showAllIngredients = [Any]()
     @IBOutlet weak var viewTagListViewHeight: NSLayoutConstraint!
+    var receipeTitle: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,10 @@ class viewReceipeStepsViewController: UIViewController,UITableViewDelegate,UITab
             viewStepsTagListView.paddingY = 13
         }
         viewTagListViewHeight.constant = self.viewStepsTagListView.intrinsicContentSize.height
+    }
+    
+    func getReceipeTitle(title: String) {
+        receipeTitle = title
     }
     
     func getSteps(array: Array<Any>) {
@@ -45,9 +50,7 @@ class viewReceipeStepsViewController: UIViewController,UITableViewDelegate,UITab
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "viewStepsCell") as! AllStepsTableViewCell
         cell.viewStepsLabel.text = allSteps[indexPath.row] as! String
-        cell.stepCount.text = String(indexPath.row + 1)
+        cell.stepCount.text = String(indexPath.row + 1) + "."
         return cell
-
     }
-    
 }

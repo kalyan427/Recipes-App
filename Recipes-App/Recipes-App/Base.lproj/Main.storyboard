@@ -186,7 +186,7 @@
                                 </connections>
                             </tableView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Ingredients" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5FQ-aC-EQP">
-                                <rect key="frame" x="20" y="116" width="274" height="45"/>
+                                <rect key="frame" x="10" y="116" width="284" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="JC3-G0-KZ3"/>
                                 </constraints>
@@ -208,14 +208,14 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FEP-Wh-BbI" customClass="TagListView" customModule="TagListView">
-                                <rect key="frame" x="20" y="185" width="374" height="200"/>
+                                <rect key="frame" x="10" y="185" width="384" height="200"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="Dog-rQ-EQR"/>
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Steps" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y3a-mk-Gq7">
-                                <rect key="frame" x="20" y="468" width="274" height="45"/>
+                                <rect key="frame" x="10" y="468" width="284" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="dCh-wE-Qpk"/>
                                 </constraints>
@@ -234,13 +234,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredients" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ofx-q6-K3U">
-                                <rect key="frame" x="20" y="74" width="113" height="25"/>
+                                <rect key="frame" x="10" y="74" width="113" height="25"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Receipe Steps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gIL-W8-d3B">
-                                <rect key="frame" x="20" y="425" width="145" height="26"/>
+                                <rect key="frame" x="10" y="425" width="145" height="26"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -268,7 +268,7 @@
                             <constraint firstItem="ofx-q6-K3U" firstAttribute="leading" secondItem="5FQ-aC-EQP" secondAttribute="leading" id="bU0-7F-Sd8"/>
                             <constraint firstItem="FEP-Wh-BbI" firstAttribute="leading" secondItem="5FQ-aC-EQP" secondAttribute="leading" id="mn0-nL-lrc"/>
                             <constraint firstItem="1ZP-Yi-2EU" firstAttribute="bottom" secondItem="5FQ-aC-EQP" secondAttribute="bottom" id="nRs-zA-wsy"/>
-                            <constraint firstItem="5FQ-aC-EQP" firstAttribute="leading" secondItem="b5H-fH-zmC" secondAttribute="leading" constant="20" id="qKC-Re-vyU"/>
+                            <constraint firstItem="5FQ-aC-EQP" firstAttribute="leading" secondItem="b5H-fH-zmC" secondAttribute="leading" constant="10" id="qKC-Re-vyU"/>
                             <constraint firstItem="FEP-Wh-BbI" firstAttribute="trailing" secondItem="1ZP-Yi-2EU" secondAttribute="trailing" id="t67-6S-cQg"/>
                             <constraint firstItem="VG4-yn-EPz" firstAttribute="leading" secondItem="b5H-fH-zmC" secondAttribute="leading" id="uxj-ai-VBA"/>
                             <constraint firstItem="Y3a-mk-Gq7" firstAttribute="top" secondItem="gIL-W8-d3B" secondAttribute="bottom" constant="17" id="xFI-9K-Uv2"/>
@@ -326,15 +326,15 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Steps" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wr6-Dn-oaD">
-                                                    <rect key="frame" x="74" y="42" width="340" height="20.5"/>
+                                                    <rect key="frame" x="46" y="42" width="368" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F7A-NQ-uyd">
-                                                    <rect key="frame" x="20" y="42" width="47" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F7A-NQ-uyd">
+                                                    <rect key="frame" x="20" y="42" width="18" height="20.5"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="47" id="mIZ-Lr-vRr"/>
+                                                        <constraint firstAttribute="width" constant="18" id="mIZ-Lr-vRr"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -345,7 +345,7 @@
                                                 <constraint firstItem="F7A-NQ-uyd" firstAttribute="centerY" secondItem="bDb-jC-cJC" secondAttribute="centerY" id="3q3-mj-TNO"/>
                                                 <constraint firstItem="wr6-Dn-oaD" firstAttribute="centerY" secondItem="bDb-jC-cJC" secondAttribute="centerY" id="DEy-Fr-kIA"/>
                                                 <constraint firstItem="F7A-NQ-uyd" firstAttribute="leading" secondItem="bDb-jC-cJC" secondAttribute="leading" constant="20" id="FmR-ju-eHY"/>
-                                                <constraint firstItem="wr6-Dn-oaD" firstAttribute="leading" secondItem="F7A-NQ-uyd" secondAttribute="trailing" constant="7" id="ej9-9v-4bH"/>
+                                                <constraint firstItem="wr6-Dn-oaD" firstAttribute="leading" secondItem="F7A-NQ-uyd" secondAttribute="trailing" constant="8" id="ej9-9v-4bH"/>
                                                 <constraint firstAttribute="trailing" secondItem="wr6-Dn-oaD" secondAttribute="trailing" id="f3d-21-BDj"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -361,20 +361,20 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AkI-Uo-Wqn" customClass="TagListView" customModule="TagListView">
-                                <rect key="frame" x="20" y="119" width="374" height="240"/>
+                                <rect key="frame" x="10" y="119" width="384" height="240"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="240" id="3Mr-DK-fUg"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredients" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K6W-9k-4jN">
-                                <rect key="frame" x="20" y="74" width="113" height="25"/>
+                                <rect key="frame" x="10" y="74" width="113" height="25"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Receipe Steps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5qd-03-yoj">
-                                <rect key="frame" x="20" y="379" width="145" height="26"/>
+                                <rect key="frame" x="10" y="379" width="145" height="26"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -382,14 +382,15 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="AkI-Uo-Wqn" firstAttribute="leading" secondItem="K6W-9k-4jN" secondAttribute="leading" id="07Z-qS-Etm"/>
                             <constraint firstItem="Moi-me-WNZ" firstAttribute="top" secondItem="5qd-03-yoj" secondAttribute="bottom" constant="20" id="4C3-rf-89M"/>
                             <constraint firstItem="5qd-03-yoj" firstAttribute="top" secondItem="AkI-Uo-Wqn" secondAttribute="bottom" constant="20" id="4XN-DJ-VBr"/>
-                            <constraint firstItem="5qd-03-yoj" firstAttribute="leading" secondItem="AkI-Uo-Wqn" secondAttribute="leading" id="B8w-T6-JYc"/>
+                            <constraint firstItem="K6W-9k-4jN" firstAttribute="leading" secondItem="UJC-EC-t8H" secondAttribute="leading" constant="10" id="7J6-ER-hxa"/>
                             <constraint firstItem="Moi-me-WNZ" firstAttribute="leading" secondItem="UJC-EC-t8H" secondAttribute="leading" id="JLA-1e-ZbM"/>
                             <constraint firstItem="K6W-9k-4jN" firstAttribute="top" secondItem="UJC-EC-t8H" secondAttribute="top" constant="30" id="Mhl-go-tS7"/>
                             <constraint firstItem="Moi-me-WNZ" firstAttribute="trailing" secondItem="UJC-EC-t8H" secondAttribute="trailing" id="PJX-No-tQa"/>
+                            <constraint firstItem="5qd-03-yoj" firstAttribute="leading" secondItem="K6W-9k-4jN" secondAttribute="leading" id="PYC-ml-bJG"/>
                             <constraint firstItem="Moi-me-WNZ" firstAttribute="bottom" secondItem="UJC-EC-t8H" secondAttribute="bottom" id="ZeW-Vz-bq7"/>
+                            <constraint firstItem="AkI-Uo-Wqn" firstAttribute="leading" secondItem="K6W-9k-4jN" secondAttribute="leading" id="aog-cS-9nu"/>
                             <constraint firstItem="AkI-Uo-Wqn" firstAttribute="top" secondItem="K6W-9k-4jN" secondAttribute="bottom" constant="20" id="lWh-gb-rhP"/>
                             <constraint firstItem="UJC-EC-t8H" firstAttribute="trailing" secondItem="AkI-Uo-Wqn" secondAttribute="trailing" constant="20" id="m8u-Q6-pfK"/>
                         </constraints>
