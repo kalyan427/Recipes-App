@@ -18,6 +18,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
     var item2 = ["item": "Shrimp", "Ingredients":["Shrimp", "Tamrind", "Garlic", "Onions", "Tamto", "Mirchi", "Water"],"Steps": ["cold Water","Shrimp","Heat for 1 hour"]] as [String : Any]
     var item3 = ["item": "Mushroom", "Ingredients":["Mushroom", "Tamrind", "Garlic", "Onions", "Tamto", "Mirchi", "Water"], "Steps": ["cold Water","mushroom","Heat for 2 hour"]] as [String : Any]
     var receipers = [[String:Any]]()
+    var filteredReceipe = [Any]()
 
     
     override func viewDidLoad() {
@@ -28,6 +29,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
         self.receipers.append(item3)
         self.title = "Recipes"
         self.titleTextField.delegate = self
+        self.filteredReceipe = DataManager().getAllReceipes()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -37,9 +39,10 @@ class ViewController: UIViewController,UITextFieldDelegate {
     
     @IBAction func addTitleButton(_ sender: UIButton) {
         if let textTitle = titleTextField.text {
-            let newRecipe =  ["item": textTitle, "Steps": []] as [String : Any]
-            receipers.append(newRecipe)
+            DataManager().saveReceipe(Title: textTitle)
+            self.filteredReceipe = DataManager().getAllReceipes()
             tableView.reloadData()
+            self.titleTextField = nil
         }
     }
     
@@ -101,14 +104,15 @@ class ViewController: UIViewController,UITextFieldDelegate {
 extension ViewController: UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return receipers.count
+        return self.filteredReceipe.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! RecipeTitleTableViewCell
         cell.btnMore.addTarget(self, action: #selector(moreButtonClicked(sender:)), for: .touchUpInside)
         cell.btnMore.tag = indexPath.row
-        cell.recipeTitle.text = receipers[indexPath.row]["item"] as? String
+        let receipeItem = self.filteredReceipe[indexPath.row] as! Receipe
+        cell.recipeTitle.text = receipeItem.title
         return cell
     }
     
