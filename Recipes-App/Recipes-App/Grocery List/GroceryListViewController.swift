@@ -11,13 +11,14 @@ import UIKit
 class GroceryListViewController: UIViewController {
     @IBOutlet weak var groceryTableView: UITableView!
     @IBOutlet weak var addGroceryItemsTextField: UITextField!
+    @IBOutlet weak var addGroceryItem: UIButton!
     var groceryList = [Any]()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addGroceryItemsTextField.layer.cornerRadius = 100
-        addGroceryItemsTextField.layer.borderColor = UIColor.red.cgColor
+        groceryTableView.delegate = self
+        addGroceryItem.layer.cornerRadius = 30
     }
     
     @IBAction func addItemTapped(_ sender: UIButton) {
@@ -27,23 +28,23 @@ class GroceryListViewController: UIViewController {
     }
     
     @IBAction func itemSelected(_ sender: UIButton) {
-        var selected = UIColor.systemBlue
-        print(selected)
-        if sender.currentTitleColor == selected {
-            sender.setTitleColor(UIColor.systemRed, for: .normal)
-           // sender.currentTitleColor = UIColor.red
+        //var selected = sender.currentImage
+       // print(selected)
+        if sender.currentImage == UIImage(named: "notfilled.png") {
+            sender.setImage(UIImage(named: "filled.png"), for: .normal)
         } else {
-            sender.setTitleColor(UIColor.systemBlue, for: .normal)
-            //sender.currentTitleColor = UIColor.systemBlue
+            sender.setImage(UIImage(named: "notfilled.png"), for: .normal)
         }
-        //groceryTableView.reloadData()
     }
-    
 }
 
 extension GroceryListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return groceryList.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 55
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -52,5 +53,10 @@ extension GroceryListViewController: UITableViewDelegate, UITableViewDataSource 
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            self.groceryList.remove(at: indexPath.row)
+            groceryTableView.reloadData()
+        }
+    }
 }
