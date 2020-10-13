@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="R7n-86-TKl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ZTx-Yt-qvA">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -407,9 +407,113 @@
             </objects>
             <point key="canvasLocation" x="2790" y="139"/>
         </scene>
+        <!--Grocery List View Controller-->
+        <scene sceneID="nYg-Dl-iha">
+            <objects>
+                <viewController id="ZTx-Yt-qvA" customClass="GroceryListViewController" customModule="Recipes_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dgq-sU-Xiz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5xB-Xv-TKf">
+                                <rect key="frame" x="0.0" y="184" width="414" height="678"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="groceryCell" rowHeight="86" id="o56-qY-Zse" customClass="GroceryItemsTableViewCell" customModule="Recipes_App" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="86"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="o56-qY-Zse" id="W2a-qA-OBG">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="86"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s2u-3W-dg1">
+                                                    <rect key="frame" x="118" y="11" width="250" height="55"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="250" id="9EX-p8-CP3"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sae-8I-CKL">
+                                                    <rect key="frame" x="20" y="11" width="34" height="55"/>
+                                                    <state key="normal" title="Click"/>
+                                                    <connections>
+                                                        <action selector="itemSelected:" destination="ZTx-Yt-qvA" eventType="touchUpInside" id="Qun-K8-3v8"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="s2u-3W-dg1" secondAttribute="trailing" constant="46" id="Ahx-aJ-Yld"/>
+                                                <constraint firstAttribute="bottom" secondItem="s2u-3W-dg1" secondAttribute="bottom" constant="20" id="KTW-QG-TCC"/>
+                                                <constraint firstItem="sae-8I-CKL" firstAttribute="leading" secondItem="W2a-qA-OBG" secondAttribute="leading" constant="20" id="MbA-AV-JRu"/>
+                                                <constraint firstItem="sae-8I-CKL" firstAttribute="bottom" secondItem="s2u-3W-dg1" secondAttribute="bottom" id="N5V-4d-CaQ"/>
+                                                <constraint firstItem="sae-8I-CKL" firstAttribute="top" secondItem="s2u-3W-dg1" secondAttribute="top" id="OlZ-wf-Rr6"/>
+                                                <constraint firstItem="s2u-3W-dg1" firstAttribute="top" secondItem="W2a-qA-OBG" secondAttribute="top" constant="11" id="tRi-KF-FmD"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="groceryItems" destination="s2u-3W-dg1" id="aia-Ax-a3T"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="ZTx-Yt-qvA" id="wIh-oj-Ozh"/>
+                                    <outlet property="delegate" destination="ZTx-Yt-qvA" id="usE-ki-XAD"/>
+                                </connections>
+                            </tableView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add item" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LIw-05-rKJ">
+                                <rect key="frame" x="20" y="64" width="374" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="bon-Fd-V02"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hhT-ZN-8UO">
+                                <rect key="frame" x="367" y="77" width="18" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.73333333329999995" green="0.96078431369999995" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="plus" catalog="system"/>
+                                <connections>
+                                    <action selector="addItemTapped:" destination="ZTx-Yt-qvA" eventType="touchUpInside" id="o50-Rj-Qqn"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RWn-RB-Wyu">
+                                <rect key="frame" x="20" y="133" width="70" height="26"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="5xB-Xv-TKf" firstAttribute="trailing" secondItem="LOH-4i-z1r" secondAttribute="trailing" id="82X-tJ-nnO"/>
+                            <constraint firstItem="LOH-4i-z1r" firstAttribute="bottom" secondItem="5xB-Xv-TKf" secondAttribute="bottom" id="Wl8-rg-pRj"/>
+                            <constraint firstItem="LIw-05-rKJ" firstAttribute="top" secondItem="LOH-4i-z1r" secondAttribute="top" constant="20" id="YHk-Gw-oqR"/>
+                            <constraint firstItem="LOH-4i-z1r" firstAttribute="trailing" secondItem="LIw-05-rKJ" secondAttribute="trailing" constant="20" id="ZNT-im-un9"/>
+                            <constraint firstItem="RWn-RB-Wyu" firstAttribute="top" secondItem="LIw-05-rKJ" secondAttribute="bottom" constant="17" id="b9m-vJ-5TT"/>
+                            <constraint firstItem="5xB-Xv-TKf" firstAttribute="leading" secondItem="LOH-4i-z1r" secondAttribute="leading" id="e8e-ay-LjM"/>
+                            <constraint firstItem="5xB-Xv-TKf" firstAttribute="top" secondItem="RWn-RB-Wyu" secondAttribute="bottom" constant="25" id="eo7-XJ-dF7"/>
+                            <constraint firstItem="RWn-RB-Wyu" firstAttribute="leading" secondItem="LIw-05-rKJ" secondAttribute="leading" id="f6Q-O1-Fn3"/>
+                            <constraint firstItem="LIw-05-rKJ" firstAttribute="leading" secondItem="LOH-4i-z1r" secondAttribute="leading" constant="20" id="jlk-YD-3aU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="LOH-4i-z1r"/>
+                    </view>
+                    <connections>
+                        <outlet property="addGroceryItemsTextField" destination="LIw-05-rKJ" id="IEd-PM-bhJ"/>
+                        <outlet property="groceryTableView" destination="5xB-Xv-TKf" id="nRQ-r5-Iee"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PGn-7b-VOB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3695.652173913044" y="138.61607142857142"/>
+        </scene>
     </scenes>
     <resources>
         <image name="menu" width="256" height="256"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <image name="receipe" width="350" height="318"/>
     </resources>
 </document>

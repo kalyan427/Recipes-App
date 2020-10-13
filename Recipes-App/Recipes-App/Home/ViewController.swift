@@ -12,7 +12,6 @@ class ViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var addTitle: UIButton!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
-  
     var filteredReceipe = [Any]()
 
     
@@ -21,6 +20,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
         self.title = "Recipes"
         self.titleTextField.delegate = self
         self.filteredReceipe = DataManager().getAllReceipes()
+        print("kalyan:\(filteredReceipe)")
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -112,13 +112,16 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let receipsView = self.storyboard?.instantiateViewController(identifier: "viewStepsVC") as! viewReceipeStepsViewController
         receipsView.getRecipe(item: self.filteredReceipe[indexPath.row] as! Receipe)
-               self.navigationController?.pushViewController(receipsView, animated: true)
+        self.navigationController?.pushViewController(receipsView, animated: true)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let alert = UIAlertController(title: "Warning", message: "You are deleting Title of Receipe", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Delete", style: UIAlertAction.Style.destructive, handler: { (action) in
+            alert.addAction(UIAlertAction(title: "Delete", style: UIAlertAction.Style.default, handler: { (action) in
+                           
+                       }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.destructive, handler: { (action) in
                 
             }))
         }
