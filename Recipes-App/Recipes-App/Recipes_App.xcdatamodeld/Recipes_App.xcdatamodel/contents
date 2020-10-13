@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Receipe" representedClassName="Receipe" syncable="YES" codeGenerationType="class">
-        <attribute name="images" optional="YES" attributeType="String"/>
+    <entity name="Ingredients" representedClassName="Ingredients" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="steps" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="Receipe" representedClassName="Receipe" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="title" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="Steps" representedClassName="Steps" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="steps" optional="YES" attributeType="String"/>
     </entity>
     <elements>
         <element name="Receipe" positionX="-63" positionY="-18" width="128" height="28"/>
+        <element name="Steps" positionX="-63" positionY="-27" width="128" height="28"/>
+        <element name="Ingredients" positionX="-54" positionY="-18" width="128" height="88"/>
     </elements>
 </model>

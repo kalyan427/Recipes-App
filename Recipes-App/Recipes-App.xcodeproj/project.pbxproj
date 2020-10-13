@@ -117,8 +117,8 @@
 				30F4469824F53C49008580C8 /* SceneDelegate.swift */,
 				6875DDD725340EE3007FE387 /* Resources */,
 				68240B032526D06D00A90531 /* Home */,
-				68240B042526D08D00A90531 /* Receipe Steps */,
-				68240B052526D09500A90531 /* View Receipe Wteps */,
+				68240B042526D08D00A90531 /* Add Receipe Steps */,
+				68240B052526D09500A90531 /* View Receipe Steps */,
 				30F4469C24F53C49008580C8 /* Main.storyboard */,
 				30F446A224F53C4C008580C8 /* Assets.xcassets */,
 				30F446A424F53C4C008580C8 /* LaunchScreen.storyboard */,
@@ -146,22 +146,22 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
-		68240B042526D08D00A90531 /* Receipe Steps */ = {
+		68240B042526D08D00A90531 /* Add Receipe Steps */ = {
 			isa = PBXGroup;
 			children = (
-				3039114C24F6170900BD6453 /* TextInputTableViewCell.swift */,
+				6875DDE6253537E2007FE387 /* Cell */,
 				307D6E6124FC9D1600DFF01E /* RecipesStepsViewController.swift */,
 			);
-			path = "Receipe Steps";
+			path = "Add Receipe Steps";
 			sourceTree = "<group>";
 		};
-		68240B052526D09500A90531 /* View Receipe Wteps */ = {
+		68240B052526D09500A90531 /* View Receipe Steps */ = {
 			isa = PBXGroup;
 			children = (
 				302CA3822511CFB1001A79E7 /* AllStepsTableViewCell.swift */,
 				307D2ECE2530BFD100C29262 /* viewReceipeStepsViewController.swift */,
 			);
-			path = "View Receipe Wteps";
+			path = "View Receipe Steps";
 			sourceTree = "<group>";
 		};
 		6875DDD725340EE3007FE387 /* Resources */ = {
@@ -170,6 +170,14 @@
 				6875DDD825340F02007FE387 /* DataManager.swift */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		6875DDE6253537E2007FE387 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				3039114C24F6170900BD6453 /* TextInputTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		A065405F1D11626FAD79314C /* Frameworks */ = {

@@ -17,8 +17,20 @@ class viewReceipeStepsViewController: UIViewController,UITableViewDelegate,UITab
     @IBOutlet weak var viewTagListViewHeight: NSLayoutConstraint!
     var receipeTitle: String = ""
     
+    var selectedReceipe:Receipe?
+    var recipeSteps = [Steps]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = self.selectedReceipe?.title
+        let recipeSteps = DataManager().getReceipeSteps(id: Int(self.selectedReceipe!.id))
+        let ingredients = DataManager().getReceipeIngredients(id: Int(self.selectedReceipe!.id))
+        for items in recipeSteps {
+            allSteps.append(items.steps!)
+        }
+        for items in ingredients{
+            showAllIngredients.append(items.steps!)
+        }
+        
         for item in showAllIngredients {
             var tempItem = item
             viewStepsTagListView.addTag(tempItem as! String)
@@ -31,16 +43,8 @@ class viewReceipeStepsViewController: UIViewController,UITableViewDelegate,UITab
         viewTagListViewHeight.constant = self.viewStepsTagListView.intrinsicContentSize.height
     }
     
-    func getReceipeTitle(title: String) {
-        receipeTitle = title
-    }
-    
-    func getSteps(array: Array<Any>) {
-        allSteps = array
-    }
-    
-    func viewIngredients(ingredientsList: Array<Any>) {
-        showAllIngredients = ingredientsList
+     func getRecipe (item: Receipe) {
+           selectedReceipe = item
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -13,20 +13,11 @@ class ViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
   
-    var item0 = ["item": "Chicken","Ingredients":["chicken", "Tamrind", "Garlic", "Onions", "Tamto", "Mirchi", "Water"], "Steps": ["CookRice","Add Water","Heat 45 Mins"]] as [String : Any]
-    var item1 = ["item": "Mutton","Ingredients":["Mutton", "Tamrind", "Garlic", "Onions", "Tamto", "Mirchi", "Water","Mutton", "Tamrind", "Garlic", "Onions", "Tamto", "Mirchi", "Water","Mutton", "Tamrind", "Garlic", "Onions", "Tamto", "Mirchi", "Water","Mutton", "Tamrind", "Garlic", "Onions", "Tamto", "Mirchi", "Water"], "Steps": ["Hot water","lamb pieces","Heat for 30 mins"]] as [String : Any]
-    var item2 = ["item": "Shrimp", "Ingredients":["Shrimp", "Tamrind", "Garlic", "Onions", "Tamto", "Mirchi", "Water"],"Steps": ["cold Water","Shrimp","Heat for 1 hour"]] as [String : Any]
-    var item3 = ["item": "Mushroom", "Ingredients":["Mushroom", "Tamrind", "Garlic", "Onions", "Tamto", "Mirchi", "Water"], "Steps": ["cold Water","mushroom","Heat for 2 hour"]] as [String : Any]
-    var receipers = [[String:Any]]()
     var filteredReceipe = [Any]()
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.receipers.append(item0)
-        self.receipers.append(item1)
-        self.receipers.append(item2)
-        self.receipers.append(item3)
         self.title = "Recipes"
         self.titleTextField.delegate = self
         self.filteredReceipe = DataManager().getAllReceipes()
@@ -75,11 +66,9 @@ class ViewController: UIViewController,UITextFieldDelegate {
     }
     
     @objc func addSteps(tag: Int) {
-        let VC = self.storyboard?.instantiateViewController(identifier: "recipesStepsVC") as! RecipesStepsViewController
-        VC.getRecipesTL(title: receipers[tag]["item"] as! String)
-        VC.getIngredients(ingredients: receipers[tag]["Ingredients"] as! Array<Any>)
-        VC.getSteps(allSteps: receipers[tag]["Steps"] as! Array<Any>)
-        self.navigationController?.pushViewController(VC, animated: true)
+        let receipeSteps = self.storyboard?.instantiateViewController(identifier: "recipesStepsVC") as! RecipesStepsViewController
+        receipeSteps.getRecipe(item: self.filteredReceipe[tag] as! Receipe)
+        self.navigationController?.pushViewController(receipeSteps, animated: true)
     }
     
     @objc func deletebuttonClicked(tag: Int) {
@@ -91,11 +80,9 @@ class ViewController: UIViewController,UITextFieldDelegate {
     }
     
     @objc func viewReceipeSteps(tag: Int) {
-        let VC = self.storyboard?.instantiateViewController(identifier: "viewStepsVC") as! viewReceipeStepsViewController
-        VC.getReceipeTitle(title: receipers[tag]["item"] as! String)
-        VC.viewIngredients(ingredientsList: receipers[tag]["Ingredients"] as! Array<Any>)
-        VC.getSteps(array: receipers[tag]["Steps"] as! Array<Any>)
-        self.navigationController?.pushViewController(VC, animated: true)
+        let receipsView = self.storyboard?.instantiateViewController(identifier: "viewStepsVC") as! viewReceipeStepsViewController
+          receipsView.getRecipe(item: self.filteredReceipe[tag] as! Receipe)
+        self.navigationController?.pushViewController(receipsView, animated: true)
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -123,9 +110,9 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let VC = self.storyboard?.instantiateViewController(identifier: "recipesStepsVC") as! RecipesStepsViewController
-        VC.getRecipesTL(title: receipers[indexPath.row]["item"] as! String )
-        self.navigationController?.pushViewController(VC, animated: true)
+        let receipsView = self.storyboard?.instantiateViewController(identifier: "viewStepsVC") as! viewReceipeStepsViewController
+        receipsView.getRecipe(item: self.filteredReceipe[indexPath.row] as! Receipe)
+               self.navigationController?.pushViewController(receipsView, animated: true)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
