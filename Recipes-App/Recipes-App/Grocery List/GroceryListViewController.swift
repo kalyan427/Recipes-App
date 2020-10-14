@@ -18,7 +18,16 @@ class GroceryListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         groceryTableView.delegate = self
-        addGroceryItem.layer.cornerRadius = 30
+        addGroceryItemsTextField.layer.cornerRadius = 25
+        addGroceryItemsTextField.layer.borderWidth = 1
+        addGroceryItemsTextField.layer.borderColor = UIColor(red: 233/255, green: 234/255, blue: 245/255, alpha: 1).cgColor
+        addGroceryItem.layer.cornerRadius = 35/2
+        addGroceryItem.layer.masksToBounds = true
+        addGroceryItem.layer.shadowColor = UIColor.black.cgColor
+        addGroceryItem.layer.shadowOpacity = 0.8
+        addGroceryItem.layer.shadowRadius = 3.0
+        addGroceryItem.layer.shadowOffset = CGSize(width: 2, height: 2)
+        self.title = "SHOPPING LIST"
     }
     
     @IBAction func addItemTapped(_ sender: UIButton) {
