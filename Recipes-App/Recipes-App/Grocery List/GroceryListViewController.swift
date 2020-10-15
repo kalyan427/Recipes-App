@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GroceryListViewController: UIViewController {
+class GroceryListViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var groceryTableView: UITableView!
     @IBOutlet weak var addGroceryItemsTextField: UITextField!
     @IBOutlet weak var addGroceryItem: UIButton!
@@ -18,6 +18,7 @@ class GroceryListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         groceryTableView.delegate = self
+        addGroceryItemsTextField.delegate = self
         addGroceryItemsTextField.layer.cornerRadius = 25
         addGroceryItemsTextField.layer.borderWidth = 1
         addGroceryItemsTextField.layer.borderColor = UIColor(red: 233/255, green: 234/255, blue: 245/255, alpha: 1).cgColor
@@ -28,6 +29,12 @@ class GroceryListViewController: UIViewController {
         addGroceryItem.layer.shadowRadius = 3.0
         addGroceryItem.layer.shadowOffset = CGSize(width: 2, height: 2)
         self.title = "SHOPPING LIST"
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        addGroceryItemsTextField.endEditing(true)
+        addGroceryItemsTextField.text = ""
+        return true
     }
     
     @IBAction func addItemTapped(_ sender: UIButton) {

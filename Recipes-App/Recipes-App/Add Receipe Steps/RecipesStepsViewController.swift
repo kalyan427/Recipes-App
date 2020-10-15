@@ -27,6 +27,7 @@ class RecipesStepsViewController: UIViewController,UITextFieldDelegate, TagListV
         super.viewDidLoad()
         let recipeSteps = DataManager().getReceipeSteps(id: Int(self.selectedReceipe!.id))
         let ingredients = DataManager().getReceipeIngredients(id: Int(self.selectedReceipe!.id))
+        
         for items in recipeSteps {
             steps.append(items.steps!)
         }
@@ -35,6 +36,7 @@ class RecipesStepsViewController: UIViewController,UITextFieldDelegate, TagListV
         }
         self.title = self.selectedReceipe?.title
         self.stepsTF.delegate = self
+        self.addStepsTF.delegate = self
         tagListView.delegate = self
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveTapped))
         for item in listAllIngredients {
@@ -57,6 +59,9 @@ class RecipesStepsViewController: UIViewController,UITextFieldDelegate, TagListV
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.stepsTF.endEditing(true)
+        self.addStepsTF.endEditing(true)
+        stepsTF.text = ""
+        addStepsTF.text = ""
         return true
     }
     
@@ -71,8 +76,6 @@ class RecipesStepsViewController: UIViewController,UITextFieldDelegate, TagListV
         for items in self.listAllIngredients {
             DataManager().saveReceipeIngredients(Ingredients: items as! String, id: Int(self.selectedReceipe!.id))
         }
-        
-        
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -104,8 +107,6 @@ class RecipesStepsViewController: UIViewController,UITextFieldDelegate, TagListV
         }
     }
     
-    
-    
     func tagPressed(_ title: String, tagView: TagView, sender: TagListView) {
         print("Tag pressed: \(title), \(sender)")
         tagListView.removeTag(title)
@@ -113,12 +114,6 @@ class RecipesStepsViewController: UIViewController,UITextFieldDelegate, TagListV
             self.listAllIngredients.remove(at: index)
         }
     }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        stepsTF.text = ""
-        //   addStepsTF.text = ""   Ask Harish
-    }
-    
 }
 
 extension RecipesStepsViewController: UITableViewDelegate,UITableViewDataSource {
@@ -143,7 +138,7 @@ extension RecipesStepsViewController: UITableViewDelegate,UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
-            let alert = UIAlertController(title: "Alert", message: "You are deleting title of Recipe", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Alert", message: "You are deleting steps of Recipe", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { action in
                 self.steps.remove(at: indexPath.row)
                 tableView.reloadData()

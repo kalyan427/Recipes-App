@@ -20,7 +20,9 @@ class ViewController: UIViewController,UITextFieldDelegate {
         self.title = "Recipes"
         self.titleTextField.delegate = self
         self.filteredReceipe = DataManager().getAllReceipes()
-        print("kalyan:\(filteredReceipe)")
+        titleTextField.layer.cornerRadius = 20
+        titleTextField.layer.borderWidth = 1
+        titleTextField.layer.borderColor = UIColor(red: 233/255, green: 234/255, blue: 245/255, alpha: 1).cgColor
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -60,7 +62,6 @@ class ViewController: UIViewController,UITextFieldDelegate {
     }
     
     func deleteItemInArray(arrayValue: Int) {
-        //receipers.remove(at: arrayValue)
         filteredReceipe.remove(at: arrayValue)
         tableView.reloadData()
     }
@@ -119,8 +120,8 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate {
         if editingStyle == .delete {
             let alert = UIAlertController(title: "Warning", message: "You are deleting Title of Receipe", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Delete", style: UIAlertAction.Style.default, handler: { (action) in
-                           
-                       }))
+                
+            }))
             alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.destructive, handler: { (action) in
                 
             }))
