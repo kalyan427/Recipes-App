@@ -38,9 +38,11 @@ class GroceryListViewController: UIViewController,UITextFieldDelegate {
     }
     
     @IBAction func addItemTapped(_ sender: UIButton) {
-        groceryList.append(addGroceryItemsTextField.text)
-        groceryTableView.reloadData()
-        addGroceryItemsTextField.text = nil
+        if addGroceryItemsTextField.text?.count != 0 {
+            groceryList.append(addGroceryItemsTextField.text)
+            groceryTableView.reloadData()
+            addGroceryItemsTextField.text = nil
+        }
     }
     
     @IBAction func itemSelected(_ sender: UIButton) {

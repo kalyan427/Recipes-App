@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "baseline_local_grocery_store_black_48pt_1x.png",
+      "filename" : "man-pushing-a-shopping-cart-2.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "baseline_local_grocery_store_black_48pt_2x.png",
+      "filename" : "man-pushing-a-shopping-cart-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "baseline_local_grocery_store_black_48pt_3x.png",
+      "filename" : "man-pushing-a-shopping-cart.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
