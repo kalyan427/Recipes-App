@@ -82,9 +82,12 @@ class RecipesStepsViewController: UIViewController,UITextFieldDelegate, TagListV
     
     //Add Steps button
     @IBAction func addStepsButton(_ sender: UIButton) {
-        steps.append(addStepsTF.text!)
-        stepsTblView.reloadData()
-        addStepsTF.text = nil
+        if addStepsTF.text?.count != 0
+        {
+            steps.append(addStepsTF.text!)
+            stepsTblView.reloadData()
+            addStepsTF.text = nil
+        }
     }
     
     //Add Ingredients button
@@ -96,9 +99,7 @@ class RecipesStepsViewController: UIViewController,UITextFieldDelegate, TagListV
         tagListView.paddingY = 13
         tagListView.enableRemoveButton = true
         if let emptyCheck = stepsTF.text {
-            if (emptyCheck.count == 0) {
-            }
-            else {
+            if (emptyCheck.count != 0) {
                 listAllIngredients.append(stepsTF.text!)
                 tagListView.addTag(stepsTF.text!)
                 tagListViewHeight.constant = self.tagListView.intrinsicContentSize.height
