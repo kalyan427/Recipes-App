@@ -13,13 +13,14 @@ class ViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     var filteredReceipe = [Any]()
+    var tempArray = [Any]()
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Recipes"
         self.titleTextField.delegate = self
         self.filteredReceipe = DataManager().getAllReceipes()
+        self.tempArray = self.filteredReceipe
         titleTextField.layer.cornerRadius = 20
         titleTextField.layer.borderWidth = 1
         titleTextField.layer.borderColor = UIColor(red: 233/255, green: 234/255, blue: 245/255, alpha: 1).cgColor
@@ -61,6 +62,8 @@ class ViewController: UIViewController,UITextFieldDelegate {
         })
     }
     
+    // MARK: Custom Items
+    
     func deleteItemInArray(arrayValue: Int) {
         filteredReceipe.remove(at: arrayValue)
         tableView.reloadData()
@@ -86,12 +89,25 @@ class ViewController: UIViewController,UITextFieldDelegate {
         self.navigationController?.pushViewController(receipsView, animated: true)
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        titleTextField.text = ""
+    func filter(searchText: String) {
+        self.filteredReceipe = self.tempArray.filter { (dict) -> Bool in
+            let dict1 :Receipe = dict as! Receipe;
+            let string = dict1.title
+            return string!.lowercased().contains(searchText.lowercased())
+            
+        }
+        tableView.reloadData()
     }
+   
 }
 
+// MARK: - TableView delegate
+
 extension ViewController: UITableViewDataSource,UITableViewDelegate {
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+           titleTextField.text = ""
+       }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.filteredReceipe.count
@@ -126,6 +142,26 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate {
                 
             }))
         }
+    }
+}
+
+
+// MARK: - Search bar delegate
+extension ViewController : UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if(searchBar.text?.count == 0){
+            self.filteredReceipe = self.tempArray
+            tableView.reloadData()
+        }else{
+            self.filter(searchText: searchBar.text!)
+        }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar){
+        searchBar.endEditing(true)
+        self.filteredReceipe = self.tempArray
+        tableView.reloadData()
     }
 }
 
