@@ -98,7 +98,10 @@
                             </tableView>
                             <searchBar contentMode="redraw" placeholder="Search Recipe" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G6d-tW-3uY">
                                 <rect key="frame" x="8" y="265" width="398" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="JFp-as-wgx"/>
+                                </connections>
                             </searchBar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

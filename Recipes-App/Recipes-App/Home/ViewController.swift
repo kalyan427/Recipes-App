@@ -163,6 +163,10 @@ extension ViewController : UISearchBarDelegate {
         self.filteredReceipe = self.tempArray
         tableView.reloadData()
     }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+         searchBar.endEditing(true)
+    }
 }
 
 
