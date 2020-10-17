@@ -201,4 +201,42 @@ class DataManager: NSObject {
             // Do something... fatalerror
         }
     }
+    
+    func deleteReceipeSteps(id: Int){
+        let context = self.getContext()
+        let fetchRequest: NSFetchRequest<Steps> = Steps.fetchRequest()
+        fetchRequest.predicate = NSPredicate.init(format: "id==\(id)")
+        let objects = try! context.fetch(fetchRequest)
+        for obj in objects {
+            context.delete(obj)
+        }
+        
+        do {
+            try context.save() // <- remember to put this :)
+        } catch {
+            // Do something... fatalerror
+        }
+    }
+    
+    func deleteReceipe(id: Int){
+        let context = self.getContext()
+        let fetchRequest: NSFetchRequest<Receipe> = Receipe.fetchRequest()
+        fetchRequest.predicate = NSPredicate.init(format: "id==\(id)")
+        let objects = try! context.fetch(fetchRequest)
+        for obj in objects {
+            context.delete(obj)
+        }
+        
+        do {
+            try context.save() // <- remember to put this :)
+        } catch {
+            // Do something... fatalerror
+        }
+    }
+    
+    func deleteItem(id: Int){
+        self.deleteReceipe(id: id)
+        self.deleteReceipeSteps(id: id)
+        self.deleteIngredientID(id: id)
+    }
 }

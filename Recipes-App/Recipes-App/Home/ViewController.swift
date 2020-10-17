@@ -40,6 +40,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
         }
     }
     
+
     @objc func moreButtonClicked(sender: UIButton) {
         let clickedCell = sender.tag
         let alert = UIAlertController(title: "Select Option", message: nil, preferredStyle: .actionSheet)
@@ -65,8 +66,11 @@ class ViewController: UIViewController,UITextFieldDelegate {
     // MARK: Custom Items
     
     func deleteItemInArray(arrayValue: Int) {
+        if let selecttedItem = self.filteredReceipe[arrayValue] as? Receipe{
+            DataManager().deleteItem(id: Int(selecttedItem.id))
         filteredReceipe.remove(at: arrayValue)
         tableView.reloadData()
+    }
     }
     
     @objc func addSteps(tag: Int) {
@@ -76,11 +80,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
     }
     
     @objc func deletebuttonClicked(tag: Int) {
-        let alert = UIAlertController(title: "Alert", message: "You are deleting title of Recipe", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { action in
-            self.deleteItemInArray(arrayValue: tag)
-        }))
-        self.present(alert, animated: true, completion: nil)
+       self.deleteItemInArray(arrayValue: tag)
     }
     
     @objc func viewReceipeSteps(tag: Int) {
@@ -135,12 +135,15 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let alert = UIAlertController(title: "Warning", message: "You are deleting Title of Receipe", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Delete", style: UIAlertAction.Style.default, handler: { (action) in
+            alert.addAction(UIAlertAction(title: "Delete", style: UIAlertAction.Style.destructive, handler: { (action) in
+                self.deletebuttonClicked(tag: indexPath.row)
                 
             }))
-            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.destructive, handler: { (action) in
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: { (action) in
                 
             }))
+            self.present(alert, animated: true, completion: nil)
+
         }
     }
 }
