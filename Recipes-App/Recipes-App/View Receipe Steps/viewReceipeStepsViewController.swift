@@ -48,6 +48,14 @@ class viewReceipeStepsViewController: UIViewController,UITableViewDelegate,UITab
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if (allSteps.count == 0) {
+            let noDataView = UILabel(frame: CGRect(x: 0, y: 0, width: viewStepsTblView.bounds.size.width, height: viewStepsTblView.bounds.size.height))
+            noDataView.text = "No Data Available"
+            noDataView.textColor = UIColor.black
+            noDataView.textAlignment = .center
+            viewStepsTblView.backgroundView = noDataView
+            viewStepsTblView.separatorStyle = .none
+        }
         return allSteps.count
     }
     

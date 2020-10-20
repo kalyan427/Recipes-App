@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30041CEF253D2C9900FD2B80 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30041CEE253D2C9900FD2B80 /* TimerViewController.swift */; };
 		302CA3832511CFB1001A79E7 /* AllStepsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302CA3822511CFB1001A79E7 /* AllStepsTableViewCell.swift */; };
 		3039114D24F6170900BD6453 /* TextInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3039114C24F6170900BD6453 /* TextInputTableViewCell.swift */; };
 		304E79E3250332740080D740 /* RecipeTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304E79E2250332740080D740 /* RecipeTitleTableViewCell.swift */; };
@@ -41,6 +42,7 @@
 		033B3AAC19029AA91A6CF625 /* Pods-Recipes-AppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recipes-AppTests.debug.xcconfig"; path = "Target Support Files/Pods-Recipes-AppTests/Pods-Recipes-AppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		0E5AFA38740E0314C51C91D6 /* Pods-Recipes-App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recipes-App.release.xcconfig"; path = "Target Support Files/Pods-Recipes-App/Pods-Recipes-App.release.xcconfig"; sourceTree = "<group>"; };
 		0F69D6467F02AF0EF59F0CEE /* Pods-Recipes-AppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recipes-AppTests.release.xcconfig"; path = "Target Support Files/Pods-Recipes-AppTests/Pods-Recipes-AppTests.release.xcconfig"; sourceTree = "<group>"; };
+		30041CEE253D2C9900FD2B80 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		302CA3822511CFB1001A79E7 /* AllStepsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllStepsTableViewCell.swift; sourceTree = "<group>"; };
 		3039114C24F6170900BD6453 /* TextInputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputTableViewCell.swift; sourceTree = "<group>"; };
 		304E79E2250332740080D740 /* RecipeTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTitleTableViewCell.swift; sourceTree = "<group>"; };
@@ -86,6 +88,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		30041CED253D2C6400FD2B80 /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				30041CEE253D2C9900FD2B80 /* TimerViewController.swift */,
+			);
+			path = Timer;
+			sourceTree = "<group>";
+		};
 		30500DC82535DBC500E7A790 /* Grocery List */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +151,7 @@
 				68240B042526D08D00A90531 /* Add Receipe Steps */,
 				68240B052526D09500A90531 /* View Receipe Steps */,
 				30500DC82535DBC500E7A790 /* Grocery List */,
+				30041CED253D2C6400FD2B80 /* Timer */,
 				30F446A424F53C4C008580C8 /* LaunchScreen.storyboard */,
 				30F4469C24F53C49008580C8 /* Main.storyboard */,
 				30F446A224F53C4C008580C8 /* Assets.xcassets */,
@@ -400,6 +411,7 @@
 				30F4469724F53C49008580C8 /* AppDelegate.swift in Sources */,
 				302CA3832511CFB1001A79E7 /* AllStepsTableViewCell.swift in Sources */,
 				30F4469924F53C49008580C8 /* SceneDelegate.swift in Sources */,
+				30041CEF253D2C9900FD2B80 /* TimerViewController.swift in Sources */,
 				30EE68F12535E0D100E2D5C9 /* GroceryItemsTableViewCell.swift in Sources */,
 				30F446A124F53C49008580C8 /* Recipes_App.xcdatamodeld in Sources */,
 			);

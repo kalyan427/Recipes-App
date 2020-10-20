@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 class ViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var addTitle: UIButton!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var adView: GADBannerView!
     var filteredReceipe = [Any]()
     var tempArray = [Any]()
 
@@ -24,6 +26,9 @@ class ViewController: UIViewController,UITextFieldDelegate {
         titleTextField.layer.cornerRadius = 20
         titleTextField.layer.borderWidth = 1
         titleTextField.layer.borderColor = UIColor(red: 233/255, green: 234/255, blue: 245/255, alpha: 1).cgColor
+        adView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        adView.rootViewController = self
+        adView.load(GADRequest())
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -43,7 +48,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
 
     @objc func moreButtonClicked(sender: UIButton) {
         let clickedCell = sender.tag
-        let alert = UIAlertController(title: "Select Option", message: nil, preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "Select Option", message: nil, preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Add Steps", style: .default, handler: { (UIAlertAction) in
             self.addSteps(tag: clickedCell)
@@ -57,6 +62,10 @@ class ViewController: UIViewController,UITextFieldDelegate {
         alert.addAction(UIAlertAction(title: "Dismiss", style: .destructive, handler: { (UIAlertAction) in
             
         }))
+        
+        if let popoverController = alert.popoverPresentationController {
+          popoverController.barButtonItem = sender as? UIBarButtonItem
+        }
         
         self.present(alert, animated: true, completion: {
             print("completion block")

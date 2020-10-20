@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 class GroceryListViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var groceryTableView: UITableView!
     @IBOutlet weak var addGroceryItemsTextField: UITextField!
     @IBOutlet weak var addGroceryItem: UIButton!
+    @IBOutlet weak var adView: GADBannerView!
     var groceryList = [Any]()
     
     
@@ -29,6 +31,11 @@ class GroceryListViewController: UIViewController,UITextFieldDelegate {
         addGroceryItem.layer.shadowRadius = 3.0
         addGroceryItem.layer.shadowOffset = CGSize(width: 2, height: 2)
         self.title = "SHOPPING LIST"
+        
+        // Google Ads.
+        adView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        adView.rootViewController = self
+        adView.load(GADRequest())
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -46,8 +53,6 @@ class GroceryListViewController: UIViewController,UITextFieldDelegate {
     }
     
     @IBAction func itemSelected(_ sender: UIButton) {
-        //var selected = sender.currentImage
-       // print(selected)
         if sender.currentImage == UIImage(named: "notfilled.png") {
             sender.setImage(UIImage(named: "filled.png"), for: .normal)
         } else {
@@ -58,6 +63,16 @@ class GroceryListViewController: UIViewController,UITextFieldDelegate {
 
 extension GroceryListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if (groceryList.count != 0) {
+            groceryTableView.backgroundView = nil
+        } else {
+            let noDataLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: groceryTableView.bounds.size.width, height: groceryTableView.bounds.size.height))
+            noDataLabel.text = "No Data Available"
+            noDataLabel.textColor = UIColor.black
+            noDataLabel.textAlignment = .center
+            groceryTableView.backgroundView = noDataLabel
+            groceryTableView.separatorStyle = .none
+        }
         return groceryList.count
     }
     

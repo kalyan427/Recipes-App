@@ -8,6 +8,7 @@
 
 import UIKit
 import TagListView
+import GoogleMobileAds
 
 class RecipesStepsViewController: UIViewController,UITextFieldDelegate, TagListViewDelegate {
     @IBOutlet weak var stepsTF: UITextField!
@@ -19,7 +20,7 @@ class RecipesStepsViewController: UIViewController,UITextFieldDelegate, TagListV
     var listAllIngredients = [String]()
     var selectedReceipe:Receipe?
     var recipeSteps = [Steps]()
-    
+    @IBOutlet weak var adView: GADBannerView!
     var receipeData = [String:Any]()
     @IBOutlet weak var tagListViewHeight: NSLayoutConstraint!
     
@@ -50,12 +51,17 @@ class RecipesStepsViewController: UIViewController,UITextFieldDelegate, TagListV
             tagListView.enableRemoveButton = true
         }
         tagListViewHeight.constant = self.tagListView.intrinsicContentSize.height
+        
+        //Google Ads.
+        adView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        adView.rootViewController = self
+        adView.load(GADRequest())
     }
-    
-    //Getters
-    func getRecipe (item: Receipe) {
-        selectedReceipe = item
-    }
+
+        //Getters
+        func getRecipe (item: Receipe) {
+            selectedReceipe = item
+        }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.stepsTF.endEditing(true)
@@ -119,6 +125,16 @@ class RecipesStepsViewController: UIViewController,UITextFieldDelegate, TagListV
 
 extension RecipesStepsViewController: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if  (steps.count != 0) {
+            stepsTblView.backgroundView = nil
+        } else {
+            let noDataLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: stepsTblView.bounds.size.width, height: stepsTblView.bounds.size.height))
+            noDataLabel.text = "No Data Available"
+            noDataLabel.textColor = UIColor.black
+            noDataLabel.textAlignment = .center
+            stepsTblView.backgroundView = noDataLabel
+            stepsTblView.separatorStyle = .none
+        }
         return steps.count
     }
     
@@ -147,4 +163,5 @@ extension RecipesStepsViewController: UITableViewDelegate,UITableViewDataSource 
             self.present(alert, animated: true, completion: nil)
         }
     }
+    
 }
