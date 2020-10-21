@@ -14,17 +14,20 @@ class GroceryListViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var addGroceryItemsTextField: UITextField!
     @IBOutlet weak var addGroceryItem: UIButton!
     @IBOutlet weak var adView: GADBannerView!
+    @IBOutlet weak var groceryView: UIView!
     var groceryList = [Any]()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         groceryTableView.delegate = self
         addGroceryItemsTextField.delegate = self
-        addGroceryItemsTextField.layer.cornerRadius = 25
-        addGroceryItemsTextField.layer.borderWidth = 1
-        addGroceryItemsTextField.layer.borderColor = UIColor(red: 233/255, green: 234/255, blue: 245/255, alpha: 1).cgColor
-        addGroceryItem.layer.cornerRadius = 35/2
+        groceryView.layer.cornerRadius = 25
+        groceryView.layer.borderWidth = 1
+        groceryView.layer.borderColor = UIColor(red: 220/255, green: 234/255, blue: 220/255, alpha: 1).cgColor
+//        addGroceryItemsTextField.layer.cornerRadius = 25
+//        addGroceryItemsTextField.layer.borderWidth = 1
+//        addGroceryItemsTextField.layer.borderColor = UIColor(red: 233/255, green: 234/255, blue: 245/255, alpha: 1).cgColor
+        addGroceryItem.layer.cornerRadius = 30/2
         addGroceryItem.layer.masksToBounds = true
         addGroceryItem.layer.shadowColor = UIColor.black.cgColor
         addGroceryItem.layer.shadowOpacity = 0.8
