@@ -24,9 +24,6 @@ class GroceryListViewController: UIViewController,UITextFieldDelegate {
         groceryView.layer.cornerRadius = 25
         groceryView.layer.borderWidth = 1
         groceryView.layer.borderColor = UIColor(red: 220/255, green: 234/255, blue: 220/255, alpha: 1).cgColor
-//        addGroceryItemsTextField.layer.cornerRadius = 25
-//        addGroceryItemsTextField.layer.borderWidth = 1
-//        addGroceryItemsTextField.layer.borderColor = UIColor(red: 233/255, green: 234/255, blue: 245/255, alpha: 1).cgColor
         addGroceryItem.layer.cornerRadius = 30/2
         addGroceryItem.layer.masksToBounds = true
         addGroceryItem.layer.shadowColor = UIColor.black.cgColor

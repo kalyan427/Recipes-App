@@ -12,8 +12,13 @@ class TimerViewController: UIViewController {
     @IBOutlet weak var hoursLabel: UILabel!
     @IBOutlet weak var minuteslabel: UILabel!
     @IBOutlet weak var secondsLabel: UILabel!
-    var seconds = 0
-    var counter = 0
+    @IBOutlet weak var counterTF: UITextField!
+    @IBOutlet weak var startBttn: UIButton!
+    @IBOutlet weak var pauseBttn: UIButton!
+    @IBOutlet weak var resetBttn: UIButton!
+    var seconds = 60
+    var counterString: String = ""
+    var counter: Int = 0
     var timer = Timer()
     var isTimerRunning = false
     var resumeTapped = false
@@ -24,6 +29,9 @@ class TimerViewController: UIViewController {
     }
     
     @IBAction func startButton(_ sender: UIButton) {
+        counterString = counterTF.text!
+        counter = Int(counterString)!
+        minuteslabel.text = "\(counter)"
         if isTimerRunning == false {
             runTimer()
         }
@@ -35,14 +43,18 @@ class TimerViewController: UIViewController {
     }
     
     @objc func updateTimer() {
-        if seconds > 59 {
-            counter += 1
+        if seconds < 1 {
+            counter -= 1
             seconds = 0
             minuteslabel.text = "\(counter)"
-            //timer.invalidate()
-           // print("Time is reached to end")
+            if counter < 0 {
+                timer.invalidate()
+                seconds = 60
+                secondsLabel.text = "00"
+                isTimerRunning = false
+            }
         } else {
-            seconds += 1
+            seconds -= 1
             secondsLabel.text = timeString(time: TimeInterval(seconds))
         }
     }
@@ -60,17 +72,13 @@ class TimerViewController: UIViewController {
     @IBAction func resetButton(_ sender: UIButton) {
         timer.invalidate()
         seconds = 60
+        counter = 0
         secondsLabel.text = "00:00"
-       // secondsLabel.text = timeString(time: TimeInterval(seconds))
         isTimerRunning = false
     }
     
     func timeString(time: TimeInterval) -> String {
-        //let hours = Int(time) / 3600
-       // let minutes = Int(time) / 60 % 60
         let seconds = Int(time) % 60
-        
-        //return String(format: "%02i:%02i:%02i", hours, minutes, seconds)
         return String(format: "%02i", seconds)
     }
 }

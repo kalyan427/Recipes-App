@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AKZ-gv-1Sc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AKZ-gv-1Sc">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -425,60 +425,66 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" 00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hf8-7t-2Ak">
-                                <rect key="frame" x="167" y="212" width="45" height="45"/>
+                                <rect key="frame" x="129" y="264" width="45" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rk3-fW-vXK">
-                                <rect key="frame" x="190" y="413" width="34" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="pAN-FT-Ucn"/>
-                                </constraints>
+                                <rect key="frame" x="65" y="433" width="34" height="30"/>
                                 <state key="normal" title="Start"/>
                                 <connections>
                                     <action selector="startButton:" destination="AKZ-gv-1Sc" eventType="touchUpInside" id="hDR-ob-m0T"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vbx-bM-iMW">
-                                <rect key="frame" x="186" y="469" width="42" height="30"/>
+                                <rect key="frame" x="186" y="433" width="42" height="30"/>
                                 <state key="normal" title="Pause"/>
                                 <connections>
                                     <action selector="pauseButton:" destination="AKZ-gv-1Sc" eventType="touchUpInside" id="MhR-By-i3i"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hyB-ok-RiR">
-                                <rect key="frame" x="187.5" y="537" width="39" height="30"/>
+                                <rect key="frame" x="310" y="433" width="39" height="30"/>
                                 <state key="normal" title="Reset"/>
                                 <connections>
                                     <action selector="resetButton:" destination="AKZ-gv-1Sc" eventType="touchUpInside" id="co5-Nz-hTt"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" 00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kcS-yZ-RKS">
-                                <rect key="frame" x="241" y="212" width="45" height="45"/>
+                                <rect key="frame" x="241" y="264" width="45" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter timer value" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="11c-n3-GDD">
+                                <rect key="frame" x="53" y="131" width="203" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="Vbx-bM-iMW" firstAttribute="centerX" secondItem="O1Z-q5-Tkv" secondAttribute="centerX" id="8Qt-1z-a2D"/>
-                            <constraint firstItem="NNf-rW-0UZ" firstAttribute="bottom" secondItem="hyB-ok-RiR" secondAttribute="bottom" constant="295" id="DCW-E5-0wC"/>
-                            <constraint firstItem="hyB-ok-RiR" firstAttribute="top" secondItem="Vbx-bM-iMW" secondAttribute="bottom" constant="38" id="DxG-0j-RhS"/>
-                            <constraint firstItem="Vbx-bM-iMW" firstAttribute="top" secondItem="Rk3-fW-vXK" secondAttribute="bottom" constant="26" id="E0F-Lb-JKy"/>
-                            <constraint firstItem="Rk3-fW-vXK" firstAttribute="centerX" secondItem="O1Z-q5-Tkv" secondAttribute="centerX" id="NcI-zc-K3B"/>
-                            <constraint firstItem="hyB-ok-RiR" firstAttribute="centerX" secondItem="O1Z-q5-Tkv" secondAttribute="centerX" id="W31-CZ-Vz1"/>
-                            <constraint firstItem="Vbx-bM-iMW" firstAttribute="height" secondItem="Rk3-fW-vXK" secondAttribute="height" id="YFB-LQ-rus"/>
-                            <constraint firstItem="hyB-ok-RiR" firstAttribute="height" secondItem="Rk3-fW-vXK" secondAttribute="height" id="lg3-BA-UqS"/>
+                            <constraint firstItem="Vbx-bM-iMW" firstAttribute="leading" secondItem="Rk3-fW-vXK" secondAttribute="trailing" constant="87" id="06N-lh-iAc"/>
+                            <constraint firstItem="hyB-ok-RiR" firstAttribute="leading" secondItem="Vbx-bM-iMW" secondAttribute="trailing" constant="82" id="7Hr-yU-2EX"/>
+                            <constraint firstItem="Rk3-fW-vXK" firstAttribute="centerY" secondItem="O1Z-q5-Tkv" secondAttribute="centerY" id="BOR-BX-Ccx"/>
+                            <constraint firstItem="Rk3-fW-vXK" firstAttribute="leading" secondItem="NNf-rW-0UZ" secondAttribute="leading" constant="65" id="Qfe-Sd-jgJ"/>
+                            <constraint firstItem="Vbx-bM-iMW" firstAttribute="centerY" secondItem="O1Z-q5-Tkv" secondAttribute="centerY" id="Rz1-c9-wXs"/>
+                            <constraint firstItem="hyB-ok-RiR" firstAttribute="centerY" secondItem="O1Z-q5-Tkv" secondAttribute="centerY" id="pfD-w7-6bJ"/>
+                            <constraint firstItem="NNf-rW-0UZ" firstAttribute="trailing" secondItem="hyB-ok-RiR" secondAttribute="trailing" constant="65" id="x74-c8-4gB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NNf-rW-0UZ"/>
                     </view>
                     <connections>
+                        <outlet property="counterTF" destination="11c-n3-GDD" id="ayy-BL-W6o"/>
                         <outlet property="minuteslabel" destination="Hf8-7t-2Ak" id="D8M-5u-p56"/>
+                        <outlet property="pauseBttn" destination="Vbx-bM-iMW" id="prs-93-tKX"/>
+                        <outlet property="resetBttn" destination="hyB-ok-RiR" id="skU-lu-Tf8"/>
                         <outlet property="secondsLabel" destination="kcS-yZ-RKS" id="sV7-ib-ycJ"/>
+                        <outlet property="startBttn" destination="Rk3-fW-vXK" id="hEG-ue-aZ8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e8p-yE-NaO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
