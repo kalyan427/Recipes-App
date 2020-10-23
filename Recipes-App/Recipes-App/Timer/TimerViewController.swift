@@ -26,12 +26,25 @@ class TimerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Set the corner radius for start button.
+        startBttn.layer.masksToBounds = true
+        startBttn.layer.cornerRadius = 45/2
+        
+        // Set the corner radius for pause button.
+        pauseBttn.layer.masksToBounds = true
+        pauseBttn.layer.cornerRadius = 45/2
+        
+        // Set the corner radius for reset button.
+        resetBttn.layer.masksToBounds = true
+        resetBttn.layer.cornerRadius = 45/2
     }
     
     @IBAction func startButton(_ sender: UIButton) {
+        
         counterString = counterTF.text!
         counter = Int(counterString)!
         minuteslabel.text = "\(counter)"
+        counterTF.text = nil
         if isTimerRunning == false {
             runTimer()
         }
@@ -47,7 +60,7 @@ class TimerViewController: UIViewController {
             counter -= 1
             seconds = 0
             minuteslabel.text = "\(counter)"
-            if counter < 0 {
+            if counter == 0 {
                 timer.invalidate()
                 seconds = 60
                 secondsLabel.text = "00"
@@ -73,7 +86,8 @@ class TimerViewController: UIViewController {
         timer.invalidate()
         seconds = 60
         counter = 0
-        secondsLabel.text = "00:00"
+        secondsLabel.text = "00"
+        counter = 0
         isTimerRunning = false
     }
     
