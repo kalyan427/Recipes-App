@@ -19,6 +19,7 @@ class GroceryListViewController: UIViewController,UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        refreshScreen()
         groceryTableView.delegate = self
         addGroceryItemsTextField.delegate = self
         groceryView.layer.cornerRadius = 25
@@ -46,20 +47,32 @@ class GroceryListViewController: UIViewController,UITextFieldDelegate {
     
     @IBAction func addItemTapped(_ sender: UIButton) {
         if addGroceryItemsTextField.text?.count != 0 {
-            groceryList.append(addGroceryItemsTextField.text)
+            
+            DataManager().saveGroceriesSteps(isSelected: false, Steps: addGroceryItemsTextField.text!)
+            self.groceryList = DataManager().getAllGroceries()
             groceryTableView.reloadData()
             addGroceryItemsTextField.text = nil
         }
     }
     
-    @IBAction func itemSelected(_ sender: UIButton) {
-        if sender.currentImage == UIImage(named: "notfilled.png") {
-            sender.setImage(UIImage(named: "filled.png"), for: .normal)
-        } else {
-            sender.setImage(UIImage(named: "notfilled.png"), for: .normal)
+  @objc  func itemSelected(_ sender: UIButton) {
+        let indexPathRow = sender.tag
+        if let item = self.groceryList[indexPathRow] as? Groceries {
+            if(item.isSelected){
+                DataManager().setGrocerieWithSelected(id: Int(item.id), isSelected: false)
+            }else{
+                DataManager().setGrocerieWithSelected(id: Int(item.id), isSelected: true)
+            }
         }
+        refreshScreen()
+    }
+    
+    func refreshScreen() {
+        self.groceryList = DataManager().getAllGroceries()
+        groceryTableView.reloadData()
     }
 }
+
 
 extension GroceryListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -82,14 +95,30 @@ extension GroceryListViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = groceryTableView.dequeueReusableCell(withIdentifier: "groceryCell") as! GroceryItemsTableViewCell
-        cell.groceryItems.text = groceryList[indexPath.row] as! String
+        
+        cell.selectionButton.addTarget(self, action: #selector(itemSelected(_:)), for: .touchUpInside)
+        cell.selectionButton.tag = indexPath.row
+        
+        if let items = self.groceryList[indexPath.row] as? Groceries{
+            cell.groceryItems.text = items.items
+            if(items.isSelected){
+                cell.selectionButton.setImage(UIImage(named: "filled.png"), for: .normal)
+            }else{
+                cell.selectionButton.setImage(UIImage(named: "notfilled.png"), for: .normal)
+            }
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            self.groceryList.remove(at: indexPath.row)
-            groceryTableView.reloadData()
+            
+            if let items = self.groceryList[indexPath.row] as? Groceries{
+                if(DataManager().deleteGroceriesWithListID(id: Int(items.id))){
+                    self.groceryList.remove(at: indexPath.row)
+                    groceryTableView.reloadData()
+                }
+            }
         }
     }
 }

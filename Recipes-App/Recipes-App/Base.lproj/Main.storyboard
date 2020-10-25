@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AKZ-gv-1Sc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vJo-Kv-GgI">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -584,9 +584,6 @@
                                                         <constraint firstAttribute="width" constant="20" id="UN9-KO-TTg"/>
                                                     </constraints>
                                                     <state key="normal" title="Click" image="notfilled"/>
-                                                    <connections>
-                                                        <action selector="itemSelected:" destination="ZTx-Yt-qvA" eventType="touchUpInside" id="Qun-K8-3v8"/>
-                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -599,6 +596,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="groceryItems" destination="s2u-3W-dg1" id="aia-Ax-a3T"/>
+                                            <outlet property="selectionButton" destination="sae-8I-CKL" id="JLl-ep-TVE"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

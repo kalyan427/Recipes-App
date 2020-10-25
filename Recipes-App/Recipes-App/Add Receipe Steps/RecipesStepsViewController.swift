@@ -80,7 +80,7 @@ class RecipesStepsViewController: UIViewController,UITextFieldDelegate, TagListV
         }
         
         for items in self.listAllIngredients {
-            DataManager().saveReceipeIngredients(Ingredients: items as! String, id: Int(self.selectedReceipe!.id))
+            DataManager().saveReceipeIngredients(Ingredients: items , id: Int(self.selectedReceipe!.id))
         }
         self.navigationController?.popViewController(animated: true)
     }

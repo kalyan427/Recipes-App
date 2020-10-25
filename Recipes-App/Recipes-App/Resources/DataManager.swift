@@ -29,6 +29,19 @@ class DataManager: NSObject {
         return searchResults
     }
     
+    func getAllGroceries() ->Array<Any>{
+        //create a fetch request, telling it about the entity
+        let fetchRequest: NSFetchRequest<Groceries> = Groceries.fetchRequest()
+        var searchResults:Array<Any>=[]
+        do {
+            //go get the results
+            searchResults = try getContext().fetch(fetchRequest)
+        } catch {
+            //debugPrint("Error with request: \(error)")
+        }
+        return searchResults
+    }
+    
     
     
     func getUniqueID()->Int{
@@ -102,6 +115,26 @@ class DataManager: NSObject {
         }
     }
     
+    func setGrocerieWithSelected(id: Int, isSelected: Bool){
+        let fetchRequest: NSFetchRequest<Groceries> = Groceries.fetchRequest()
+        fetchRequest.predicate = NSPredicate.init(format: "id=='\(id)'")
+        
+        var searchResults:Array<Any>=[]
+        do {
+            //go get the results
+            searchResults = try getContext().fetch(fetchRequest)
+            
+            for items in searchResults{
+                if let items = items as? Groceries{
+                      items.setValue(isSelected , forKey: "isSelected")
+                }
+                
+            }
+            saveInDatabase()
+        } catch {
+        }
+    }
+    
     func getReceipeSteps(id: Int)->Array<Steps>{
         let fetchRequest: NSFetchRequest<Steps> = Steps.fetchRequest()
         fetchRequest.predicate = NSPredicate.init(format: "id=='\(id)'")
@@ -132,7 +165,6 @@ class DataManager: NSObject {
     
     func saveInDatabase()  {
         let context = getContext()
-        
         do {
             try context.save()
         } catch let error as NSError  {
@@ -140,6 +172,36 @@ class DataManager: NSObject {
         } catch {
             
         }
+    }
+    
+    func saveGroceriesSteps(isSelected:Bool, Steps: String){
+        let context = self.getContext()
+        let entity =  NSEntityDescription.entity(forEntityName: "Groceries", in: context)
+        let groceries = NSManagedObject(entity: entity!, insertInto: context)
+        groceries.setValue(Steps, forKey: "items")
+        groceries.setValue(getUniqueID() , forKey: "id")
+        groceries.setValue(isSelected, forKey: "isSelected")
+        do {
+            try context.save()
+            debugPrint("saved!")
+        } catch let error as NSError  {
+            debugPrint("Could not save \(error), \(error.userInfo)")
+        } catch {
+            
+        }
+    }
+    
+    
+    func getGroceriesStepsWith(id: Int)->Array<Groceries>{
+        let fetchRequest: NSFetchRequest<Groceries> = Groceries.fetchRequest()
+        fetchRequest.predicate = NSPredicate.init(format: "id=='\(id)'")
+        var searchResults:Array<Any>=[]
+        do {
+            searchResults = try getContext().fetch(fetchRequest)
+        } catch {
+            debugPrint("Error with request: \(error)")
+        }
+        return searchResults as! Array<Groceries>
     }
     
     func deleteSteps() {
@@ -183,6 +245,23 @@ class DataManager: NSObject {
             try context.save() // <- remember to put this :)
         } catch {
             // Do something... fatalerror
+        }
+    }
+    
+    func deleteGroceriesWithListID(id: Int)->Bool{
+        let context = self.getContext()
+        let fetchRequest: NSFetchRequest<Groceries> = Groceries.fetchRequest()
+        fetchRequest.predicate = NSPredicate.init(format: "id==\(id)")
+        let objects = try! context.fetch(fetchRequest)
+        for obj in objects {
+            context.delete(obj)
+        }
+        
+        do {
+            try context.save()
+            return true// <- remember to put this :)
+        } catch {
+            return false
         }
     }
     
