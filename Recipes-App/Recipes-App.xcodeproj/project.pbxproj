@@ -16,7 +16,6 @@
 		307D6E6224FC9D1600DFF01E /* RecipesStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307D6E6124FC9D1600DFF01E /* RecipesStepsViewController.swift */; };
 		30EE68F12535E0D100E2D5C9 /* GroceryItemsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EE68F02535E0D100E2D5C9 /* GroceryItemsTableViewCell.swift */; };
 		30F4469724F53C49008580C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F4469624F53C49008580C8 /* AppDelegate.swift */; };
-		30F4469924F53C49008580C8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F4469824F53C49008580C8 /* SceneDelegate.swift */; };
 		30F4469B24F53C49008580C8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F4469A24F53C49008580C8 /* ViewController.swift */; };
 		30F4469E24F53C49008580C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30F4469C24F53C49008580C8 /* Main.storyboard */; };
 		30F446A124F53C49008580C8 /* Recipes_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 30F4469F24F53C49008580C8 /* Recipes_App.xcdatamodeld */; };
@@ -52,7 +51,6 @@
 		30EE68F02535E0D100E2D5C9 /* GroceryItemsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryItemsTableViewCell.swift; sourceTree = "<group>"; };
 		30F4469324F53C49008580C8 /* Recipes-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Recipes-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		30F4469624F53C49008580C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		30F4469824F53C49008580C8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		30F4469A24F53C49008580C8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		30F4469D24F53C49008580C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		30F446A024F53C49008580C8 /* Recipes_App.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Recipes_App.xcdatamodel; sourceTree = "<group>"; };
@@ -145,7 +143,6 @@
 			isa = PBXGroup;
 			children = (
 				30F4469624F53C49008580C8 /* AppDelegate.swift */,
-				30F4469824F53C49008580C8 /* SceneDelegate.swift */,
 				6875DDD725340EE3007FE387 /* Resources */,
 				68240B032526D06D00A90531 /* Home */,
 				68240B042526D08D00A90531 /* Add Receipe Steps */,
@@ -410,7 +407,6 @@
 				307D2ECF2530BFD100C29262 /* viewReceipeStepsViewController.swift in Sources */,
 				30F4469724F53C49008580C8 /* AppDelegate.swift in Sources */,
 				302CA3832511CFB1001A79E7 /* AllStepsTableViewCell.swift in Sources */,
-				30F4469924F53C49008580C8 /* SceneDelegate.swift in Sources */,
 				30041CEF253D2C9900FD2B80 /* TimerViewController.swift in Sources */,
 				30EE68F12535E0D100E2D5C9 /* GroceryItemsTableViewCell.swift in Sources */,
 				30F446A124F53C49008580C8 /* Recipes_App.xcdatamodeld in Sources */,
@@ -577,7 +573,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9567ZRLUY2;
 				INFOPLIST_FILE = "Recipes-App/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -597,7 +593,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9567ZRLUY2;
 				INFOPLIST_FILE = "Recipes-App/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

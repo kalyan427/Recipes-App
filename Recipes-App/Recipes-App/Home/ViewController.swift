@@ -16,7 +16,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var adView: GADBannerView!
     var filteredReceipe = [Any]()
     var tempArray = [Any]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Recipes"
@@ -45,7 +45,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
         }
     }
     
-
+    
     @objc func moreButtonClicked(sender: UIButton) {
         let clickedCell = sender.tag
         let alert = UIAlertController(title: "Select Option", message: nil, preferredStyle: .alert)
@@ -64,7 +64,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
         }))
         
         if let popoverController = alert.popoverPresentationController {
-          popoverController.barButtonItem = sender as? UIBarButtonItem
+            popoverController.barButtonItem = sender as? UIBarButtonItem
         }
         
         self.present(alert, animated: true, completion: {
@@ -77,25 +77,39 @@ class ViewController: UIViewController,UITextFieldDelegate {
     func deleteItemInArray(arrayValue: Int) {
         if let selecttedItem = self.filteredReceipe[arrayValue] as? Receipe{
             DataManager().deleteItem(id: Int(selecttedItem.id))
-        filteredReceipe.remove(at: arrayValue)
-        tableView.reloadData()
-    }
+            filteredReceipe.remove(at: arrayValue)
+            tableView.reloadData()
+        }
     }
     
     @objc func addSteps(tag: Int) {
-        let receipeSteps = self.storyboard?.instantiateViewController(identifier: "recipesStepsVC") as! RecipesStepsViewController
-        receipeSteps.getRecipe(item: self.filteredReceipe[tag] as! Receipe)
-        self.navigationController?.pushViewController(receipeSteps, animated: true)
+        if #available(iOS 13.0, *) {
+            let receipeSteps = self.storyboard?.instantiateViewController(identifier: "recipesStepsVC") as! RecipesStepsViewController
+            receipeSteps.getRecipe(item: self.filteredReceipe[tag] as! Receipe)
+            self.navigationController?.pushViewController(receipeSteps, animated: true)
+        } else {
+            let receipeSteps = self.storyboard?.instantiateViewController(withIdentifier: "recipesStepsVC") as! RecipesStepsViewController
+            receipeSteps.getRecipe(item: self.filteredReceipe[tag] as! Receipe)
+            self.navigationController?.pushViewController(receipeSteps, animated: true)
+        }
+        
     }
     
     @objc func deletebuttonClicked(tag: Int) {
-       self.deleteItemInArray(arrayValue: tag)
+        self.deleteItemInArray(arrayValue: tag)
     }
     
     @objc func viewReceipeSteps(tag: Int) {
-        let receipsView = self.storyboard?.instantiateViewController(identifier: "viewStepsVC") as! viewReceipeStepsViewController
-          receipsView.getRecipe(item: self.filteredReceipe[tag] as! Receipe)
-        self.navigationController?.pushViewController(receipsView, animated: true)
+        if #available(iOS 13.0, *) {
+            let receipsView = self.storyboard?.instantiateViewController(identifier: "viewStepsVC") as! viewReceipeStepsViewController
+            receipsView.getRecipe(item: self.filteredReceipe[tag] as! Receipe)
+            self.navigationController?.pushViewController(receipsView, animated: true)
+        } else {
+            let receipsView = self.storyboard?.instantiateViewController(withIdentifier: "viewStepsVC") as! viewReceipeStepsViewController
+            receipsView.getRecipe(item: self.filteredReceipe[tag] as! Receipe)
+            self.navigationController?.pushViewController(receipsView, animated: true)
+        }
+        
     }
     
     func filter(searchText: String) {
@@ -107,7 +121,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
         }
         tableView.reloadData()
     }
-   
+    
 }
 
 // MARK: - TableView delegate
@@ -115,8 +129,8 @@ class ViewController: UIViewController,UITextFieldDelegate {
 extension ViewController: UITableViewDataSource,UITableViewDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-           titleTextField.text = ""
-       }
+        titleTextField.text = ""
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.filteredReceipe.count
@@ -136,9 +150,16 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let receipsView = self.storyboard?.instantiateViewController(identifier: "viewStepsVC") as! viewReceipeStepsViewController
-        receipsView.getRecipe(item: self.filteredReceipe[indexPath.row] as! Receipe)
-        self.navigationController?.pushViewController(receipsView, animated: true)
+        if #available(iOS 13.0, *) {
+            let receipsView = self.storyboard?.instantiateViewController(identifier: "viewStepsVC") as! viewReceipeStepsViewController
+            receipsView.getRecipe(item: self.filteredReceipe[indexPath.row] as! Receipe)
+            self.navigationController?.pushViewController(receipsView, animated: true)
+        } else {
+            let receipsView = self.storyboard?.instantiateViewController(withIdentifier: "viewStepsVC") as! viewReceipeStepsViewController
+            receipsView.getRecipe(item: self.filteredReceipe[indexPath.row] as! Receipe)
+            self.navigationController?.pushViewController(receipsView, animated: true)
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -152,7 +173,7 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate {
                 
             }))
             self.present(alert, animated: true, completion: nil)
-
+            
         }
     }
 }
@@ -177,7 +198,7 @@ extension ViewController : UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-         searchBar.endEditing(true)
+        searchBar.endEditing(true)
     }
 }
 
