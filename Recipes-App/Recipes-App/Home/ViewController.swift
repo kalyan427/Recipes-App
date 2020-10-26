@@ -83,15 +83,9 @@ class ViewController: UIViewController,UITextFieldDelegate {
     }
     
     @objc func addSteps(tag: Int) {
-        if #available(iOS 13.0, *) {
-            let receipeSteps = self.storyboard?.instantiateViewController(identifier: "recipesStepsVC") as! RecipesStepsViewController
-            receipeSteps.getRecipe(item: self.filteredReceipe[tag] as! Receipe)
-            self.navigationController?.pushViewController(receipeSteps, animated: true)
-        } else {
-            let receipeSteps = self.storyboard?.instantiateViewController(withIdentifier: "recipesStepsVC") as! RecipesStepsViewController
-            receipeSteps.getRecipe(item: self.filteredReceipe[tag] as! Receipe)
-            self.navigationController?.pushViewController(receipeSteps, animated: true)
-        }
+        let receipeSteps = self.storyboard?.instantiateViewController(withIdentifier: "recipesStepsVC") as! RecipesStepsViewController
+                   receipeSteps.getRecipe(item: self.filteredReceipe[tag] as! Receipe)
+                   self.navigationController?.pushViewController(receipeSteps, animated: true)
         
     }
     

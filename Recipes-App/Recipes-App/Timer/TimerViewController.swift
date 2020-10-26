@@ -12,13 +12,18 @@ class TimerViewController: UIViewController {
     @IBOutlet weak var hoursLabel: UILabel!
     @IBOutlet weak var minuteslabel: UILabel!
     @IBOutlet weak var secondsLabel: UILabel!
-    @IBOutlet weak var counterTF: UITextField!
+    @IBOutlet weak var minutesCounterTF: UITextField!
     @IBOutlet weak var startBttn: UIButton!
     @IBOutlet weak var pauseBttn: UIButton!
     @IBOutlet weak var resetBttn: UIButton!
+    @IBOutlet weak var hoursTF: UITextField!
+    @IBOutlet weak var minutesTF: UITextField!
+    @IBOutlet weak var secondsTF: UITextField!
     var seconds = 60
+    var hoursCounterString: String = ""
     var counterString: String = ""
-    var counter: Int = 0
+    var hoursCounter: Int = 0
+    var minutesCounter: Int = 60
     var timer = Timer()
     var isTimerRunning = false
     var resumeTapped = false
@@ -40,13 +45,26 @@ class TimerViewController: UIViewController {
     }
     
     @IBAction func startButton(_ sender: UIButton) {
-        
-        counterString = counterTF.text!
-        counter = Int(counterString)!
-        minuteslabel.text = "\(counter)"
-        counterTF.text = nil
-        if isTimerRunning == false {
-            runTimer()
+        if hoursTF.text != "" {
+            hoursCounterString = hoursTF.text!
+            hoursCounter = Int(hoursCounterString)!
+            hoursLabel.text = "\(hoursCounter)"
+            hoursTF.text = nil
+            if isTimerRunning == false {
+                runTimer()
+            }
+        } else {
+            counterString = minutesTF.text!
+            if counterString == "" {
+                minutesTF.placeholder = "Please enter the value"
+            } else {
+                minutesCounter = Int(counterString)!
+                minuteslabel.text = "\(minutesCounter)"
+                minutesTF.text = nil
+                if isTimerRunning == false {
+                    runTimer()
+                }
+            }
         }
     }
     
@@ -56,11 +74,20 @@ class TimerViewController: UIViewController {
     }
     
     @objc func updateTimer() {
+//        if hoursCounter >= 1 {
+//            hoursCounter -= 1
+//
+//
+//            seconds -= 1
+//            if seconds < 1 {
+//
+//            }
+//        }
         if seconds < 1 {
-            counter -= 1
+            minutesCounter -= 1
             seconds = 0
-            minuteslabel.text = "\(counter)"
-            if counter == 0 {
+            minuteslabel.text = "\(minutesCounter)"
+            if minutesCounter == 0 {
                 timer.invalidate()
                 seconds = 60
                 secondsLabel.text = "00"
@@ -85,14 +112,19 @@ class TimerViewController: UIViewController {
     @IBAction func resetButton(_ sender: UIButton) {
         timer.invalidate()
         seconds = 60
-        counter = 0
+        minutesCounter = 0
         secondsLabel.text = "00"
-        counter = 0
+        //counter = 0
         isTimerRunning = false
     }
     
     func timeString(time: TimeInterval) -> String {
+        let hours = Int(time) / 3600
+        print("hours: \(hours)")
+        let minutes = Int(time) / 60 % 60
+        print("minutes: \(minutes)")
         let seconds = Int(time) % 60
+        print(seconds)
         return String(format: "%02i", seconds)
     }
 }
