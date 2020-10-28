@@ -6,6 +6,7 @@ target 'Recipes-App' do
   use_frameworks!
   pod 'TagListView', '~> 1.0'
   pod 'Google-Mobile-Ads-SDK'
+  pod 'IQKeyboardManagerSwift'
 
   # Pods for Recipes-App
 
