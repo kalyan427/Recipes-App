@@ -19,10 +19,10 @@ class ViewController: UIViewController,UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getLatestData()
         self.title = "Recipes"
         self.titleTextField.delegate = self
-        self.filteredReceipe = DataManager().getAllReceipes()
-        self.tempArray = self.filteredReceipe
+     
         titleTextField.layer.cornerRadius = 20
         titleTextField.layer.borderWidth = 1
         titleTextField.layer.borderColor = UIColor(red: 233/255, green: 234/255, blue: 245/255, alpha: 1).cgColor
@@ -156,6 +156,11 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate {
         
     }
     
+    func getLatestData() {
+        self.filteredReceipe = DataManager().getAllReceipes()
+        self.tempArray = self.filteredReceipe
+    }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let alert = UIAlertController(title: "Warning", message: "You are deleting Title of Receipe", preferredStyle: .alert)
@@ -187,7 +192,7 @@ extension ViewController : UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar){
         searchBar.endEditing(true)
-        self.filteredReceipe = self.tempArray
+        getLatestData()
         tableView.reloadData()
     }
     

@@ -10,6 +10,9 @@ import UIKit
 import TagListView
 
 class viewReceipeStepsViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,TagListViewDelegate {
+    @IBOutlet weak var segmentTitle: UILabel!
+    
+    @IBOutlet weak var segmentController: UISegmentedControl!
     var allSteps = [Any]()
     @IBOutlet weak var viewStepsTblView: UITableView!
     @IBOutlet weak var viewStepsTagListView: TagListView!
@@ -21,6 +24,9 @@ class viewReceipeStepsViewController: UIViewController,UITableViewDelegate,UITab
     var recipeSteps = [Steps]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.viewStepsTagListView.isHidden = false
+        self.viewStepsTblView.isHidden = true
+        self.segmentTitle.text = "Ingredients"
         self.title = self.selectedReceipe?.title
         let recipeSteps = DataManager().getReceipeSteps(id: Int(self.selectedReceipe!.id))
         let ingredients = DataManager().getReceipeIngredients(id: Int(self.selectedReceipe!.id))
@@ -40,11 +46,26 @@ class viewReceipeStepsViewController: UIViewController,UITableViewDelegate,UITab
             viewStepsTagListView.paddingX = 10
             viewStepsTagListView.paddingY = 13
         }
-        viewTagListViewHeight.constant = self.viewStepsTagListView.intrinsicContentSize.height
+      //  viewTagListViewHeight.constant = self.viewStepsTagListView.intrinsicContentSize.height
     }
     
      func getRecipe (item: Receipe) {
            selectedReceipe = item
+    }
+    
+    @IBAction func segmentItemClicked(_ sender: Any) {
+        switch segmentController.selectedSegmentIndex {
+        case 0:
+            self.segmentTitle.text = "Ingredients"
+            self.viewStepsTagListView.isHidden = false
+            self.viewStepsTblView.isHidden = true
+        case 1:
+            self.segmentTitle.text = "Receipe"
+            self.viewStepsTagListView.isHidden = true
+            self.viewStepsTblView.isHidden = false
+        default:
+            break;
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
