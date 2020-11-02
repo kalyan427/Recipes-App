@@ -24,6 +24,7 @@ PODS:
   - "GoogleUtilities/NSData+zlib (6.6.0)"
   - GoogleUtilities/Reachability (6.6.0):
     - GoogleUtilities/Logger
+  - HGCircularSlider (2.2.0)
   - nanopb (1.30905.0):
     - nanopb/decode (= 1.30905.0)
     - nanopb/encode (= 1.30905.0)
@@ -34,6 +35,7 @@ PODS:
 
 DEPENDENCIES:
   - Google-Mobile-Ads-SDK
+  - HGCircularSlider
   - TagListView (~> 1.0)
 
 SPEC REPOS:
@@ -41,6 +43,7 @@ SPEC REPOS:
     - Google-Mobile-Ads-SDK
     - GoogleAppMeasurement
     - GoogleUtilities
+    - HGCircularSlider
     - nanopb
     - PromisesObjC
     - TagListView
@@ -49,10 +52,11 @@ SPEC CHECKSUMS:
   Google-Mobile-Ads-SDK: 4c3b24b04293b4bb370b2cb392cdd3ee97c87752
   GoogleAppMeasurement: 2fd5c5a56c069db635c8e7b92d4809a9591d0a69
   GoogleUtilities: 39530bc0ad980530298e9c4af8549e991fd033b1
+  HGCircularSlider: afb1942743a2df156dcc7a3500216e523e14266b
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
   TagListView: a1c236d17960a0cf64156725a76ce6d73ebce2be
 
-PODFILE CHECKSUM: 3f1268947fc036a8f7abf9313c16adb29177a15b
+PODFILE CHECKSUM: 7c2802aca933da8b3bf906a8d5b576e5d62b5855
 
 COCOAPODS: 1.8.4

@@ -22,9 +22,12 @@ class GroceryListViewController: UIViewController,UITextFieldDelegate {
         refreshScreen()
         groceryTableView.delegate = self
         addGroceryItemsTextField.delegate = self
+        
+        // Set Grocery title textfield shadow properties.
         groceryView.layer.cornerRadius = 25
         groceryView.layer.borderWidth = 1
         groceryView.layer.borderColor = UIColor(red: 220/255, green: 234/255, blue: 220/255, alpha: 1).cgColor
+        
         addGroceryItem.layer.cornerRadius = 30/2
         addGroceryItem.layer.masksToBounds = true
         addGroceryItem.layer.shadowColor = UIColor.black.cgColor

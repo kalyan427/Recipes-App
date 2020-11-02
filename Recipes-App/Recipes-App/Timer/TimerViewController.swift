@@ -9,16 +9,16 @@
 import UIKit
 
 class TimerViewController: UIViewController {
-    @IBOutlet weak var hoursLabel: UILabel!
     @IBOutlet weak var minuteslabel: UILabel!
-    @IBOutlet weak var secondsLabel: UILabel!
-    @IBOutlet weak var minutesCounterTF: UITextField!
     @IBOutlet weak var startBttn: UIButton!
     @IBOutlet weak var pauseBttn: UIButton!
     @IBOutlet weak var resetBttn: UIButton!
     @IBOutlet weak var hoursTF: UITextField!
     @IBOutlet weak var minutesTF: UITextField!
     @IBOutlet weak var secondsTF: UITextField!
+    @IBOutlet weak var circularProgreesView: UIView!
+    
+    var totalInSeconds: Int = 0
     var seconds = 60
     var hoursCounterString: String = ""
     var counterString: String = ""
@@ -48,7 +48,6 @@ class TimerViewController: UIViewController {
         if hoursTF.text != "" {
             hoursCounterString = hoursTF.text!
             hoursCounter = Int(hoursCounterString)!
-            hoursLabel.text = "\(hoursCounter)"
             hoursTF.text = nil
             if isTimerRunning == false {
                 runTimer()
@@ -74,29 +73,27 @@ class TimerViewController: UIViewController {
     }
     
     @objc func updateTimer() {
-//        if hoursCounter >= 1 {
-//            hoursCounter -= 1
-//
-//
-//            seconds -= 1
-//            if seconds < 1 {
-//
+        timerToSec()
+        var hours = totalInSeconds / 3600
+        var minutes = totalInSeconds / 60 - hours * 60
+        var second = totalInSeconds
+        minuteslabel.text = "\(hours) : \(minutes) : \(second)"
+        
+        
+        
+        
+//        if seconds < 1 {
+//            minutesCounter -= 1
+//            seconds = 0
+//            minuteslabel.text = "\(minutesCounter)"
+//            if minutesCounter == 0 {
+//                timer.invalidate()
+//                seconds = 60
+//                isTimerRunning = false
 //            }
+//        } else {
+//            seconds -= 1
 //        }
-        if seconds < 1 {
-            minutesCounter -= 1
-            seconds = 0
-            minuteslabel.text = "\(minutesCounter)"
-            if minutesCounter == 0 {
-                timer.invalidate()
-                seconds = 60
-                secondsLabel.text = "00"
-                isTimerRunning = false
-            }
-        } else {
-            seconds -= 1
-            secondsLabel.text = timeString(time: TimeInterval(seconds))
-        }
     }
     
     @IBAction func pauseButton(_ sender: UIButton) {
@@ -113,9 +110,15 @@ class TimerViewController: UIViewController {
         timer.invalidate()
         seconds = 60
         minutesCounter = 0
-        secondsLabel.text = "00"
-        //counter = 0
         isTimerRunning = false
+    }
+    
+    func timerToSec() {
+        let hours = hoursCounter * 3600
+        let minutes = minutesCounter * 60
+        let second = seconds
+        
+        totalInSeconds = hours + minutes + second
     }
     
     func timeString(time: TimeInterval) -> String {
@@ -127,6 +130,10 @@ class TimerViewController: UIViewController {
         print(seconds)
         return String(format: "%02i", seconds)
     }
+    
+    // MARK:-  Circular progress.
+    
+    
     
     
 }

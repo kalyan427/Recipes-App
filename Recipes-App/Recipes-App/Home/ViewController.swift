@@ -14,18 +14,26 @@ class ViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var adView: GADBannerView!
+    @IBOutlet weak var addRecipetitleView: UIView!
     var filteredReceipe = [Any]()
     var tempArray = [Any]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Add recipe button layout
+        addTitle.layer.masksToBounds = true
+        addTitle.layer.cornerRadius = 30/2
+        
+        // Set addrecipetitleview shadow properties
+        addRecipetitleView.layer.cornerRadius = 25
+        addRecipetitleView.layer.borderWidth = 1
+        addRecipetitleView.layer.borderColor = UIColor(red: 220/255, green: 234/255, blue: 220/255, alpha: 1).cgColor
+        
+        // Set textfield border width hide
         getLatestData()
         self.title = "Recipes"
         self.titleTextField.delegate = self
-     
-        titleTextField.layer.cornerRadius = 20
-        titleTextField.layer.borderWidth = 1
-        titleTextField.layer.borderColor = UIColor(red: 233/255, green: 234/255, blue: 245/255, alpha: 1).cgColor
         adView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
         adView.rootViewController = self
         adView.load(GADRequest())
@@ -55,7 +63,6 @@ class ViewController: UIViewController,UITextFieldDelegate {
         }))
         
         alert.addAction(UIAlertAction(title: "View Steps", style: .default, handler: { (UIAlertAction) in
-            //self.deletebuttonClicked(tag: clickedCell)
             self.viewReceipeSteps(tag: clickedCell)
         }))
         
