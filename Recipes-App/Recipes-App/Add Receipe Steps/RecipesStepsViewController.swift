@@ -13,7 +13,8 @@ import GoogleMobileAds
 class RecipesStepsViewController: UIViewController,UITextFieldDelegate, TagListViewDelegate {
     @IBOutlet weak var stepsTF: UITextField!
     @IBOutlet weak var addStepsTF: UITextField!
-    var recipeTitle: String?    
+    @IBOutlet weak var segmentControl: UISegmentedControl!
+    var recipeTitle: String?
     var steps = [Any]()
     @IBOutlet weak var stepsTblView: UITableView!
     @IBOutlet weak var tagListView: TagListView!
@@ -32,7 +33,7 @@ class RecipesStepsViewController: UIViewController,UITextFieldDelegate, TagListV
         for items in recipeSteps {
             steps.append(items.steps!)
         }
-        for items in ingredients{
+        for items in ingredients {
             listAllIngredients.append(items.steps!)
         }
         self.title = self.selectedReceipe?.title
@@ -56,6 +57,9 @@ class RecipesStepsViewController: UIViewController,UITextFieldDelegate, TagListV
         adView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
         adView.rootViewController = self
         adView.load(GADRequest())
+        
+        //Segment Controller
+        self.segmentControl.tit
     }
 
         //Getters

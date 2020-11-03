@@ -25,6 +25,7 @@ PODS:
   - GoogleUtilities/Reachability (6.6.0):
     - GoogleUtilities/Logger
   - HGCircularSlider (2.2.0)
+  - IQKeyboardManagerSwift (6.5.6)
   - nanopb (1.30905.0):
     - nanopb/decode (= 1.30905.0)
     - nanopb/encode (= 1.30905.0)
@@ -36,6 +37,7 @@ PODS:
 DEPENDENCIES:
   - Google-Mobile-Ads-SDK
   - HGCircularSlider
+  - IQKeyboardManagerSwift
   - TagListView (~> 1.0)
 
 SPEC REPOS:
@@ -44,6 +46,7 @@ SPEC REPOS:
     - GoogleAppMeasurement
     - GoogleUtilities
     - HGCircularSlider
+    - IQKeyboardManagerSwift
     - nanopb
     - PromisesObjC
     - TagListView
@@ -53,10 +56,11 @@ SPEC CHECKSUMS:
   GoogleAppMeasurement: 2fd5c5a56c069db635c8e7b92d4809a9591d0a69
   GoogleUtilities: 39530bc0ad980530298e9c4af8549e991fd033b1
   HGCircularSlider: afb1942743a2df156dcc7a3500216e523e14266b
+  IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
   TagListView: a1c236d17960a0cf64156725a76ce6d73ebce2be
 
-PODFILE CHECKSUM: 7c2802aca933da8b3bf906a8d5b576e5d62b5855
+PODFILE CHECKSUM: 07e76e89d8da8d9cafb651ddc4737fba79b9a5ea
 
 COCOAPODS: 1.8.4

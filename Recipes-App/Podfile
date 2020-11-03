@@ -7,6 +7,7 @@ target 'Recipes-App' do
   pod 'TagListView', '~> 1.0'
   pod 'Google-Mobile-Ads-SDK'  
   pod 'HGCircularSlider'
+  pod 'IQKeyboardManagerSwift'
 
   # Pods for Recipes-App
 
