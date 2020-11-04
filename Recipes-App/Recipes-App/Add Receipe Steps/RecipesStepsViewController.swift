@@ -59,7 +59,7 @@ class RecipesStepsViewController: UIViewController,UITextFieldDelegate, TagListV
         adView.load(GADRequest())
         
         //Segment Controller
-        self.segmentControl.tit
+        
     }
 
         //Getters
