@@ -484,89 +484,159 @@
         <!--Timer-->
         <scene sceneID="gdX-B5-37d">
             <objects>
-                <viewController id="AKZ-gv-1Sc" customClass="TimerViewController" customModule="Recipes_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Timer" id="AKZ-gv-1Sc" customClass="TimerViewController" customModule="Recipes_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O1Z-q5-Tkv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="time" translatesAutoresizingMaskIntoConstraints="NO" id="IBt-Um-fXS">
-                                <rect key="frame" x="20" y="156" width="374" height="609"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SCz-zg-ayF" customClass="CircularSlider" customModule="HGCircularSlider">
-                                <rect key="frame" x="8" y="263" width="364" height="371"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Su5-3y-YAS" customClass="SpringView" customModule="Spring">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NcG-Kl-nnj" customClass="CircularSlider" customModule="HGCircularSlider">
-                                        <rect key="frame" x="37" y="75" width="207" height="200"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xcd-gs-m53" customClass="CircularSlider" customModule="HGCircularSlider">
+                                        <rect key="frame" x="87" y="213" width="240" height="299"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="06:24" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iyf-2f-1Op">
-                                                <rect key="frame" x="70" y="85" width="75" height="34"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cwg-Li-w7V">
+                                                <rect key="frame" x="86" y="130.5" width="68" height="38.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="tintColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="Cwg-Li-w7V" firstAttribute="centerX" secondItem="xcd-gs-m53" secondAttribute="centerX" id="IaU-Bg-23B"/>
+                                            <constraint firstItem="Cwg-Li-w7V" firstAttribute="centerY" secondItem="xcd-gs-m53" secondAttribute="centerY" id="ozS-NZ-KbP"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="diskColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tKc-gX-t2B">
+                                        <rect key="frame" x="179" y="532" width="72" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="ClockView"/>
+                                        <connections>
+                                            <action selector="showSetClockView:" destination="AKZ-gv-1Sc" eventType="touchUpInside" id="AQz-86-XrA"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="xcd-gs-m53" secondAttribute="bottom" constant="213" id="NAc-sL-ws7"/>
+                                    <constraint firstItem="xcd-gs-m53" firstAttribute="top" secondItem="Su5-3y-YAS" secondAttribute="top" constant="213" id="UVe-mj-PaJ"/>
+                                    <constraint firstItem="xcd-gs-m53" firstAttribute="leading" secondItem="Su5-3y-YAS" secondAttribute="leading" constant="87" id="gGq-zp-Tj5"/>
+                                    <constraint firstAttribute="trailing" secondItem="xcd-gs-m53" secondAttribute="trailing" constant="87" id="mGf-pi-bTN"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZTz-uI-K0o" customClass="SpringView" customModule="Spring">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="time" translatesAutoresizingMaskIntoConstraints="NO" id="IBt-Um-fXS">
+                                        <rect key="frame" x="20" y="158" width="374" height="399.5"/>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SCz-zg-ayF" customClass="CircularSlider" customModule="HGCircularSlider">
+                                        <rect key="frame" x="54" y="222" width="306" height="271.5"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NcG-Kl-nnj" customClass="CircularSlider" customModule="HGCircularSlider">
+                                                <rect key="frame" x="54" y="63" width="198.5" height="146.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="06:30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iyf-2f-1Op">
+                                                        <rect key="frame" x="61" y="61" width="76.5" height="24.5"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="21"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="Iyf-2f-1Op" firstAttribute="leading" secondItem="NcG-Kl-nnj" secondAttribute="leading" constant="61" id="C7j-df-Ab7"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Iyf-2f-1Op" secondAttribute="trailing" constant="61" id="P6f-zk-vYL"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Iyf-2f-1Op" secondAttribute="bottom" constant="61" id="U6d-GT-Gp1"/>
+                                                    <constraint firstItem="Iyf-2f-1Op" firstAttribute="top" secondItem="NcG-Kl-nnj" secondAttribute="top" constant="61" id="ukG-uy-joq"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="diskColor">
+                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="trackFillColor">
+                                                        <color key="value" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="hoursSlider:" destination="AKZ-gv-1Sc" eventType="valueChanged" id="D5p-g4-KCy"/>
+                                                </connections>
+                                            </view>
+                                        </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="NcG-Kl-nnj" firstAttribute="top" secondItem="SCz-zg-ayF" secondAttribute="top" constant="63" id="8mh-hh-j3K"/>
+                                            <constraint firstAttribute="bottom" secondItem="NcG-Kl-nnj" secondAttribute="bottom" constant="62" id="C3j-vf-gan"/>
+                                            <constraint firstItem="NcG-Kl-nnj" firstAttribute="leading" secondItem="SCz-zg-ayF" secondAttribute="leading" constant="54" id="c2H-TA-z8G"/>
+                                            <constraint firstAttribute="trailing" secondItem="NcG-Kl-nnj" secondAttribute="trailing" constant="53.5" id="cqe-j4-N4k"/>
+                                        </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="diskColor">
                                                 <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="trackFillColor">
-                                                <color key="value" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="value" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="minuteSlider:" destination="AKZ-gv-1Sc" eventType="valueChanged" id="ldM-PT-vp4"/>
+                                        </connections>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ph4-gY-DWs">
+                                        <rect key="frame" x="190" y="593" width="34" height="30"/>
+                                        <state key="normal" title="Start"/>
+                                        <connections>
+                                            <action selector="showDisplayClockView:" destination="AKZ-gv-1Sc" eventType="touchUpInside" id="1Fi-LD-D2X"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="diskColor">
-                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="trackFillColor">
-                                        <color key="value" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="IBt-Um-fXS" firstAttribute="leading" secondItem="ZTz-uI-K0o" secondAttribute="leading" constant="20" id="7SN-yL-QqZ"/>
+                                    <constraint firstItem="Ph4-gY-DWs" firstAttribute="top" secondItem="IBt-Um-fXS" secondAttribute="bottom" constant="119" id="C2z-At-HM0"/>
+                                    <constraint firstAttribute="trailing" secondItem="SCz-zg-ayF" secondAttribute="trailing" constant="54" id="Ktn-7k-gzZ"/>
+                                    <constraint firstItem="SCz-zg-ayF" firstAttribute="leading" secondItem="ZTz-uI-K0o" secondAttribute="leading" constant="54" id="Yaq-pB-EH0"/>
+                                    <constraint firstItem="Ph4-gY-DWs" firstAttribute="top" secondItem="SCz-zg-ayF" secondAttribute="bottom" constant="183" id="dcL-uC-Odq"/>
+                                    <constraint firstItem="SCz-zg-ayF" firstAttribute="top" secondItem="ZTz-uI-K0o" secondAttribute="top" constant="222" id="gai-7s-tEu"/>
+                                    <constraint firstItem="IBt-Um-fXS" firstAttribute="top" secondItem="ZTz-uI-K0o" secondAttribute="top" constant="158" id="lEi-3U-mdx"/>
+                                    <constraint firstAttribute="trailing" secondItem="IBt-Um-fXS" secondAttribute="trailing" constant="20" id="obC-5n-UQ7"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="NNf-rW-0UZ" firstAttribute="bottom" secondItem="ZTz-uI-K0o" secondAttribute="bottom" id="HQh-uK-q3E"/>
+                            <constraint firstItem="ZTz-uI-K0o" firstAttribute="top" secondItem="NNf-rW-0UZ" secondAttribute="top" id="LaV-NR-fNj"/>
+                            <constraint firstItem="Su5-3y-YAS" firstAttribute="top" secondItem="NNf-rW-0UZ" secondAttribute="top" id="NgZ-uZ-AVP"/>
+                            <constraint firstItem="ZTz-uI-K0o" firstAttribute="leading" secondItem="NNf-rW-0UZ" secondAttribute="leading" id="Ygz-lP-pT6"/>
+                            <constraint firstItem="NNf-rW-0UZ" firstAttribute="trailing" secondItem="ZTz-uI-K0o" secondAttribute="trailing" id="dYx-VC-Y8g"/>
+                            <constraint firstItem="NNf-rW-0UZ" firstAttribute="trailing" secondItem="Su5-3y-YAS" secondAttribute="trailing" id="fgd-Rs-oPg"/>
+                            <constraint firstItem="NNf-rW-0UZ" firstAttribute="bottom" secondItem="Su5-3y-YAS" secondAttribute="bottom" id="kq0-RH-VSh"/>
+                            <constraint firstItem="Su5-3y-YAS" firstAttribute="leading" secondItem="NNf-rW-0UZ" secondAttribute="leading" id="tT4-k7-4R9"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="NNf-rW-0UZ"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Timer" image="Timer" id="LWP-5H-UE8"/>
-                    <navigationItem key="navigationItem" id="15n-Xg-uw2"/>
+                    <navigationItem key="navigationItem" title="Timer" id="15n-Xg-uw2"/>
                     <connections>
+                        <outlet property="displayClockView" destination="Su5-3y-YAS" id="Y1C-Ta-nhm"/>
                         <outlet property="hourView" destination="NcG-Kl-nnj" id="U2p-rK-Jsi"/>
                         <outlet property="minuteView" destination="SCz-zg-ayF" id="PcX-nS-CY7"/>
+                        <outlet property="setClockView" destination="ZTz-uI-K0o" id="0FS-f6-OJS"/>
+                        <outlet property="timerLabel" destination="Iyf-2f-1Op" id="HxL-vQ-1u0"/>
+                        <outlet property="timerView" destination="xcd-gs-m53" id="GxW-u5-bUg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e8p-yE-NaO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" id="JbY-Rb-0uE" customClass="CircularSlider" customModule="HGCircularSlider">
-                    <rect key="frame" x="0.0" y="0.0" width="281" height="351"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EBT-4M-0PH" customClass="CircularSlider" customModule="HGCircularSlider">
-                            <rect key="frame" x="37" y="75" width="207" height="200"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="color" keyPath="diskColor">
-                                    <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                        </view>
-                    </subviews>
-                    <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <viewLayoutGuide key="safeArea" id="ENf-hB-uh0"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="color" keyPath="diskColor">
-                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </view>
             </objects>
-            <point key="canvasLocation" x="1692.753623188406" y="2479.6875"/>
+            <point key="canvasLocation" x="2602.898550724638" y="2479.6875"/>
         </scene>
         <!--Grocery List View Controller-->
         <scene sceneID="nYg-Dl-iha">
@@ -710,7 +780,7 @@
                     <connections>
                         <segue destination="iFm-0A-WDv" kind="relationship" relationship="viewControllers" id="RHd-OX-5P4"/>
                         <segue destination="qN6-PT-sOi" kind="relationship" relationship="viewControllers" id="Iwb-14-IdV"/>
-                        <segue destination="AKZ-gv-1Sc" kind="relationship" relationship="viewControllers" id="oMm-v3-9uX"/>
+                        <segue destination="zMq-FT-pm7" kind="relationship" relationship="viewControllers" id="oMm-v3-9uX"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kwg-Hc-pfA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -760,6 +830,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jKJ-Cr-lVd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1694" y="139"/>
+        </scene>
+        <!--Timer-->
+        <scene sceneID="Goz-tm-8Wy">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zMq-FT-pm7" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Timer" image="Timer" id="LWP-5H-UE8"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="c9M-WM-WI1">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="AKZ-gv-1Sc" kind="relationship" relationship="rootViewController" id="deq-MJ-N1j"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GD6-7V-DUU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1692.753623188406" y="2479.6875"/>
         </scene>
     </scenes>
     <resources>
