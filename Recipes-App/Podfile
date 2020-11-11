@@ -8,6 +8,7 @@ target 'Recipes-App' do
   pod 'Google-Mobile-Ads-SDK'  
   pod 'HGCircularSlider'
   pod 'IQKeyboardManagerSwift'
+  pod 'Spring', :git => 'https://github.com/MengTo/Spring.git'
 
   # Pods for Recipes-App
 

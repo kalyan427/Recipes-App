@@ -32,12 +32,14 @@ PODS:
   - nanopb/decode (1.30905.0)
   - nanopb/encode (1.30905.0)
   - PromisesObjC (1.2.9)
+  - Spring (1.0.6)
   - TagListView (1.4.1)
 
 DEPENDENCIES:
   - Google-Mobile-Ads-SDK
   - HGCircularSlider
   - IQKeyboardManagerSwift
+  - Spring (from `https://github.com/MengTo/Spring.git`)
   - TagListView (~> 1.0)
 
 SPEC REPOS:
@@ -51,6 +53,15 @@ SPEC REPOS:
     - PromisesObjC
     - TagListView
 
+EXTERNAL SOURCES:
+  Spring:
+    :git: https://github.com/MengTo/Spring.git
+
+CHECKOUT OPTIONS:
+  Spring:
+    :commit: 50d92a5b9e08848387ae95bf44c6ad20834f7083
+    :git: https://github.com/MengTo/Spring.git
+
 SPEC CHECKSUMS:
   Google-Mobile-Ads-SDK: 4c3b24b04293b4bb370b2cb392cdd3ee97c87752
   GoogleAppMeasurement: 2fd5c5a56c069db635c8e7b92d4809a9591d0a69
@@ -59,8 +70,9 @@ SPEC CHECKSUMS:
   IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
+  Spring: 3d113f14575ef79aec9c5f906dfa4f5001c03254
   TagListView: a1c236d17960a0cf64156725a76ce6d73ebce2be
 
-PODFILE CHECKSUM: 07e76e89d8da8d9cafb651ddc4737fba79b9a5ea
+PODFILE CHECKSUM: a8327d0b552e29c335738d542e56fefa20650b76
 
 COCOAPODS: 1.8.4

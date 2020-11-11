@@ -17,12 +17,16 @@ class TimerViewController: UIViewController {
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var setClockView: SpringView!
     @IBOutlet weak var displayClockView: SpringView!
+    @IBOutlet weak var timerViewLabel: UILabel!
     
     var hour: Int = 0
     var minutes: Int = 0
     var hoursText: String = ""
     var minutestext: String = "30"
     var flipDuration: Double = 0.20
+    var totalHours: Int = 0
+    var totalMinutes:Int = 0
+    var totalTimeSeconds: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,22 +53,16 @@ class TimerViewController: UIViewController {
         // TimerSet View.
         timerView.diskColor = UIColor.white
         timerView.endThumbStrokeColor = UIColor.black
-        
         self.title = "Timer"
     }
+}
+
+//MARK: - View Clock
+
+extension TimerViewController {
     
-   
-    // Flip view action.
-    @IBAction func showDisplayClockView(_ sender: UIButton) {
-        DispatchQueue.main.asyncAfter(deadline:.now()+0.6) {
-            self.setClockView.isHidden = true
-            self.displayClockView.isHidden = false
-        }
-        setClockView.animation = "flipX"
-        setClockView.curve = "easeIn"
-        setClockView.duration = 1.0
-        setClockView.animate()
-       
+    func updateTimerViewUI(withCurrentTime totalTimeSeconds: Int) {
+        timerView.endPointValue = CGFloat(totalTimeSeconds)
     }
     
     @IBAction func showSetClockView(_ sender: UIButton) {
@@ -77,11 +75,10 @@ class TimerViewController: UIViewController {
         displayClockView.duration = 1.0
         displayClockView.animate()
     }
-}
-
-//MARK: - View Clock
-
-extension TimerViewController {
+    
+   @objc func countDown() {
+        
+    }
     
 }
 
@@ -89,18 +86,38 @@ extension TimerViewController {
 extension TimerViewController {
     
     // MARK: Action for circular slider.
-       
-           // Hours slider action.
-       @IBAction func hoursSlider(_ sender: CircularSlider) {
-           hour = Int(sender.endPointValue)
-           hoursText = "\(hour)"
-           timerLabel.text = "0\(hoursText)" + ":" + "\(minutestext)"
-       }
-       
-       // Minutes slider action.
-       @IBAction func minuteSlider(_ sender: CircularSlider) {
-           minutes = Int(sender.endPointValue)
-           minutestext = "\(minutes)"
-           timerLabel.text = "\(hoursText)" + ":" + "\(minutestext)"
-       }
+    
+    // Hours slider action.
+    @IBAction func hoursSlider(_ sender: CircularSlider) {
+        hour = Int(sender.endPointValue)
+        hoursText = "\(hour)"
+        timerLabel.text = "\(hoursText)" + ":" + "\(minutestext)"
+    }
+    
+    // Minutes slider action.
+    @IBAction func minuteSlider(_ sender: CircularSlider) {
+        minutes = Int(sender.endPointValue)
+        minutestext = "\(minutes)"
+        timerLabel.text = "\(hoursText)" + ":" + "\(minutestext)"
+    }
+    
+    //On Set Click
+    @IBAction func showDisplayClockView(_ sender: UIButton) {
+        DispatchQueue.main.asyncAfter(deadline:.now() + 0.6) {
+            self.setClockView.isHidden = true
+            self.displayClockView.isHidden = false
+        }
+        setClockView.animation = "flipX"
+        setClockView.curve = "easeIn"
+        setClockView.duration = 1.0
+        setClockView.animate()
+        
+        // Conversion to seconds
+        totalHours = hour * 60 * 60
+        totalMinutes = minutes * 60
+        totalTimeSeconds = totalHours + totalMinutes
+        //timerView.maximumValue = CGFloat(totalTimeSeconds)
+        
+         Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.countDown), userInfo: nil, repeats: true)
+    }
 }
