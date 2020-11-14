@@ -11,6 +11,7 @@ import HGCircularSlider
 import Spring
 
 class TimerViewController: UIViewController {
+    @IBOutlet weak var secondsView: CircularSlider!
     @IBOutlet weak var hourView: CircularSlider!
     @IBOutlet weak var minuteView: CircularSlider!
     @IBOutlet weak var timerView: CircularSlider!
@@ -21,12 +22,17 @@ class TimerViewController: UIViewController {
     
     var hour: Int = 0
     var minutes: Int = 0
+    var seconds: Int = 0
     var hoursText: String = ""
     var minutestext: String = "30"
+    var secondsText: String = ""
     var flipDuration: Double = 0.20
     var totalHours: Int = 0
-    var totalMinutes:Int = 0
-    var totalTimeSeconds: Int = 0
+    var totalMinutes: Int = 0
+    var totalSeconds: Int = 0
+    var totalTimeInSeconds: Int = 0
+    var constantTotalTimeInSeconds: Int = 0
+    var totalValueafterMinus: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +49,13 @@ class TimerViewController: UIViewController {
         minuteView.minimumValue = 0
         minuteView.maximumValue = 60
         minuteView.endPointValue = 30
+        
+        // Seconds Slider
+        secondsView.minimumValue = 0
+        secondsView.maximumValue = 60
+        secondsView.endPointValue = 20
+        
+        // minuteView.end
         minuteView.diskColor = UIColor.clear
         minuteView.backgroundColor = UIColor.clear
         
@@ -51,22 +64,17 @@ class TimerViewController: UIViewController {
         setClockView.isHidden = false
         
         // TimerSet View.
+       // timerView.minimumValue = 0
         timerView.diskColor = UIColor.white
         timerView.endThumbStrokeColor = UIColor.black
-        self.title = "Timer"
     }
 }
 
 //MARK: - View Clock
 
 extension TimerViewController {
-    
-    func updateTimerViewUI(withCurrentTime totalTimeSeconds: Int) {
-        timerView.endPointValue = CGFloat(totalTimeSeconds)
-    }
-    
     @IBAction func showSetClockView(_ sender: UIButton) {
-        DispatchQueue.main.asyncAfter(deadline:.now()+0.6) {
+        DispatchQueue.main.asyncAfter(deadline:.now() + 0.6) {
             self.setClockView.isHidden = false
             self.displayClockView.isHidden = true
         }
@@ -76,10 +84,16 @@ extension TimerViewController {
         displayClockView.animate()
     }
     
-   @objc func countDown() {
-        
+    @objc func countDown() {
+        timerView.maximumValue = CGFloat(totalTimeInSeconds)
+        totalTimeInSeconds -= 1
+        totalValueafterMinus = totalTimeInSeconds
+        updatePlayerUI(currentTime: CGFloat(totalTimeInSeconds))
     }
     
+    func updatePlayerUI(currentTime: CGFloat) {
+        timerView.endPointValue = CGFloat(constantTotalTimeInSeconds) - CGFloat(totalValueafterMinus)
+    }
 }
 
 //MARK: - Set Clock
@@ -91,14 +105,21 @@ extension TimerViewController {
     @IBAction func hoursSlider(_ sender: CircularSlider) {
         hour = Int(sender.endPointValue)
         hoursText = "\(hour)"
-        timerLabel.text = "\(hoursText)" + ":" + "\(minutestext)"
+        timerLabel.text = "\(hoursText)" + ":" + "\(minutestext)" + ":" + "\(secondsText)"
     }
     
     // Minutes slider action.
     @IBAction func minuteSlider(_ sender: CircularSlider) {
         minutes = Int(sender.endPointValue)
         minutestext = "\(minutes)"
-        timerLabel.text = "\(hoursText)" + ":" + "\(minutestext)"
+        timerLabel.text = "\(hoursText)" + ":" + "\(minutestext)" + ":" + "\(secondsText)"
+    }
+    
+    // Seconds Slider.
+    @IBAction func secondsSlider(_ sender: CircularSlider) {
+        seconds = Int(sender.endPointValue)
+        secondsText = "\(seconds)"
+        timerLabel.text = "\(hoursText)" + ":" + "\(minutestext)" + ":" + "\(secondsText)"
     }
     
     //On Set Click
@@ -112,12 +133,12 @@ extension TimerViewController {
         setClockView.duration = 1.0
         setClockView.animate()
         
-        // Conversion to seconds
+        // Conversion total time to seconds
         totalHours = hour * 60 * 60
         totalMinutes = minutes * 60
-        totalTimeSeconds = totalHours + totalMinutes
-        //timerView.maximumValue = CGFloat(totalTimeSeconds)
-        
-         Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.countDown), userInfo: nil, repeats: true)
+        totalSeconds = seconds
+        totalTimeInSeconds = totalHours + totalMinutes + totalSeconds
+        constantTotalTimeInSeconds = totalTimeInSeconds
+        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.countDown), userInfo: nil, repeats: true)
     }
 }

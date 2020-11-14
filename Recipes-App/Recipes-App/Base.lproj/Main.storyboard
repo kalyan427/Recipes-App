@@ -534,6 +534,9 @@
                                             <userDefinedRuntimeAttribute type="color" keyPath="diskColor">
                                                 <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="thumbRadius">
+                                                <real key="value" value="6"/>
+                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tKc-gX-t2B">
@@ -556,31 +559,31 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x4C-3i-tN1">
-                                        <rect key="frame" x="50" y="205.5" width="314" height="314"/>
+                                        <rect key="frame" x="27" y="182.5" width="360" height="360"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="time" translatesAutoresizingMaskIntoConstraints="NO" id="IBt-Um-fXS">
-                                                <rect key="frame" x="0.0" y="0.0" width="314" height="314"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="360" height="360"/>
                                             </imageView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SCz-zg-ayF" customClass="CircularSlider" customModule="HGCircularSlider">
-                                                <rect key="frame" x="30" y="30" width="254" height="254"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SCz-zg-ayF" userLabel="Hours View" customClass="CircularSlider" customModule="HGCircularSlider">
+                                                <rect key="frame" x="35" y="35" width="290" height="290"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NcG-Kl-nnj" customClass="CircularSlider" customModule="HGCircularSlider">
-                                                        <rect key="frame" x="30" y="30" width="194" height="194"/>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NcG-Kl-nnj" userLabel="Minutes View" customClass="CircularSlider" customModule="HGCircularSlider">
+                                                        <rect key="frame" x="35" y="35" width="220" height="220"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T9X-QW-fDU" customClass="CircularSlider" customModule="HGCircularSlider">
-                                                                <rect key="frame" x="30" y="30" width="134" height="134"/>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T9X-QW-fDU" userLabel="Seconds View" customClass="CircularSlider" customModule="HGCircularSlider">
+                                                                <rect key="frame" x="35" y="35" width="150" height="150"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X9Y-rq-3Mf">
-                                                                        <rect key="frame" x="42" y="42" width="50" height="50"/>
+                                                                        <rect key="frame" x="52.5" y="52.5" width="45" height="45"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6:30:20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="geK-C0-pYn">
-                                                                                <rect key="frame" x="-10" y="13" width="70.5" height="24.5"/>
+                                                                                <rect key="frame" x="-12.5" y="10.5" width="70.5" height="24.5"/>
                                                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="21"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hh:mm:ss" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wcm-bk-aCE">
-                                                                                <rect key="frame" x="4" y="36" width="42.5" height="11"/>
+                                                                                <rect key="frame" x="1.5" y="33.5" width="42.5" height="11"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <nil key="highlightedColor"/>
@@ -589,8 +592,8 @@
                                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                                         <constraints>
                                                                             <constraint firstItem="geK-C0-pYn" firstAttribute="centerY" secondItem="X9Y-rq-3Mf" secondAttribute="centerY" id="0h2-vi-poT"/>
-                                                                            <constraint firstAttribute="width" constant="50" id="CGp-ro-3vX"/>
-                                                                            <constraint firstAttribute="height" constant="50" id="Had-hI-jYh"/>
+                                                                            <constraint firstAttribute="width" constant="45" id="CGp-ro-3vX"/>
+                                                                            <constraint firstAttribute="height" constant="45" id="Had-hI-jYh"/>
                                                                             <constraint firstItem="Wcm-bk-aCE" firstAttribute="centerX" secondItem="geK-C0-pYn" secondAttribute="centerX" id="Qxp-cg-pxI"/>
                                                                             <constraint firstItem="geK-C0-pYn" firstAttribute="centerX" secondItem="X9Y-rq-3Mf" secondAttribute="centerX" id="VBO-4M-Noj"/>
                                                                             <constraint firstItem="Wcm-bk-aCE" firstAttribute="top" secondItem="geK-C0-pYn" secondAttribute="bottom" constant="-1.5" id="YZI-Dk-zzZ"/>
@@ -609,20 +612,26 @@
                                                                     <userDefinedRuntimeAttribute type="color" keyPath="trackFillColor">
                                                                         <color key="value" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="thumbLineWidth">
+                                                                        <real key="value" value="3"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="thumbRadius">
+                                                                        <real key="value" value="7"/>
+                                                                    </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
-                                                                    <action selector="hoursSlider:" destination="AKZ-gv-1Sc" eventType="valueChanged" id="7zu-RK-v7s"/>
+                                                                    <action selector="secondsSlider:" destination="AKZ-gv-1Sc" eventType="valueChanged" id="Hzk-xg-r4w"/>
                                                                 </connections>
                                                             </view>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstItem="T9X-QW-fDU" firstAttribute="leading" secondItem="NcG-Kl-nnj" secondAttribute="leading" constant="30" id="0WS-TE-b6y"/>
-                                                            <constraint firstAttribute="trailing" secondItem="T9X-QW-fDU" secondAttribute="trailing" constant="30" id="3Ds-Sw-Qus"/>
-                                                            <constraint firstAttribute="bottom" secondItem="T9X-QW-fDU" secondAttribute="bottom" constant="30" id="C31-mc-5m4"/>
+                                                            <constraint firstItem="T9X-QW-fDU" firstAttribute="leading" secondItem="NcG-Kl-nnj" secondAttribute="leading" constant="35" id="0WS-TE-b6y"/>
+                                                            <constraint firstAttribute="trailing" secondItem="T9X-QW-fDU" secondAttribute="trailing" constant="35" id="3Ds-Sw-Qus"/>
+                                                            <constraint firstAttribute="bottom" secondItem="T9X-QW-fDU" secondAttribute="bottom" constant="35" id="C31-mc-5m4"/>
                                                             <constraint firstItem="T9X-QW-fDU" firstAttribute="centerX" secondItem="NcG-Kl-nnj" secondAttribute="centerX" id="V9h-jN-sEk"/>
                                                             <constraint firstItem="T9X-QW-fDU" firstAttribute="centerY" secondItem="NcG-Kl-nnj" secondAttribute="centerY" id="iSu-M0-5Ac"/>
-                                                            <constraint firstItem="T9X-QW-fDU" firstAttribute="top" secondItem="NcG-Kl-nnj" secondAttribute="top" constant="30" id="jRe-bk-mLO"/>
+                                                            <constraint firstItem="T9X-QW-fDU" firstAttribute="top" secondItem="NcG-Kl-nnj" secondAttribute="top" constant="35" id="jRe-bk-mLO"/>
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="diskColor">
@@ -631,18 +640,24 @@
                                                             <userDefinedRuntimeAttribute type="color" keyPath="trackFillColor">
                                                                 <color key="value" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="thumbLineWidth">
+                                                                <real key="value" value="3"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="thumbRadius">
+                                                                <real key="value" value="7"/>
+                                                            </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
-                                                            <action selector="hoursSlider:" destination="AKZ-gv-1Sc" eventType="valueChanged" id="D5p-g4-KCy"/>
+                                                            <action selector="minuteSlider:" destination="AKZ-gv-1Sc" eventType="valueChanged" id="DDx-ma-SQ7"/>
                                                         </connections>
                                                     </view>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="NcG-Kl-nnj" secondAttribute="trailing" constant="30" id="0Tg-0H-KQG"/>
-                                                    <constraint firstItem="NcG-Kl-nnj" firstAttribute="leading" secondItem="SCz-zg-ayF" secondAttribute="leading" constant="30" id="Cvj-4h-lNt"/>
-                                                    <constraint firstAttribute="bottom" secondItem="NcG-Kl-nnj" secondAttribute="bottom" constant="30" id="Ixf-P1-MZg"/>
-                                                    <constraint firstItem="NcG-Kl-nnj" firstAttribute="top" secondItem="SCz-zg-ayF" secondAttribute="top" constant="30" id="LjL-Xd-GmM"/>
+                                                    <constraint firstAttribute="trailing" secondItem="NcG-Kl-nnj" secondAttribute="trailing" constant="35" id="0Tg-0H-KQG"/>
+                                                    <constraint firstItem="NcG-Kl-nnj" firstAttribute="leading" secondItem="SCz-zg-ayF" secondAttribute="leading" constant="35" id="Cvj-4h-lNt"/>
+                                                    <constraint firstAttribute="bottom" secondItem="NcG-Kl-nnj" secondAttribute="bottom" constant="35" id="Ixf-P1-MZg"/>
+                                                    <constraint firstItem="NcG-Kl-nnj" firstAttribute="top" secondItem="SCz-zg-ayF" secondAttribute="top" constant="35" id="LjL-Xd-GmM"/>
                                                     <constraint firstItem="NcG-Kl-nnj" firstAttribute="centerX" secondItem="SCz-zg-ayF" secondAttribute="centerX" id="p3P-2r-1wp"/>
                                                     <constraint firstItem="NcG-Kl-nnj" firstAttribute="centerY" secondItem="SCz-zg-ayF" secondAttribute="centerY" id="wAb-xX-iDb"/>
                                                 </constraints>
@@ -651,31 +666,37 @@
                                                         <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="trackFillColor">
-                                                        <color key="value" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="value" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="thumbRadius">
+                                                        <real key="value" value="7"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="thumbLineWidth">
+                                                        <real key="value" value="3"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="minuteSlider:" destination="AKZ-gv-1Sc" eventType="valueChanged" id="ldM-PT-vp4"/>
+                                                    <action selector="hoursSlider:" destination="AKZ-gv-1Sc" eventType="valueChanged" id="Ie4-ke-lu9"/>
                                                 </connections>
                                             </view>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="IBt-Um-fXS" firstAttribute="leading" secondItem="x4C-3i-tN1" secondAttribute="leading" id="5Kr-Af-qO2"/>
-                                            <constraint firstAttribute="width" constant="314" id="Bwz-mY-ZuQ"/>
+                                            <constraint firstAttribute="width" constant="360" id="Bwz-mY-ZuQ"/>
                                             <constraint firstItem="SCz-zg-ayF" firstAttribute="centerY" secondItem="IBt-Um-fXS" secondAttribute="centerY" id="DXT-cX-bh5"/>
-                                            <constraint firstAttribute="trailing" secondItem="SCz-zg-ayF" secondAttribute="trailing" constant="30" id="Ler-OK-fwK"/>
+                                            <constraint firstAttribute="trailing" secondItem="SCz-zg-ayF" secondAttribute="trailing" constant="35" id="Ler-OK-fwK"/>
                                             <constraint firstItem="SCz-zg-ayF" firstAttribute="centerX" secondItem="IBt-Um-fXS" secondAttribute="centerX" id="MN2-7W-RYy"/>
-                                            <constraint firstItem="SCz-zg-ayF" firstAttribute="top" secondItem="x4C-3i-tN1" secondAttribute="top" constant="30" id="TBt-du-RQ7"/>
+                                            <constraint firstItem="SCz-zg-ayF" firstAttribute="top" secondItem="x4C-3i-tN1" secondAttribute="top" constant="35" id="TBt-du-RQ7"/>
                                             <constraint firstAttribute="trailing" secondItem="IBt-Um-fXS" secondAttribute="trailing" id="X8y-qU-c4w"/>
                                             <constraint firstItem="IBt-Um-fXS" firstAttribute="top" secondItem="x4C-3i-tN1" secondAttribute="top" id="cwG-S6-ShZ"/>
                                             <constraint firstAttribute="bottom" secondItem="IBt-Um-fXS" secondAttribute="bottom" id="mlL-5a-n8s"/>
-                                            <constraint firstAttribute="height" constant="314" id="t5J-19-U9G"/>
-                                            <constraint firstItem="SCz-zg-ayF" firstAttribute="leading" secondItem="x4C-3i-tN1" secondAttribute="leading" constant="30" id="tBe-Ba-18W"/>
-                                            <constraint firstAttribute="bottom" secondItem="SCz-zg-ayF" secondAttribute="bottom" constant="30" id="urA-gA-pqK"/>
+                                            <constraint firstAttribute="height" constant="360" id="t5J-19-U9G"/>
+                                            <constraint firstItem="SCz-zg-ayF" firstAttribute="leading" secondItem="x4C-3i-tN1" secondAttribute="leading" constant="35" id="tBe-Ba-18W"/>
+                                            <constraint firstAttribute="bottom" secondItem="SCz-zg-ayF" secondAttribute="bottom" constant="35" id="urA-gA-pqK"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ph4-gY-DWs">
-                                        <rect key="frame" x="162" y="657" width="90" height="37"/>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ph4-gY-DWs">
+                                        <rect key="frame" x="172" y="657" width="70" height="37"/>
                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="90" id="AZx-EZ-qCB"/>
@@ -720,8 +741,9 @@
                     <navigationItem key="navigationItem" title="Timer" id="15n-Xg-uw2"/>
                     <connections>
                         <outlet property="displayClockView" destination="Su5-3y-YAS" id="Y1C-Ta-nhm"/>
-                        <outlet property="hourView" destination="NcG-Kl-nnj" id="U2p-rK-Jsi"/>
-                        <outlet property="minuteView" destination="SCz-zg-ayF" id="PcX-nS-CY7"/>
+                        <outlet property="hourView" destination="SCz-zg-ayF" id="YUT-IQ-U9O"/>
+                        <outlet property="minuteView" destination="NcG-Kl-nnj" id="1AB-ng-n0B"/>
+                        <outlet property="secondsView" destination="T9X-QW-fDU" id="gtX-Tn-zPv"/>
                         <outlet property="setClockView" destination="ZTz-uI-K0o" id="0FS-f6-OJS"/>
                         <outlet property="timerLabel" destination="geK-C0-pYn" id="ijB-Au-ddx"/>
                         <outlet property="timerView" destination="xcd-gs-m53" id="GxW-u5-bUg"/>
@@ -951,8 +973,8 @@
         <image name="icon recipe" width="37.5" height="37.5"/>
         <image name="menu" width="256" height="256"/>
         <image name="notfilled" width="48" height="48"/>
-        <image name="plus" width="256" height="256"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="plus" width="256" height="256"/>
         <image name="receipe" width="350" height="318"/>
         <image name="time" width="301" height="300"/>
     </resources>
