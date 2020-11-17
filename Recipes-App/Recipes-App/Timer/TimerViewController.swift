@@ -93,6 +93,12 @@ extension TimerViewController {
     
     func updatePlayerUI(currentTime: CGFloat) {
         timerView.endPointValue = CGFloat(constantTotalTimeInSeconds) - CGFloat(totalValueafterMinus)
+        // Conversion from seconds to hours.
+        var hour = totalTimeInSeconds / 3600
+        var minsec = totalTimeInSeconds % 3600
+        var mins = minsec / 60
+        var sec = minsec % 60
+        timerViewLabel.text = String(format: "%02d:%02d:%02d", hour, mins, sec)
     }
 }
 
