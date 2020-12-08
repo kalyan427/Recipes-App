@@ -45,13 +45,16 @@ class ViewController: UIViewController,UITextFieldDelegate {
     }
     
     @IBAction func addTitleButton(_ sender: UIButton) {
-        if let textTitle = titleTextField.text {
-            DataManager().saveReceipe(Title: textTitle)
-            self.filteredReceipe = DataManager().getAllReceipes()
-            tableView.reloadData()
-            self.titleTextField.text = nil
+        guard titleTextField.text!.length > 0 else {
+            return
         }
+        DataManager().saveReceipe(Title: titleTextField.text!)
+        self.filteredReceipe = DataManager().getAllReceipes()
+        tableView.reloadData()
+        self.titleTextField.text = nil
+        
     }
+    
     
     
     @objc func moreButtonClicked(sender: UIButton) {

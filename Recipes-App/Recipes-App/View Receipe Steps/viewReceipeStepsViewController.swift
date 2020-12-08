@@ -11,7 +11,6 @@ import TagListView
 
 class viewReceipeStepsViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,TagListViewDelegate {
     @IBOutlet weak var segmentTitle: UILabel!
-    
     @IBOutlet weak var segmentController: UISegmentedControl!
     var allSteps = [Any]()
     @IBOutlet weak var viewStepsTblView: UITableView!

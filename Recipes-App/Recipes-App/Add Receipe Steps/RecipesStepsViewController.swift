@@ -14,6 +14,8 @@ class RecipesStepsViewController: UIViewController,UITextFieldDelegate, TagListV
     @IBOutlet weak var stepsTF: UITextField!
     @IBOutlet weak var addStepsTF: UITextField!
     @IBOutlet weak var segmentControl: UISegmentedControl!
+    @IBOutlet weak var IngredientsView: UIView!
+    @IBOutlet weak var RecipeStepsView: UIView!
     var recipeTitle: String?
     var steps = [Any]()
     @IBOutlet weak var stepsTblView: UITableView!
@@ -27,6 +29,9 @@ class RecipesStepsViewController: UIViewController,UITextFieldDelegate, TagListV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.stepsTF.placeholder = "Enter Ingredients"
+        self.IngredientsView.isHidden = false
+        self.RecipeStepsView.isHidden = true
         let recipeSteps = DataManager().getReceipeSteps(id: Int(self.selectedReceipe!.id))
         let ingredients = DataManager().getReceipeIngredients(id: Int(self.selectedReceipe!.id))
         
@@ -51,18 +56,15 @@ class RecipesStepsViewController: UIViewController,UITextFieldDelegate, TagListV
             tagListView.paddingY = 13
             tagListView.enableRemoveButton = true
         }
-        tagListViewHeight.constant = self.tagListView.intrinsicContentSize.height
+            //tagListViewHeight.constant = self.tagListView.intrinsicContentSize.height
         
         //Google Ads.
         adView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
         adView.rootViewController = self
         adView.load(GADRequest())
-        
-        //Segment Controller
-        
     }
 
-        //Getters
+        //Getters.
         func getRecipe (item: Receipe) {
             selectedReceipe = item
         }
@@ -112,7 +114,7 @@ class RecipesStepsViewController: UIViewController,UITextFieldDelegate, TagListV
             if (emptyCheck.count != 0) {
                 listAllIngredients.append(stepsTF.text!)
                 tagListView.addTag(stepsTF.text!)
-                tagListViewHeight.constant = self.tagListView.intrinsicContentSize.height
+               // tagListViewHeight.constant = self.tagListView.intrinsicContentSize.height
                 stepsTF.text = nil
             }
         }
@@ -123,6 +125,21 @@ class RecipesStepsViewController: UIViewController,UITextFieldDelegate, TagListV
         tagListView.removeTag(title)
         if let index = self.listAllIngredients.firstIndex(of: title) {
             self.listAllIngredients.remove(at: index)
+        }
+    }
+    
+    // Segment Function.
+    @IBAction func segmentControllerClicked(_ sender: UISegmentedControl) {
+        switch segmentControl.selectedSegmentIndex {
+        case 0:
+            self.IngredientsView.isHidden = false
+            self.RecipeStepsView.isHidden = true
+        case 1:
+            self.RecipeStepsView.isHidden = false
+            self.IngredientsView.isHidden = true
+            self.addStepsTF.placeholder = "Enter Steps"
+        default:
+            print("Test")
         }
     }
 }
@@ -167,5 +184,4 @@ extension RecipesStepsViewController: UITableViewDelegate,UITableViewDataSource 
             self.present(alert, animated: true, completion: nil)
         }
     }
-    
 }

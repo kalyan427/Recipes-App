@@ -84,6 +84,11 @@ extension TimerViewController {
         displayClockView.animate()
     }
     
+    func resetTheClockView (){
+        timerView.maximumValue = CGFloat(0)
+        timerView.minimumValue = CGFloat(0)
+    }
+    
     @objc func countDown() {
         timerView.maximumValue = CGFloat(totalTimeInSeconds)
         totalTimeInSeconds -= 1
@@ -94,10 +99,10 @@ extension TimerViewController {
     func updatePlayerUI(currentTime: CGFloat) {
         timerView.endPointValue = CGFloat(constantTotalTimeInSeconds) - CGFloat(totalValueafterMinus)
         // Conversion from seconds to hours.
-        var hour = totalTimeInSeconds / 3600
-        var minsec = totalTimeInSeconds % 3600
-        var mins = minsec / 60
-        var sec = minsec % 60
+        let hour = totalTimeInSeconds / 3600
+        let minsec = totalTimeInSeconds % 3600
+        let mins = minsec / 60
+        let sec = minsec % 60
         timerViewLabel.text = String(format: "%02d:%02d:%02d", hour, mins, sec)
     }
 }
@@ -145,6 +150,7 @@ extension TimerViewController {
         totalSeconds = seconds
         totalTimeInSeconds = totalHours + totalMinutes + totalSeconds
         constantTotalTimeInSeconds = totalTimeInSeconds
+        resetTheClockView()
         Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.countDown), userInfo: nil, repeats: true)
     }
 }
