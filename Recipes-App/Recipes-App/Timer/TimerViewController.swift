@@ -43,18 +43,18 @@ class TimerViewController: UIViewController {
         // Hours slider.
         hourView.minimumValue = 0
         hourView.maximumValue = 12
-        hourView.endPointValue = 6
+        hourView.endPointValue = 0
         hourView.backgroundColor = UIColor.clear
         
         // Minutes slider
         minuteView.minimumValue = 0
         minuteView.maximumValue = 60
-        minuteView.endPointValue = 30
+        minuteView.endPointValue = 0
         
         // Seconds Slider
         secondsView.minimumValue = 0
         secondsView.maximumValue = 60
-        secondsView.endPointValue = 30
+        secondsView.endPointValue = 0
         
         // minuteView.end
         minuteView.diskColor = UIColor.clear
@@ -68,6 +68,8 @@ class TimerViewController: UIViewController {
         // timerView.minimumValue = 0
         timerView.diskColor = UIColor.white
         timerView.endThumbStrokeColor = UIColor.black
+        
+        
     }
 }
 
@@ -146,6 +148,13 @@ extension TimerViewController {
             self.setClockView.isHidden = true
             self.displayClockView.isHidden = false
         }
+        timer?.invalidate()
+        
+        // Default Reset Values in show clock view.
+        hourView.endPointValue = 6
+        minuteView.endPointValue = 30
+        secondsView.endPointValue = 30
+        
         setClockView.animation = "flipX"
         setClockView.curve = "easeIn"
         setClockView.duration = 1.0

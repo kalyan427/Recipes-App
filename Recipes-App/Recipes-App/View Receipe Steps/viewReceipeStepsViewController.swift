@@ -37,7 +37,7 @@ class viewReceipeStepsViewController: UIViewController,UITableViewDelegate,UITab
         }
         
         for item in showAllIngredients {
-            var tempItem = item
+            let tempItem = item
             viewStepsTagListView.addTag(tempItem as! String)
             viewStepsTagListView.textFont = UIFont.systemFont(ofSize: 14)
             viewStepsTagListView.tagBackgroundColor = UIColor.init(red: 12/255, green: 114/255, blue: 211/255, alpha: 1)
@@ -81,7 +81,7 @@ class viewReceipeStepsViewController: UIViewController,UITableViewDelegate,UITab
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "viewStepsCell") as! AllStepsTableViewCell
-        cell.viewStepsLabel.text = allSteps[indexPath.row] as! String
+        cell.viewStepsLabel.text = allSteps[indexPath.row] as? String
         cell.stepCount.text = String(indexPath.row + 1) + "."
         return cell
     }
