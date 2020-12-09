@@ -532,8 +532,8 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hh:mm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hMH-mN-LWD">
-                                                        <rect key="frame" x="10" y="36" width="30" height="11"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hh:mm:ss" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hMH-mN-LWD">
+                                                        <rect key="frame" x="4" y="36" width="42.5" height="11"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -567,9 +567,8 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tKc-gX-t2B">
-                                        <rect key="frame" x="179" y="532" width="72" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tKc-gX-t2B">
+                                        <rect key="frame" x="171" y="535.5" width="72" height="30"/>
                                         <state key="normal" title="ClockView"/>
                                         <connections>
                                             <action selector="showSetClockView:" destination="AKZ-gv-1Sc" eventType="touchUpInside" id="AQz-86-XrA"/>
@@ -581,6 +580,8 @@
                                 <constraints>
                                     <constraint firstItem="xcd-gs-m53" firstAttribute="centerX" secondItem="Su5-3y-YAS" secondAttribute="centerX" id="2fI-TV-h7n"/>
                                     <constraint firstItem="xcd-gs-m53" firstAttribute="centerY" secondItem="Su5-3y-YAS" secondAttribute="centerY" id="Twz-f7-UDY"/>
+                                    <constraint firstItem="tKc-gX-t2B" firstAttribute="centerX" secondItem="Su5-3y-YAS" secondAttribute="centerX" id="syz-VW-y0y"/>
+                                    <constraint firstItem="tKc-gX-t2B" firstAttribute="top" secondItem="xcd-gs-m53" secondAttribute="bottom" constant="53" id="wF1-IF-sB2"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZTz-uI-K0o" customClass="SpringView" customModule="Spring">
@@ -723,8 +724,8 @@
                                             <constraint firstAttribute="bottom" secondItem="SCz-zg-ayF" secondAttribute="bottom" constant="35" id="urA-gA-pqK"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ph4-gY-DWs">
-                                        <rect key="frame" x="162" y="657" width="90" height="37"/>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ph4-gY-DWs">
+                                        <rect key="frame" x="172" y="657" width="70" height="37"/>
                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="90" id="AZx-EZ-qCB"/>

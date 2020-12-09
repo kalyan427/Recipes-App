@@ -33,6 +33,7 @@ class TimerViewController: UIViewController {
     var totalTimeInSeconds: Int = 0
     var constantTotalTimeInSeconds: Int = 0
     var totalValueafterMinus: Int = 0
+    var timer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +54,7 @@ class TimerViewController: UIViewController {
         // Seconds Slider
         secondsView.minimumValue = 0
         secondsView.maximumValue = 60
-        secondsView.endPointValue = 20
+        secondsView.endPointValue = 30
         
         // minuteView.end
         minuteView.diskColor = UIColor.clear
@@ -64,7 +65,7 @@ class TimerViewController: UIViewController {
         setClockView.isHidden = false
         
         // TimerSet View.
-       // timerView.minimumValue = 0
+        // timerView.minimumValue = 0
         timerView.diskColor = UIColor.white
         timerView.endThumbStrokeColor = UIColor.black
     }
@@ -84,20 +85,26 @@ extension TimerViewController {
         displayClockView.animate()
     }
     
-    func resetTheClockView (){
+    func resetTheClockView () {
         timerView.maximumValue = CGFloat(0)
         timerView.minimumValue = CGFloat(0)
     }
     
     @objc func countDown() {
-        timerView.maximumValue = CGFloat(totalTimeInSeconds)
-        totalTimeInSeconds -= 1
-        totalValueafterMinus = totalTimeInSeconds
-        updatePlayerUI(currentTime: CGFloat(totalTimeInSeconds))
+        timerView.maximumValue = CGFloat(constantTotalTimeInSeconds)
+        if totalTimeInSeconds != 0 {
+            totalTimeInSeconds -= 1
+            totalValueafterMinus = totalTimeInSeconds
+            updatePlayerUI(currentTime: CGFloat(totalTimeInSeconds))
+        } else {
+            timer?.invalidate()
+        }
     }
     
+    // update the slider position and the timer text
     func updatePlayerUI(currentTime: CGFloat) {
         timerView.endPointValue = CGFloat(constantTotalTimeInSeconds) - CGFloat(totalValueafterMinus)
+        
         // Conversion from seconds to hours.
         let hour = totalTimeInSeconds / 3600
         let minsec = totalTimeInSeconds % 3600
@@ -151,6 +158,8 @@ extension TimerViewController {
         totalTimeInSeconds = totalHours + totalMinutes + totalSeconds
         constantTotalTimeInSeconds = totalTimeInSeconds
         resetTheClockView()
-        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.countDown), userInfo: nil, repeats: true)
+        
+        //Setting Timer.
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.countDown), userInfo: nil, repeats: true)
     }
 }
