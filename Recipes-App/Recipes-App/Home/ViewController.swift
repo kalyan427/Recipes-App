@@ -17,6 +17,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var addRecipetitleView: UIView!
     var filteredReceipe = [Any]()
     var tempArray = [Any]()
+    let network = NetworkApiCall()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,8 +38,14 @@ class ViewController: UIViewController,UITextFieldDelegate {
         adView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
         adView.rootViewController = self
         adView.load(GADRequest())
+        network.delegate = self
+        getAllRecipesFomServer(Url: "http://valetplz-api.uc.r.appspot.com/_ah/api/valetPlz/v1/getContentManagementDataAll")
     }
     
+    func getAllRecipesFomServer(Url: String) {
+        network.callAPI(urlString: Url)
+    }
+        
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.titleTextField.endEditing(true)
         return true
@@ -52,10 +59,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
         self.filteredReceipe = DataManager().getAllReceipes()
         tableView.reloadData()
         self.titleTextField.text = nil
-        
     }
-    
-    
     
     @objc func moreButtonClicked(sender: UIButton) {
         let clickedCell = sender.tag
@@ -70,7 +74,6 @@ class ViewController: UIViewController,UITextFieldDelegate {
         }))
         
         alert.addAction(UIAlertAction(title: "Dismiss", style: .destructive, handler: { (UIAlertAction) in
-            
         }))
         
         if let popoverController = alert.popoverPresentationController {
@@ -96,7 +99,6 @@ class ViewController: UIViewController,UITextFieldDelegate {
         let receipeSteps = self.storyboard?.instantiateViewController(withIdentifier: "recipesStepsVC") as! RecipesStepsViewController
                    receipeSteps.getRecipe(item: self.filteredReceipe[tag] as! Receipe)
                    self.navigationController?.pushViewController(receipeSteps, animated: true)
-        
     }
     
     @objc func deletebuttonClicked(tag: Int) {
@@ -113,7 +115,6 @@ class ViewController: UIViewController,UITextFieldDelegate {
             receipsView.getRecipe(item: self.filteredReceipe[tag] as! Receipe)
             self.navigationController?.pushViewController(receipsView, animated: true)
         }
-        
     }
     
     func filter(searchText: String) {
@@ -121,11 +122,9 @@ class ViewController: UIViewController,UITextFieldDelegate {
             let dict1 :Receipe = dict as! Receipe;
             let string = dict1.title
             return string!.lowercased().contains(searchText.lowercased())
-            
         }
         tableView.reloadData()
     }
-    
 }
 
 // MARK: - TableView delegate
@@ -143,6 +142,8 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! RecipeTitleTableViewCell
         cell.btnMore.addTarget(self, action: #selector(moreButtonClicked(sender:)), for: .touchUpInside)
+        
+        
         cell.btnMore.tag = indexPath.row
         let receipeItem = self.filteredReceipe[indexPath.row] as! Receipe
         cell.recipeTitle.text = receipeItem.title
@@ -186,8 +187,6 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate {
         }
     }
 }
-
-
 // MARK: - Search bar delegate
 extension ViewController : UISearchBarDelegate {
     
@@ -211,4 +210,19 @@ extension ViewController : UISearchBarDelegate {
     }
 }
 
+// MARK: - Network/search Delegate
+extension ViewController: apiCallingDelegate {
+    func receivedData(data Content: Data) {
+        let apiData =  try? JSONSerialization.jsonObject(with: Content, options: .mutableLeaves)
+        guard let jsonData = apiData as? Dictionary<String,Any> else {
+            return
+        }
+        if let data = jsonData["data"] as? Array<Dictionary<String, Any>>{
+            for  item in data {
+                print(item)
+                
+            }
+        }
+    }
+}
 

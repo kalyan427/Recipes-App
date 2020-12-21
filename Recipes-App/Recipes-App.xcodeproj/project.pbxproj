@@ -12,6 +12,7 @@
 		3039114D24F6170900BD6453 /* TextInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3039114C24F6170900BD6453 /* TextInputTableViewCell.swift */; };
 		304E79E3250332740080D740 /* RecipeTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304E79E2250332740080D740 /* RecipeTitleTableViewCell.swift */; };
 		30500DC72535DBAB00E7A790 /* GroceryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30500DC62535DBAB00E7A790 /* GroceryListViewController.swift */; };
+		307AE88225832D910094D5D9 /* NetworkCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307AE88125832D910094D5D9 /* NetworkCall.swift */; };
 		307D2ECF2530BFD100C29262 /* viewReceipeStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307D2ECE2530BFD100C29262 /* viewReceipeStepsViewController.swift */; };
 		307D6E6224FC9D1600DFF01E /* RecipesStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307D6E6124FC9D1600DFF01E /* RecipesStepsViewController.swift */; };
 		30EE68F12535E0D100E2D5C9 /* GroceryItemsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EE68F02535E0D100E2D5C9 /* GroceryItemsTableViewCell.swift */; };
@@ -46,6 +47,7 @@
 		3039114C24F6170900BD6453 /* TextInputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputTableViewCell.swift; sourceTree = "<group>"; };
 		304E79E2250332740080D740 /* RecipeTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTitleTableViewCell.swift; sourceTree = "<group>"; };
 		30500DC62535DBAB00E7A790 /* GroceryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryListViewController.swift; sourceTree = "<group>"; };
+		307AE88125832D910094D5D9 /* NetworkCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCall.swift; sourceTree = "<group>"; };
 		307D2ECE2530BFD100C29262 /* viewReceipeStepsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewReceipeStepsViewController.swift; sourceTree = "<group>"; };
 		307D6E6124FC9D1600DFF01E /* RecipesStepsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesStepsViewController.swift; sourceTree = "<group>"; };
 		30EE68F02535E0D100E2D5C9 /* GroceryItemsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryItemsTableViewCell.swift; sourceTree = "<group>"; };
@@ -109,6 +111,22 @@
 				304E79E2250332740080D740 /* RecipeTitleTableViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		307AE87F25832D430094D5D9 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				6875DDD825340F02007FE387 /* DataManager.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		307AE88025832D510094D5D9 /* API Calling */ = {
+			isa = PBXGroup;
+			children = (
+				307AE88125832D910094D5D9 /* NetworkCall.swift */,
+			);
+			path = "API Calling";
 			sourceTree = "<group>";
 		};
 		30EE68F22535E0DB00E2D5C9 /* Cell */ = {
@@ -197,7 +215,8 @@
 		6875DDD725340EE3007FE387 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				6875DDD825340F02007FE387 /* DataManager.swift */,
+				307AE88025832D510094D5D9 /* API Calling */,
+				307AE87F25832D430094D5D9 /* CoreData */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -404,6 +423,7 @@
 				3039114D24F6170900BD6453 /* TextInputTableViewCell.swift in Sources */,
 				30F4469B24F53C49008580C8 /* ViewController.swift in Sources */,
 				30500DC72535DBAB00E7A790 /* GroceryListViewController.swift in Sources */,
+				307AE88225832D910094D5D9 /* NetworkCall.swift in Sources */,
 				307D2ECF2530BFD100C29262 /* viewReceipeStepsViewController.swift in Sources */,
 				30F4469724F53C49008580C8 /* AppDelegate.swift in Sources */,
 				302CA3832511CFB1001A79E7 /* AllStepsTableViewCell.swift in Sources */,

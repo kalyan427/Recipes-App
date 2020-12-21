@@ -16,7 +16,7 @@ class DataManager: NSObject {
         return appDelegate.managedObjectContext
     }
     
-    func getAllReceipes() ->Array<Any>{
+    func getAllReceipes() ->Array<Any> {
         //create a fetch request, telling it about the entity
         let fetchRequest: NSFetchRequest<Receipe> = Receipe.fetchRequest()
         var searchResults:Array<Any>=[]

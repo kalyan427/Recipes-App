@@ -16,6 +16,7 @@ class GroceryListViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var adView: GADBannerView!
     @IBOutlet weak var groceryView: UIView!
     var groceryList = [Any]()
+    var groceryNetworkCall = NetworkApiCall()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,11 @@ class GroceryListViewController: UIViewController,UITextFieldDelegate {
         addGroceryItem.layer.shadowRadius = 3.0
         addGroceryItem.layer.shadowOffset = CGSize(width: 2, height: 2)
         self.title = "SHOPPING LIST"
+        
+        // Calling Delegate
+        groceryNetworkCall.delegate = self
+        groceryNetworkCall.callAPI(urlString: "www.facebook.com")
+        
         
         // Google Ads.
         adView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
@@ -98,7 +104,6 @@ extension GroceryListViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = groceryTableView.dequeueReusableCell(withIdentifier: "groceryCell") as! GroceryItemsTableViewCell
-        
         cell.selectionButton.addTarget(self, action: #selector(itemSelected(_:)), for: .touchUpInside)
         cell.selectionButton.tag = indexPath.row
         
@@ -115,7 +120,6 @@ extension GroceryListViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            
             if let items = self.groceryList[indexPath.row] as? Groceries{
                 if(DataManager().deleteGroceriesWithListID(id: Int(items.id))){
                     self.groceryList.remove(at: indexPath.row)
@@ -123,5 +127,16 @@ extension GroceryListViewController: UITableViewDelegate, UITableViewDataSource 
                 }
             }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+}
+
+// MARK: - Network/Search Delegate
+extension GroceryListViewController: apiCallingDelegate {
+    func receivedData(data Content: Data) {
+        print(Content)
     }
 }
