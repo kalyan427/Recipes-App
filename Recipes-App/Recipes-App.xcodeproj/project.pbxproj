@@ -15,6 +15,8 @@
 		307AE88225832D910094D5D9 /* NetworkCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307AE88125832D910094D5D9 /* NetworkCall.swift */; };
 		307D2ECF2530BFD100C29262 /* viewReceipeStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307D2ECE2530BFD100C29262 /* viewReceipeStepsViewController.swift */; };
 		307D6E6224FC9D1600DFF01E /* RecipesStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307D6E6124FC9D1600DFF01E /* RecipesStepsViewController.swift */; };
+		309301F82591A74900906542 /* ApiHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309301F72591A74900906542 /* ApiHomeViewController.swift */; };
+		309301FC2591A7EE00906542 /* ApiHomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309301FB2591A7EE00906542 /* ApiHomeTableViewCell.swift */; };
 		30EE68F12535E0D100E2D5C9 /* GroceryItemsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EE68F02535E0D100E2D5C9 /* GroceryItemsTableViewCell.swift */; };
 		30F4469724F53C49008580C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F4469624F53C49008580C8 /* AppDelegate.swift */; };
 		30F4469B24F53C49008580C8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F4469A24F53C49008580C8 /* ViewController.swift */; };
@@ -50,6 +52,8 @@
 		307AE88125832D910094D5D9 /* NetworkCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCall.swift; sourceTree = "<group>"; };
 		307D2ECE2530BFD100C29262 /* viewReceipeStepsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewReceipeStepsViewController.swift; sourceTree = "<group>"; };
 		307D6E6124FC9D1600DFF01E /* RecipesStepsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesStepsViewController.swift; sourceTree = "<group>"; };
+		309301F72591A74900906542 /* ApiHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiHomeViewController.swift; sourceTree = "<group>"; };
+		309301FB2591A7EE00906542 /* ApiHomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiHomeTableViewCell.swift; sourceTree = "<group>"; };
 		30EE68F02535E0D100E2D5C9 /* GroceryItemsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryItemsTableViewCell.swift; sourceTree = "<group>"; };
 		30F4469324F53C49008580C8 /* Recipes-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Recipes-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		30F4469624F53C49008580C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				304E79E2250332740080D740 /* RecipeTitleTableViewCell.swift */,
+				309301FB2591A7EE00906542 /* ApiHomeTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -190,6 +195,7 @@
 			children = (
 				306BBA782526D34300F64589 /* Cell */,
 				30F4469A24F53C49008580C8 /* ViewController.swift */,
+				309301F72591A74900906542 /* ApiHomeViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -417,12 +423,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				309301FC2591A7EE00906542 /* ApiHomeTableViewCell.swift in Sources */,
 				307D6E6224FC9D1600DFF01E /* RecipesStepsViewController.swift in Sources */,
 				6875DDD925340F02007FE387 /* DataManager.swift in Sources */,
 				304E79E3250332740080D740 /* RecipeTitleTableViewCell.swift in Sources */,
 				3039114D24F6170900BD6453 /* TextInputTableViewCell.swift in Sources */,
 				30F4469B24F53C49008580C8 /* ViewController.swift in Sources */,
 				30500DC72535DBAB00E7A790 /* GroceryListViewController.swift in Sources */,
+				309301F82591A74900906542 /* ApiHomeViewController.swift in Sources */,
 				307AE88225832D910094D5D9 /* NetworkCall.swift in Sources */,
 				307D2ECF2530BFD100C29262 /* viewReceipeStepsViewController.swift in Sources */,
 				30F4469724F53C49008580C8 /* AppDelegate.swift in Sources */,

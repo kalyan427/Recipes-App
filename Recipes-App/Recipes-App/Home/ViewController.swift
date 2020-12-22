@@ -211,6 +211,7 @@ extension ViewController : UISearchBarDelegate {
 }
 
 // MARK: - Network/search Delegate
+
 extension ViewController: apiCallingDelegate {
     func receivedData(data Content: Data) {
         let apiData =  try? JSONSerialization.jsonObject(with: Content, options: .mutableLeaves)
@@ -219,7 +220,9 @@ extension ViewController: apiCallingDelegate {
         }
         if let data = jsonData["data"] as? Array<Dictionary<String, Any>>{
             for  item in data {
-                print(item)
+                print("kalyan:item")
+                
+                
                 
             }
         }
